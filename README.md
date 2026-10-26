@@ -1,0 +1,2 @@
+# Sacrifice of P
+Sacrifice of Praise (SoP) is a live acapella worship concert designed to deliver a spiritually transformative experience rooted in Hebrews 13:15. This event brings together believers and non-believers alike in a unique atmosphere of pure, undiluted worship – void of instruments, but rich in harmony, truth, and spiritual depth. SoP is projected to become a recurring and widely recognized worship movement in Nigeria and beyond, thereby promoting the Church of Christ.
