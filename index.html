@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +35,9 @@
     tailwind.config = {
       theme: {
         extend: {
+          screens: {
+            'xs': '420px',
+          },
           colors: {
             sop: {
               dark: '#080a0f',
@@ -139,20 +142,20 @@
 <body class="selection:bg-[#e5a93c] selection:text-black">
 
   <!-- ==================== 1. FIXED NAVBAR ==================== -->
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 bg-[#080a0f]/85 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between">
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-2.5 sm:py-4 bg-[#080a0f]/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-2 sm:gap-4">
         
         <!-- Brand Title & Official SoP Logo -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] shadow-lg shadow-[#e5a93c]/20 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+        <a href="#hero" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] shadow-lg shadow-[#e5a93c]/20 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
             <img src="./sop-logo.jpg" alt="Sacrifice of Praise Official Logo" class="w-full h-full object-cover rounded-full" />
           </div>
-          <div class="flex flex-col">
-            <span class="font-display font-bold text-lg sm:text-xl text-white tracking-wide group-hover:text-[#f8c765] transition-colors leading-tight">
-              Sacrifice of Praise <span class="text-[#f8c765]">2.0</span>
+          <div class="flex flex-col min-w-0">
+            <span class="font-display font-bold text-sm xs:text-base sm:text-xl text-white tracking-tight sm:tracking-wide group-hover:text-[#f8c765] transition-colors leading-tight whitespace-nowrap">
+              <span class="hidden sm:inline">Sacrifice of Praise</span><span class="sm:hidden">SoP</span> <span class="text-[#f8c765]">2.0</span>
             </span>
-            <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-slate-400">
+            <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-slate-400">
               Pure Worship • Dec 12, 2026
             </span>
           </div>
@@ -163,37 +166,37 @@
           <a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme</a>
           <a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Gallery</a>
           <a href="#register" class="hover:text-[#e5a93c] transition-colors">Register</a>
-          <button onclick="openFlyerModal()" class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs">
+          <button onclick="openFlyerModal()" class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs cursor-pointer">
             <i data-lucide="image" class="w-3.5 h-3.5"></i>
             <span>View Flyer</span>
           </button>
         </nav>
 
         <!-- TOP RIGHT CORNER BUTTONS (Core User Requirement) -->
-        <div class="flex items-center gap-2.5 sm:gap-3.5">
+        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3.5 shrink-0">
           <!-- Button 1: Gallery with animated scroll indicator -->
           <a
             href="#gallery"
-            class="group inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0"
             title="View animated photo gallery"
           >
-            <i data-lucide="images" class="w-4 h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
-            <span class="hidden xs:inline">Photo</span>
+            <i data-lucide="images" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span class="hidden md:inline">Photo </span>
             <span>Gallery</span>
-            <span class="flex h-2 w-2 relative">
+            <span class="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5a93c] opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#e5a93c]"></span>
+              <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#e5a93c]"></span>
             </span>
           </a>
 
           <!-- Button 2: Register Now (fills Google Form) -->
           <a
             href="#register"
-            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
             title="Register for Sacrifice of Praise 2.0"
           >
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-950"></i>
-            <span>Register Now</span>
+            <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950"></i>
+            <span>Register<span class="hidden xs:inline"> Now</span></span>
           </a>
         </div>
 
@@ -202,74 +205,74 @@
   </header>
 
   <!-- ==================== 2. HERO & COUNTDOWN ==================== -->
-  <section id="hero" class="relative min-h-screen pt-32 pb-20 flex flex-col justify-center overflow-hidden">
+  <section id="hero" class="relative min-h-screen pt-24 xs:pt-28 sm:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden">
     <!-- Ambient glow backgrounds -->
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#e5a93c]/15 via-[#f8c765]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+    <div class="relative z-10 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center flex flex-col items-center">
       
       <!-- Scripture Theme Pill -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-lg">
-        <i data-lucide="music-2" class="w-4 h-4 text-[#e5a93c]"></i>
+      <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-lg max-w-full">
+        <i data-lucide="music-2" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
         <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-300">
           Hebrews 13:15 • Live Acapella Worship Concert
         </span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white max-w-5xl leading-[1.06] mb-6">
-        Sacrifice of <span class="gold-gradient-text">Praise</span>{' '}
-        <span class="inline-block text-2xl sm:text-4xl md:text-5xl font-sans font-bold text-[#f8c765] border-2 border-[#e5a93c] px-3 py-1 rounded-2xl align-middle shadow-lg shadow-[#e5a93c]/20">
+      <h1 class="font-display font-extrabold text-3xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white max-w-5xl leading-[1.08] mb-4 sm:mb-6">
+        Sacrifice of <span class="gold-gradient-text">Praise</span>
+        <span class="inline-block text-xl xs:text-2xl sm:text-4xl md:text-5xl font-sans font-bold text-[#f8c765] border-2 border-[#e5a93c] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl align-middle shadow-lg shadow-[#e5a93c]/20 ml-1">
           2.0
         </span>
       </h1>
 
       <!-- Tagline & Verse -->
-      <p class="text-lg sm:text-2xl font-light text-slate-200 tracking-wide max-w-3xl mb-3">
+      <p class="text-base sm:text-2xl font-light text-slate-200 tracking-wide max-w-3xl mb-2 sm:mb-3">
         “<span class="font-medium text-white">Pure Worship.</span> <span class="gold-gradient-text font-medium">True Sacrifice.</span>”
       </p>
-      <p class="text-xs sm:text-sm text-slate-400 italic max-w-2xl mb-8 leading-relaxed">
+      <p class="text-xs sm:text-sm text-slate-400 italic max-w-2xl mb-6 sm:mb-8 leading-relaxed px-2">
         “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
       </p>
 
       <!-- Key Details Pills -->
-      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 max-w-3xl">
-        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
-          <i data-lucide="calendar" class="w-4 h-4 text-[#e5a93c]"></i>
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 max-w-3xl">
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
           <span>Saturday, December 12, 2026</span>
         </div>
-        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
-          <i data-lucide="clock" class="w-4 h-4 text-[#e5a93c]"></i>
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="clock" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
           <span>10:00 AM – 2:00 PM (GMT/WAT)</span>
         </div>
-        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
-          <i data-lucide="map-pin" class="w-4 h-4 text-[#e5a93c]"></i>
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
           <span>Lawn Tennis Courts, FCE(T), Akoka, Lagos</span>
         </div>
       </div>
 
       <!-- Hero Action CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-14">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-14">
         <a
           href="#register"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/30 hover:scale-[1.03] active:scale-[0.98] transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/30 hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer"
         >
-          <i data-lucide="sparkles" class="w-5 h-5 text-slate-950"></i>
+          <i data-lucide="sparkles" class="w-4 h-4 sm:w-5 sm:h-5 text-slate-950"></i>
           <span>Register Free for SoP 2.0</span>
         </a>
 
         <a
           href="#gallery"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full text-base font-semibold text-slate-100 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#e5a93c]/60 shadow-lg hover:shadow-[#e5a93c]/10 transition-all group"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-slate-100 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#e5a93c]/60 shadow-lg hover:shadow-[#e5a93c]/10 transition-all group cursor-pointer"
         >
-          <i data-lucide="images" class="w-5 h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+          <i data-lucide="images" class="w-4 h-4 sm:w-5 sm:h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
           <span>Explore Photo Gallery</span>
         </a>
 
         <button
           onclick="openFlyerModal()"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full text-sm font-medium text-slate-400 hover:text-white bg-transparent hover:bg-white/5 transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-4 rounded-full text-xs sm:text-sm font-medium text-slate-400 hover:text-white bg-transparent hover:bg-white/5 transition-all cursor-pointer"
         >
           <i data-lucide="eye" class="w-4 h-4 text-slate-400"></i>
           <span>View Event Flyer</span>
@@ -278,38 +281,42 @@
 
       <!-- COUNTDOWN TIMER CARD -->
       <div class="w-full max-w-3xl mx-auto">
-        <div class="relative glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl overflow-hidden">
+        <div class="relative glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-white/10 shadow-2xl overflow-hidden">
           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#e5a93c]/15 blur-3xl pointer-events-none"></div>
 
           <div class="relative z-10 flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-semibold tracking-widest uppercase mb-4">
-              <i data-lucide="clock" class="w-3.5 h-3.5 text-[#e5a93c]"></i>
-              <span>Countdown to Sacrifice of Praise 2.0</span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-semibold tracking-widest uppercase mb-4 text-center">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-[#e5a93c] shrink-0"></i>
+              <span class="text-[11px] sm:text-xs">Countdown to Sacrifice of Praise 2.0</span>
             </div>
 
-            <div class="grid grid-cols-4 gap-2.5 sm:gap-4 md:gap-6 w-full max-w-xl mb-6">
-              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
-                <span id="countdown-days" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
-                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">DAYS</span>
+            <div class="grid grid-cols-4 gap-1.5 xs:gap-2.5 sm:gap-4 md:gap-6 w-full max-w-xl mb-4 sm:mb-6">
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-days" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">DAYS</span>
               </div>
-              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
-                <span id="countdown-hours" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
-                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">HOURS</span>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-hours" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">HOURS</span>
               </div>
-              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
-                <span id="countdown-minutes" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
-                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">MINUTES</span>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-minutes" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
+                  <span class="hidden sm:inline">MINUTES</span><span class="sm:hidden">MINS</span>
+                </span>
               </div>
-              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
-                <span id="countdown-seconds" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#f8c765] tracking-tight">00</span>
-                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">SECONDS</span>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-seconds" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-[#f8c765] tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
+                  <span class="hidden sm:inline">SECONDS</span><span class="sm:hidden">SECS</span>
+                </span>
               </div>
             </div>
 
             <!-- Add to Calendar trigger -->
             <button
               onclick="openCalendarModal()"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-semibold text-[#f8c765] border border-[#e5a93c]/20 hover:border-[#e5a93c]/50 transition-colors"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-semibold text-[#f8c765] border border-[#e5a93c]/20 hover:border-[#e5a93c]/50 transition-colors cursor-pointer"
             >
               <i data-lucide="calendar-plus" class="w-4 h-4"></i>
               <span>Add Event to Calendar</span>
@@ -522,7 +529,7 @@
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
       <!-- Form Card Container -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl relative">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-4 xs:p-6 sm:p-10 border border-white/10 shadow-2xl relative">
         
         <!-- STATE 1: INTERACTIVE FORM -->
         <div id="registration-form-wrapper">
@@ -695,7 +702,7 @@
           </div>
 
           <!-- Digital Admission Pass Card -->
-          <div class="max-w-md mx-auto bg-black/60 border border-[#e5a93c]/35 rounded-2xl p-6 text-left relative overflow-hidden shadow-2xl">
+          <div class="max-w-md mx-auto bg-black/60 border border-[#e5a93c]/35 rounded-2xl p-4 sm:p-6 text-left relative overflow-hidden shadow-2xl">
             <div class="absolute top-0 right-0 w-28 h-28 bg-[#e5a93c]/10 rounded-full blur-xl pointer-events-none"></div>
             <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
               <div>
@@ -744,17 +751,17 @@
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-4">
             <button
               onclick="openCalendarModal()"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors cursor-pointer"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors cursor-pointer"
             >
               <i data-lucide="calendar-plus" class="w-4 h-4 text-[#f8c765]"></i>
               <span>Add to Calendar</span>
             </button>
             <button
               onclick="window.print()"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#e5a93c]/15 hover:bg-[#e5a93c]/25 text-[#f8c765] text-xs sm:text-sm font-semibold border border-[#e5a93c]/30 transition-colors cursor-pointer"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#e5a93c]/15 hover:bg-[#e5a93c]/25 text-[#f8c765] text-xs sm:text-sm font-semibold border border-[#e5a93c]/30 transition-colors cursor-pointer"
               title="Save or print your event pass"
             >
               <i data-lucide="printer" class="w-4 h-4"></i>
@@ -762,7 +769,7 @@
             </button>
             <button
               onclick="resetRegistrationForm()"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors cursor-pointer"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors cursor-pointer"
             >
               <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
               <span>Register Another Guest</span>
@@ -884,22 +891,22 @@
   <!-- ==================== 7. MODALS ==================== -->
 
   <!-- Lightbox Modal -->
-  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden items-center justify-center p-4 sm:p-6" onclick="closeLightbox()">
-    <button onclick="closeLightbox()" class="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close lightbox">
-      <i data-lucide="x" class="w-6 h-6"></i>
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden items-center justify-center p-2 sm:p-6" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-3 right-3 sm:top-5 sm:right-5 z-50 p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close lightbox">
+      <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
     </button>
-    <button onclick="event.stopPropagation(); navigateLightbox('prev')" class="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Previous image">
-      <i data-lucide="chevron-left" class="w-6 h-6"></i>
+    <button onclick="event.stopPropagation(); navigateLightbox('prev')" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Previous image">
+      <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
     </button>
-    <button onclick="event.stopPropagation(); navigateLightbox('next')" class="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Next image">
-      <i data-lucide="chevron-right" class="w-6 h-6"></i>
+    <button onclick="event.stopPropagation(); navigateLightbox('next')" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Next image">
+      <i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6"></i>
     </button>
-    <div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+    <div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center px-2" onclick="event.stopPropagation()">
       <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/15 bg-black">
-        <img id="lightbox-image" src="" alt="Sacrifice of Praise moment" class="max-h-[75vh] w-auto max-w-full object-contain rounded-2xl select-none" />
+        <img id="lightbox-image" src="" alt="Sacrifice of Praise moment" class="max-h-[72vh] sm:max-h-[75vh] w-auto max-w-full object-contain rounded-2xl select-none" />
       </div>
-      <div class="mt-4 text-center">
-        <p id="lightbox-caption" class="text-white font-display text-lg font-bold"></p>
+      <div class="mt-3 sm:mt-4 text-center">
+        <p id="lightbox-caption" class="text-white font-display text-base sm:text-lg font-bold"></p>
         <div class="flex items-center justify-center gap-3 mt-1">
           <span id="lightbox-tag" class="text-xs uppercase tracking-wider text-[#f8c765] bg-[#e5a93c]/15 px-2.5 py-0.5 rounded-full font-semibold"></span>
           <span id="lightbox-counter" class="text-xs text-slate-400"></span>
@@ -909,8 +916,8 @@
   </div>
 
   <!-- Flyer Preview Modal -->
-  <div id="flyer-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6" onclick="closeFlyerModal()">
-    <div class="relative max-w-2xl w-full max-h-[92vh] flex flex-col items-center glass-card rounded-3xl p-4 sm:p-6 border border-white/15 overflow-hidden" onclick="event.stopPropagation()">
+  <div id="flyer-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closeFlyerModal()">
+    <div class="relative max-w-2xl w-full max-h-[92vh] flex flex-col items-center glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-white/15 overflow-hidden" onclick="event.stopPropagation()">
       <div class="flex items-center justify-between w-full pb-3 mb-2 border-b border-white/10">
         <div>
           <h3 class="font-display font-bold text-white text-base sm:text-lg">Official Event Flyer</h3>
@@ -942,8 +949,8 @@
   </div>
 
   <!-- Add to Calendar Modal -->
-  <div id="calendar-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6" onclick="closeCalendarModal()">
-    <div class="relative max-w-md w-full glass-card rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl" onclick="event.stopPropagation()">
+  <div id="calendar-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closeCalendarModal()">
+    <div class="relative max-w-md w-full glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/15 shadow-2xl" onclick="event.stopPropagation()">
       <button onclick="closeCalendarModal()" class="absolute top-5 right-5 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close calendar modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
