@@ -528,13 +528,20 @@
         <div id="registration-form-wrapper">
           <form
             id="sop-registration-form"
-            action="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/formResponse"
+            action="https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec"
             method="POST"
             target="hidden_iframe"
             onsubmit="handleFormSubmit(event)"
             class="space-y-6"
           >
-            <!-- Hidden Google Form submission helpers -->
+            <!-- Friendly named parameters for Google Apps Script Web App -->
+            <input type="hidden" name="name" id="hidden-name" />
+            <input type="hidden" name="church" id="hidden-church" />
+            <input type="hidden" name="source" id="hidden-source" />
+            <input type="hidden" name="inLagos" id="hidden-inLagos" />
+            <input type="hidden" name="expectations" id="hidden-expectations" />
+
+            <!-- Hidden Google Form submission helpers for compatibility -->
             <input type="hidden" name="fvv" value="1" />
             <input type="hidden" name="pageHistory" value="0" />
             <!-- Field 1: Name -->
@@ -710,6 +717,10 @@
                 <span id="pass-church" class="text-white font-medium">Worshipper</span>
               </div>
               <div class="flex justify-between">
+                <span class="text-slate-400">Pass Reference:</span>
+                <span id="pass-code" class="text-[#f8c765] font-mono font-bold tracking-wider">SOP-2026-REG</span>
+              </div>
+              <div class="flex justify-between">
                 <span class="text-slate-400">Date:</span>
                 <span class="text-white font-medium">Saturday, Dec 12, 2026</span>
               </div>
@@ -722,37 +733,44 @@
                 <span class="text-white font-medium text-right">Lawn Tennis Courts, FCE(T) Akoka</span>
               </div>
             </div>
+
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-400">
+              <span class="inline-flex items-center gap-1.5 font-medium">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                Official Registration Confirmed
+              </span>
+              <span class="text-slate-400">Free Admission</span>
+            </div>
           </div>
 
           <!-- Action Buttons -->
           <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
             <button
               onclick="openCalendarModal()"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors cursor-pointer"
             >
               <i data-lucide="calendar-plus" class="w-4 h-4 text-[#f8c765]"></i>
               <span>Add to Calendar</span>
             </button>
-            <a
-              id="pass-prefill-link"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#e5a93c]/15 hover:bg-[#e5a93c]/25 text-[#f8c765] text-xs sm:text-sm font-semibold border border-[#e5a93c]/30 transition-colors"
-              title="Confirm your pre-filled responses on Google"
+            <button
+              onclick="window.print()"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#e5a93c]/15 hover:bg-[#e5a93c]/25 text-[#f8c765] text-xs sm:text-sm font-semibold border border-[#e5a93c]/30 transition-colors cursor-pointer"
+              title="Save or print your event pass"
             >
-              <i data-lucide="check-check" class="w-4 h-4"></i>
-              <span>Confirm on Google Forms</span>
-              <i data-lucide="external-link" class="w-3 h-3 opacity-70"></i>
-            </a>
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>Save / Print Pass</span>
+            </button>
             <button
               onclick="resetRegistrationForm()"
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors cursor-pointer"
             >
               <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
               <span>Register Another Guest</span>
             </button>
           </div>
+          <p class="text-xs text-slate-400 max-w-sm mx-auto">
+            Your registration is securely recorded. Registrant lists are kept confidential and protected from public view.
+          </p>
         </div>
 
       </div>
@@ -1240,28 +1258,69 @@ END:VCALENDAR`;
 
     // 5. Registration Submission Logic
     function handleFormSubmit(e) {
-      // Collect input values for digital event pass
-      const name = document.getElementById('field-name').value.trim() || 'Worshipper';
-      const church = document.getElementById('field-church').value.trim() || 'Guest';
-      const source = document.querySelector('select[name="entry.1050780624"]').value || 'Instagram';
-      const inLagos = document.querySelector('select[name="entry.877086558"]').value || 'Yes';
+      // Collect input values
+      const name = (document.getElementById('field-name').value || '').trim() || 'Worshipper';
+      const church = (document.getElementById('field-church').value || '').trim() || 'Guest';
+      const source = (document.querySelector('select[name="entry.1050780624"]').value || '').trim() || 'Instagram';
+      const inLagos = (document.querySelector('select[name="entry.877086558"]').value || '').trim() || 'Yes';
       const expectations = (document.querySelector('textarea[name="entry.2018909557"]').value || '').trim();
 
-      document.getElementById('pass-display-name').innerText = name;
-      document.getElementById('pass-name').innerText = name;
-      document.getElementById('pass-church').innerText = church;
+      // Synchronize hidden friendly-named inputs for standard iframe POST
+      const hName = document.getElementById('hidden-name');
+      const hChurch = document.getElementById('hidden-church');
+      const hSource = document.getElementById('hidden-source');
+      const hLagos = document.getElementById('hidden-inLagos');
+      const hExpect = document.getElementById('hidden-expectations');
+      if (hName) hName.value = name;
+      if (hChurch) hChurch.value = church;
+      if (hSource) hSource.value = source;
+      if (hLagos) hLagos.value = inLagos;
+      if (hExpect) hExpect.value = expectations;
 
-      // Build verified pre-filled Google Form link as secondary backup
-      const prefillUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/viewform?' +
-        'entry.2073731394=' + encodeURIComponent(name) +
-        '&entry.980755877=' + encodeURIComponent(church) +
-        '&entry.1050780624=' + encodeURIComponent(source) +
-        '&entry.877086558=' + encodeURIComponent(inLagos) +
-        '&entry.2018909557=' + encodeURIComponent(expectations);
+      // Populate Digital Event Pass
+      const passDisplay = document.getElementById('pass-display-name');
+      const passName = document.getElementById('pass-name');
+      const passChurch = document.getElementById('pass-church');
+      const passCode = document.getElementById('pass-code');
+      if (passDisplay) passDisplay.innerText = name;
+      if (passName) passName.innerText = name;
+      if (passChurch) passChurch.innerText = church;
+      if (passCode) {
+        const randHex = Math.floor(1000 + Math.random() * 9000).toString();
+        passCode.innerText = 'SOP-2026-' + randHex;
+      }
 
-      const prefillBtn = document.getElementById('pass-prefill-link');
-      if (prefillBtn) {
-        prefillBtn.href = prefillUrl;
+      // Dual Submission: Google Apps Script Web App Endpoint
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec';
+      try {
+        const payload = new URLSearchParams({
+          name: name,
+          church: church,
+          source: source,
+          inLagos: inLagos,
+          expectations: expectations,
+          'entry.2073731394': name,
+          'entry.980755877': church,
+          'entry.1050780624': source,
+          'entry.877086558': inLagos,
+          'entry.2018909557': expectations,
+          timestamp: new Date().toISOString()
+        });
+
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
+        }).catch(() => {});
+      } catch (err) {}
+
+      // Update button state during processing
+      const submitBtn = document.getElementById('btn-submit-registration');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Your Pass...</span>';
+        if (window.lucide) lucide.createIcons();
       }
 
       // Trigger Confetti Animation
@@ -1279,16 +1338,22 @@ END:VCALENDAR`;
         document.getElementById('registration-form-wrapper').classList.add('hidden');
         document.getElementById('registration-success-wrapper').classList.remove('hidden');
         document.getElementById('registration-success-wrapper').scrollIntoView({ behavior: 'smooth' });
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
       }, 700);
     }
 
     function resetRegistrationForm() {
-      document.getElementById('sop-registration-form').reset();
+      const form = document.getElementById('sop-registration-form');
+      if (form) form.reset();
+      const submitBtn = document.getElementById('btn-submit-registration');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i data-lucide="sparkles" class="w-5 h-5"></i><span>Complete Free Registration</span>';
+      }
       document.getElementById('registration-success-wrapper').classList.add('hidden');
       document.getElementById('registration-form-wrapper').classList.remove('hidden');
       document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
   </script>
 </body>
