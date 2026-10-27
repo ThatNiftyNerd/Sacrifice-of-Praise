@@ -161,17 +161,6 @@
           </div>
         </a>
 
-        <!-- Middle Nav Anchors -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme</a>
-          <a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Gallery</a>
-          <a href="#register" class="hover:text-[#e5a93c] transition-colors">Register</a>
-          <button onclick="openFlyerModal()" class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs cursor-pointer">
-            <i data-lucide="image" class="w-3.5 h-3.5"></i>
-            <span>View Flyer</span>
-          </button>
-        </nav>
-
         <!-- TOP RIGHT CORNER BUTTONS (Core User Requirement) -->
         <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3.5 shrink-0">
           <!-- Button 1: Gallery with animated scroll indicator -->
@@ -269,14 +258,6 @@
           <i data-lucide="images" class="w-4 h-4 sm:w-5 sm:h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
           <span>Explore Photo Gallery</span>
         </a>
-
-        <button
-          onclick="openFlyerModal()"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-4 rounded-full text-xs sm:text-sm font-medium text-slate-400 hover:text-white bg-transparent hover:bg-white/5 transition-all cursor-pointer"
-        >
-          <i data-lucide="eye" class="w-4 h-4 text-slate-400"></i>
-          <span>View Event Flyer</span>
-        </button>
       </div>
 
       <!-- COUNTDOWN TIMER CARD -->
@@ -815,7 +796,6 @@
             <li><a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme & Story</a></li>
             <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Animated Photo Gallery</a></li>
             <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
-            <li><button onclick="openFlyerModal()" class="hover:text-white transition-colors">View Official Flyer</button></li>
           </ul>
         </div>
 
@@ -908,39 +888,6 @@
           <span id="lightbox-tag" class="text-xs uppercase tracking-wider text-[#f8c765] bg-[#e5a93c]/15 px-2.5 py-0.5 rounded-full font-semibold"></span>
           <span id="lightbox-counter" class="text-xs text-slate-400"></span>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Flyer Preview Modal -->
-  <div id="flyer-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closeFlyerModal()">
-    <div class="relative max-w-2xl w-full max-h-[92vh] flex flex-col items-center glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-white/15 overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between w-full pb-3 mb-2 border-b border-white/10">
-        <div>
-          <h3 class="font-display font-bold text-white text-base sm:text-lg">Official Event Flyer</h3>
-          <p class="text-xs text-slate-400">Sacrifice of Praise 2.0 • December 12, 2026</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <a href="./flyer.webp" download="Sacrifice-of-Praise-2.0-Flyer.webp" class="p-2 rounded-xl bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white text-xs font-semibold flex items-center gap-1.5 transition-colors">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span class="hidden sm:inline">Download</span>
-          </a>
-          <button onclick="closeFlyerModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close modal">
-            <i data-lucide="x" class="w-5 h-5"></i>
-          </button>
-        </div>
-      </div>
-      <div class="relative overflow-auto max-h-[72vh] w-full flex justify-center rounded-2xl bg-black/60 p-2">
-        <picture>
-          <source srcset="./flyer.webp" type="image/webp" />
-          <img src="./flyer.jpg" alt="Event Flyer" class="max-h-[68vh] w-auto object-contain rounded-xl shadow-2xl" />
-        </picture>
-      </div>
-      <div class="mt-4 pt-3 border-t border-white/10 w-full flex items-center justify-between text-xs">
-        <span class="text-slate-400">Dec 12, 2026 • FCE(T) Akoka</span>
-        <a href="#register" onclick="closeFlyerModal()" class="px-4 py-2 rounded-xl bg-[#e5a93c] text-black font-bold hover:bg-[#f8c765] transition-colors">
-          Register Free
-        </a>
       </div>
     </div>
   </div>
@@ -1201,27 +1148,20 @@
       showLightboxIndex(currentLightboxIndex);
     }
 
-    // 4. Modal Functions (Flyer & Calendar)
-    function openFlyerModal() {
-      const m = document.getElementById('flyer-modal');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-    }
-    function closeFlyerModal() {
-      const m = document.getElementById('flyer-modal');
-      m.classList.add('hidden');
-      m.classList.remove('flex');
-    }
-
+    // 4. Calendar Modal Functions
     function openCalendarModal() {
       const m = document.getElementById('calendar-modal');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
+      if (m) {
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+      }
     }
     function closeCalendarModal() {
       const m = document.getElementById('calendar-modal');
-      m.classList.add('hidden');
-      m.classList.remove('flex');
+      if (m) {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+      }
     }
 
     // Google Calendar URL Generator
@@ -1259,7 +1199,6 @@ END:VCALENDAR`;
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeLightbox();
-        closeFlyerModal();
         closeCalendarModal();
       }
       if (e.key === 'ArrowLeft') navigateLightbox('prev');
