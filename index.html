@@ -1,38 +1,1266 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice</title>
-    
-    <!-- Meta SEO -->
-    <meta name="description" content="Sacrifice of Praise 2.0 - A live acapella worship concert. Pure, undiluted worship void of instruments, rich in harmony and spiritual depth. December 12, 2026 at FCE(T) Akoka, Lagos." />
-    <meta name="keywords" content="Sacrifice of Praise, SoP 2.0, Acapella Worship, Church of Christ, Lagos Christian Concert, FCE(T) Akoka" />
-    <meta name="author" content="House603 & Sacrifice of Praise Team" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice" />
-    <meta property="og:description" content="Join 1,000+ worshippers for an unforgettable live acapella worship experience. Dec 12, 2026 • FCE(T) Lawn Tennis Court, Akoka, Lagos." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/flyer.webp" />
-    <meta property="og:image:alt" content="Sacrifice of Praise 2.0 Event Flyer" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sacrifice of Praise (SoP) 2.0" />
-    <meta name="twitter:description" content="Pure Worship. True Sacrifice. Join us on December 12, 2026 in Akoka, Lagos." />
-    <meta name="twitter:image" content="/flyer.webp" />
-    
-    <link rel="icon" type="image/png" href="/house603-logo.png" />
-    
-    <!-- Fonts: Cinzel & Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-BPax0dzl.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-UjfHG7J0.css">
-  </head>
-  <body class="bg-[#080a0f] text-slate-100 font-sans antialiased selection:bg-[#e5a93c] selection:text-black">
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice</title>
+
+  <!-- SEO & Social Sharing -->
+  <meta name="description" content="Sacrifice of Praise (SoP) 2.0 - A live acapella worship concert. Pure, undiluted worship void of instruments, rich in harmony and spiritual depth. Saturday, December 12, 2026 at Lawn Tennis Courts, FCE(T), Akoka, Lagos." />
+  <meta name="keywords" content="Sacrifice of Praise, SoP 2.0, Acapella Worship, Church of Christ, Lagos Christian Concert, FCE(T) Akoka" />
+  <meta name="author" content="House603 & Sacrifice of Praise Team" />
+
+  <meta property="og:title" content="Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice" />
+  <meta property="og:description" content="Join 1,000+ worshippers for an unforgettable live acapella worship experience. Dec 12, 2026 • FCE(T) Lawn Tennis Courts, Akoka, Lagos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./flyer.webp" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sacrifice of Praise (SoP) 2.0" />
+  <meta name="twitter:description" content="Pure Worship. True Sacrifice. Saturday, December 12, 2026 in Akoka, Lagos." />
+  <meta name="twitter:image" content="./flyer.webp" />
+
+  <link rel="icon" type="image/png" href="./house603-logo.png" />
+
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN (Zero Build Tool Required) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sop: {
+              dark: '#080a0f',
+              card: '#0f1420',
+              cardLight: '#161d2e',
+              gold: {
+                DEFAULT: '#E5A93C',
+                light: '#F8C765',
+                dark: '#B88220',
+              }
+            }
+          },
+          fontFamily: {
+            display: ['"Cinzel"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons & Canvas Confetti CDNs -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Utilities & Animations */
+    body {
+      background-color: #080a0f;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080a0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e2638;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e5a93c;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF7D6 0%, #F8C765 40%, #E5A93C 75%, #B88220 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(15, 20, 32, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(229, 169, 60, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(229, 169, 60, 0.15);
+    }
+
+    /* Infinite Marquee Animations */
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 38s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 42s linear infinite;
+    }
+
+    .marquee-container:hover .animate-marquee-left,
+    .marquee-container:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+    .paused {
+      animation-play-state: paused !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#e5a93c] selection:text-black">
+
+  <!-- ==================== 1. FIXED NAVBAR ==================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 bg-[#080a0f]/85 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        
+        <!-- Brand Title & Badge -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] p-0.5 shadow-lg shadow-[#e5a93c]/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+            <div class="w-full h-full rounded-full bg-[#080a0f] flex items-center justify-center font-display font-bold text-sm text-[#f8c765]">
+              SoP
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-lg sm:text-xl text-white tracking-wide group-hover:text-[#f8c765] transition-colors leading-tight">
+              Sacrifice of Praise <span class="text-[#f8c765]">2.0</span>
+            </span>
+            <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-slate-400">
+              Pure Worship • Dec 12, 2026
+            </span>
+          </div>
+        </a>
+
+        <!-- Middle Nav Anchors -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme</a>
+          <a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Gallery</a>
+          <a href="#register" class="hover:text-[#e5a93c] transition-colors">Register</a>
+          <button onclick="openFlyerModal()" class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs">
+            <i data-lucide="image" class="w-3.5 h-3.5"></i>
+            <span>View Flyer</span>
+          </button>
+        </nav>
+
+        <!-- TOP RIGHT CORNER BUTTONS (Core User Requirement) -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5">
+          <!-- Button 1: Gallery with animated scroll indicator -->
+          <a
+            href="#gallery"
+            class="group inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10"
+            title="View animated photo gallery"
+          >
+            <i data-lucide="images" class="w-4 h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span class="hidden xs:inline">Photo</span>
+            <span>Gallery</span>
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5a93c] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#e5a93c]"></span>
+            </span>
+          </a>
+
+          <!-- Button 2: Register Now (fills Google Form) -->
+          <a
+            href="#register"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            title="Register for Sacrifice of Praise 2.0"
+          >
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-950"></i>
+            <span>Register Now</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO & COUNTDOWN ==================== -->
+  <section id="hero" class="relative min-h-screen pt-32 pb-20 flex flex-col justify-center overflow-hidden">
+    <!-- Ambient glow backgrounds -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#e5a93c]/15 via-[#f8c765]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      
+      <!-- Scripture Theme Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-lg">
+        <i data-lucide="music-2" class="w-4 h-4 text-[#e5a93c]"></i>
+        <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-300">
+          Hebrews 13:15 • Live Acapella Worship Concert
+        </span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white max-w-5xl leading-[1.06] mb-6">
+        Sacrifice of <span class="gold-gradient-text">Praise</span>{' '}
+        <span class="inline-block text-2xl sm:text-4xl md:text-5xl font-sans font-bold text-[#f8c765] border-2 border-[#e5a93c] px-3 py-1 rounded-2xl align-middle shadow-lg shadow-[#e5a93c]/20">
+          2.0
+        </span>
+      </h1>
+
+      <!-- Tagline & Verse -->
+      <p class="text-lg sm:text-2xl font-light text-slate-200 tracking-wide max-w-3xl mb-3">
+        “<span class="font-medium text-white">Pure Worship.</span> <span class="gold-gradient-text font-medium">True Sacrifice.</span>”
+      </p>
+      <p class="text-xs sm:text-sm text-slate-400 italic max-w-2xl mb-8 leading-relaxed">
+        “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
+      </p>
+
+      <!-- Key Details Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 max-w-3xl">
+        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="calendar" class="w-4 h-4 text-[#e5a93c]"></i>
+          <span>Saturday, December 12, 2026</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="clock" class="w-4 h-4 text-[#e5a93c]"></i>
+          <span>10:00 AM – 2:00 PM (GMT/WAT)</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="map-pin" class="w-4 h-4 text-[#e5a93c]"></i>
+          <span>Lawn Tennis Courts, FCE(T), Akoka, Lagos</span>
+        </div>
+      </div>
+
+      <!-- Hero Action CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-14">
+        <a
+          href="#register"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/30 hover:scale-[1.03] active:scale-[0.98] transition-all"
+        >
+          <i data-lucide="sparkles" class="w-5 h-5 text-slate-950"></i>
+          <span>Register Free for SoP 2.0</span>
+        </a>
+
+        <a
+          href="#gallery"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full text-base font-semibold text-slate-100 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#e5a93c]/60 shadow-lg hover:shadow-[#e5a93c]/10 transition-all group"
+        >
+          <i data-lucide="images" class="w-5 h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+          <span>Explore Photo Gallery</span>
+        </a>
+
+        <button
+          onclick="openFlyerModal()"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full text-sm font-medium text-slate-400 hover:text-white bg-transparent hover:bg-white/5 transition-all"
+        >
+          <i data-lucide="eye" class="w-4 h-4 text-slate-400"></i>
+          <span>View Event Flyer</span>
+        </button>
+      </div>
+
+      <!-- COUNTDOWN TIMER CARD -->
+      <div class="w-full max-w-3xl mx-auto">
+        <div class="relative glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl overflow-hidden">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#e5a93c]/15 blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-semibold tracking-widest uppercase mb-4">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-[#e5a93c]"></i>
+              <span>Countdown to Sacrifice of Praise 2.0</span>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2.5 sm:gap-4 md:gap-6 w-full max-w-xl mb-6">
+              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-days" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">DAYS</span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-hours" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">HOURS</span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-minutes" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">MINUTES</span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-seconds" class="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#f8c765] tracking-tight">00</span>
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">SECONDS</span>
+              </div>
+            </div>
+
+            <!-- Add to Calendar trigger -->
+            <button
+              onclick="openCalendarModal()"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-semibold text-[#f8c765] border border-[#e5a93c]/20 hover:border-[#e5a93c]/50 transition-colors"
+            >
+              <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+              <span>Add Event to Calendar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. PROGRAMME & EVENT DESCRIPTION ==================== -->
+  <section id="programme" class="py-24 relative bg-[#090d14]/80 border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span>Programme & Charter Extract</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+          Pure Worship. <span class="gold-gradient-text">True Sacrifice.</span>
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          Extracted directly from the official Sacrifice of Praise (SoP) charter & sponsorship proposal.
+        </p>
+      </div>
+
+      <!-- Main Description Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
+        <div class="lg:col-span-7 glass-card rounded-3xl p-8 sm:p-10 border border-white/10 shadow-xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-[#e5a93c]/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mb-6">
+            What is <span class="text-[#f8c765]">Sacrifice of Praise</span>?
+          </h3>
+
+          <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p>
+              <strong class="text-white">Sacrifice of Praise (SoP)</strong> is a live acapella worship concert designed to deliver a spiritually transformative experience rooted in <span class="text-[#f8c765] font-semibold">Hebrews 13:15</span>.
+            </p>
+            <p>
+              This event brings together believers and non-believers alike in a unique atmosphere of <span class="text-white font-medium">pure, undiluted worship – void of instruments, but rich in harmony, truth, and spiritual depth</span>.
+            </p>
+            <p class="text-sm sm:text-base text-slate-400 bg-white/5 p-4 rounded-2xl border border-white/5">
+              <span class="text-white font-semibold">SoP 2.0 Movement:</span> Building on the foundation set in the maiden edition, SoP 2.0 is expanding as a widely recognized worship movement across Nigeria and beyond, thereby promoting the fellowship of the Church of Christ.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#e5a93c]/15 border border-[#e5a93c]/30 flex items-center justify-center shrink-0">
+              <i data-lucide="music" class="w-6 h-6 text-[#f8c765]"></i>
+            </div>
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Scriptural Heritage</p>
+              <p class="text-sm font-medium text-slate-200">“The fruit of lips that openly profess His name.” — Heb. 13:15</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Key Statistics -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
+            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">1,000+</span>
+            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Expected Attendance</h4>
+            <p class="text-xs text-slate-400 mt-1">Believers, youth & seekers across Lagos</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
+            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">100%</span>
+            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Pure Acapella</h4>
+            <p class="text-xs text-slate-400 mt-1">Void of instruments, rich in harmony</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
+            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">4 Hours</span>
+            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Undiluted Worship</h4>
+            <p class="text-xs text-slate-400 mt-1">10:00 AM – 2:00 PM (GMT/WAT)</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
+            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">FREE</span>
+            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Admission</h4>
+            <p class="text-xs text-slate-400 mt-1">Open to all • Registration required</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="glass-card glass-card-hover rounded-3xl p-8 border border-white/10">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-6 text-[#f8c765]">
+            <i data-lucide="target" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold tracking-widest uppercase text-[#f8c765] block mb-2">Our Vision</span>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-3">
+            To win souls, deepen authentic worship, and redefine acapella expression for a new generation.
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Leading a generation into Christ through transformative worship, elevating standards of authentic 21st-century Christian worship, and preserving sacred vocal music.
+          </p>
+        </div>
+
+        <div class="glass-card glass-card-hover rounded-3xl p-8 border border-white/10">
+          <div class="w-12 h-12 rounded-2xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center mb-6 text-sky-400">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold tracking-widest uppercase text-sky-400 block mb-2">Our Mission</span>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-3">
+            To deliver culturally relevant, biblically grounded acapella worship experiences that unite and inspire.
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Curating Christ-centered worship experiences that inspire genuine devotion, foster unity across the body of Christ, and engage diverse audiences without compromising scriptural truth.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. ANIMATED PICTURE GALLERY ==================== -->
+  <section id="gallery" class="py-24 relative bg-[#080a0f] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
+            <i data-lucide="images" class="w-3.5 h-3.5"></i>
+            <span>Animated Photo Gallery</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+            Moments Worth Returning To
+          </h2>
+          <p class="mt-2 text-base text-slate-300 max-w-xl">
+            Relive the sacred atmosphere, harmonious choral praise, and fellowship from previous editions.
+          </p>
+        </div>
+
+        <!-- Controls: Play/Pause and View Switcher -->
+        <div class="flex items-center gap-3">
+          <div class="inline-flex p-1 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold">
+            <button id="btn-view-scroll" onclick="setGalleryView('scroll')" class="px-3 py-1.5 rounded-lg bg-[#e5a93c] text-slate-950 flex items-center gap-1.5 transition-all">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Animated Scroll</span>
+            </button>
+            <button id="btn-view-grid" onclick="setGalleryView('grid')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition-all">
+              <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+              <span>Grid View</span>
+            </button>
+          </div>
+
+          <button id="btn-toggle-play" onclick="toggleMarqueePlay()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-xs flex items-center gap-1.5" title="Pause / Play Marquee">
+            <i id="play-pause-icon" data-lucide="pause" class="w-4 h-4 text-[#e5a93c]"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VIEW 1: DUAL CONTINUOUS HORIZONTAL MARQUEE -->
+    <div id="gallery-scroll-container" class="marquee-container relative w-full space-y-5">
+      <!-- Side gradient fades -->
+      <div class="absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-[#080a0f] to-transparent z-20 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-l from-[#080a0f] to-transparent z-20 pointer-events-none"></div>
+
+      <!-- Row 1: Left Scroll -->
+      <div class="overflow-hidden select-none">
+        <div id="marquee-row-1" class="animate-marquee-left gap-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Row 2: Right Scroll -->
+      <div class="overflow-hidden select-none">
+        <div id="marquee-row-2" class="animate-marquee-right gap-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-slate-500 mt-4">
+        Hover over any photo to pause • Click to inspect in high definition
+      </p>
+    </div>
+
+    <!-- VIEW 2: MASONRY / GRID (Hidden by default) -->
+    <div id="gallery-grid-container" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="grid-items-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. SEAMLESS REGISTRATION (GOOGLE FORM) ==================== -->
+  <section id="register" class="py-24 relative bg-[#090d14]/90 border-t border-white/5 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#e5a93c]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Official Event Registration</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+          Reserve Your Free Seat
+        </h2>
+        <p class="mt-3 text-base text-slate-300 max-w-lg mx-auto">
+          Admission is completely free. Registering helps our logistics and protocol teams prepare adequate seating and materials for you.
+        </p>
+      </div>
+
+      <!-- Hidden Iframe for Direct Background Google Form Submission (Zero CORS Issues) -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <!-- Form Card Container -->
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl relative">
+        
+        <!-- STATE 1: INTERACTIVE FORM -->
+        <div id="registration-form-wrapper">
+          <form
+            id="sop-registration-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="handleFormSubmit(event)"
+            class="space-y-6"
+          >
+            <!-- Field 1: Name -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Name (First and Last Name) <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="text"
+                  required
+                  name="entry.2073731394"
+                  id="field-name"
+                  placeholder="e.g. Brother John Doe"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
+            </div>
+
+            <!-- Field 2: Congregation / Church Affiliation -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Congregation / Church Affiliation <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="church" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="text"
+                  required
+                  name="entry.980755877"
+                  id="field-church"
+                  placeholder="e.g. Church of Christ, Somolu / Other"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
+            </div>
+
+            <!-- Fields 3 & 4: Two-column grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Field 3: Referral Source -->
+              <div>
+                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  How Did You Hear About Us? <span class="text-[#f8c765]">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <i data-lucide="share-2" class="w-4 h-4"></i>
+                  </div>
+                  <select
+                    name="entry.1050780624"
+                    required
+                    class="w-full pl-10 pr-4 py-3 bg-[#0d121c] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base appearance-none cursor-pointer"
+                  >
+                    <option value="Instagram">Instagram</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitter/X">Twitter/X</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Field 4: Live in Lagos? -->
+              <div>
+                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  Do You Live in Lagos? <span class="text-[#f8c765]">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </div>
+                  <select
+                    name="entry.877086558"
+                    required
+                    class="w-full pl-10 pr-4 py-3 bg-[#0d121c] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base appearance-none cursor-pointer"
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 5: Expectations -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                What Are Your Expectations for Sacrifice of Praise 2.0?
+              </label>
+              <div class="relative">
+                <div class="absolute top-3.5 left-3.5 pointer-events-none text-slate-500">
+                  <i data-lucide="message-square" class="w-4 h-4"></i>
+                </div>
+                <textarea
+                  rows="3"
+                  name="entry.2018909557"
+                  placeholder="Share what you hope to experience or any fellowship expectations..."
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base resize-none"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-2">
+              <button
+                type="submit"
+                id="btn-submit-registration"
+                class="w-full py-4 px-6 rounded-2xl text-slate-950 font-bold text-base bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                <span>Complete Free Registration</span>
+              </button>
+            </div>
+
+            <!-- Direct Google Form Fallback -->
+            <div class="text-center pt-2 border-t border-white/5">
+              <p class="text-xs text-slate-400">
+                Prefer registering directly on Google? 
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/viewform?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[#f8c765] hover:underline inline-flex items-center gap-1 font-medium"
+                >
+                  Open Google Form in a new tab
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- STATE 2: SUCCESS CELEBRATION & DIGITAL EVENT PASS (Hidden Initially) -->
+        <div id="registration-success-wrapper" class="hidden text-center py-8 space-y-6">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-xl">
+            <i data-lucide="check-circle" class="w-8 h-8"></i>
+          </div>
+
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-[#f8c765]">Registration Confirmed!</span>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mt-1">
+              We Can't Wait to Worship With You, <span id="pass-display-name">Beloved</span>!
+            </h3>
+            <p class="text-sm text-slate-300 max-w-md mx-auto mt-2">
+              Your seat reservation has been recorded into the official Sacrifice of Praise 2.0 registry.
+            </p>
+          </div>
+
+          <!-- Digital Admission Pass Card -->
+          <div class="max-w-md mx-auto bg-black/60 border border-[#e5a93c]/35 rounded-2xl p-6 text-left relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 w-28 h-28 bg-[#e5a93c]/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+              <div>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Event Pass</p>
+                <p class="text-base font-display font-bold text-white">Sacrifice of Praise 2.0</p>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-[#e5a93c]/20 text-[#f8c765] border border-[#e5a93c]/30">
+                ADMIT ONE
+              </span>
+            </div>
+
+            <div class="space-y-2 text-xs sm:text-sm">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Attendee:</span>
+                <span id="pass-name" class="text-white font-medium">Guest</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Affiliation:</span>
+                <span id="pass-church" class="text-white font-medium">Worshipper</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Date:</span>
+                <span class="text-white font-medium">Saturday, Dec 12, 2026</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Time:</span>
+                <span class="text-white font-medium">10:00 AM – 2:00 PM</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Venue:</span>
+                <span class="text-white font-medium text-right">Lawn Tennis Courts, FCE(T) Akoka</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <button
+              onclick="openCalendarModal()"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors"
+            >
+              <i data-lucide="calendar-plus" class="w-4 h-4 text-[#f8c765]"></i>
+              <span>Add to Calendar</span>
+            </button>
+            <button
+              onclick="resetRegistrationForm()"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors"
+            >
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Register Another Guest</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. MINIMALIST FOOTER ==================== -->
+  <footer class="bg-[#05070a] border-t border-white/10 text-slate-400 pt-16 pb-12 relative overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-28 bg-[#e5a93c]/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand & Scripture -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] p-0.5 flex items-center justify-center">
+              <div class="w-full h-full rounded-full bg-[#080a0f] flex items-center justify-center font-display font-bold text-sm text-[#f8c765]">
+                SoP
+              </div>
+            </div>
+            <span class="font-display font-bold text-xl text-white">
+              Sacrifice of Praise <span class="text-[#f8c765]">2.0</span>
+            </span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed max-w-sm">
+            A live acapella worship concert curating pure, undiluted vocal worship void of instruments, rich in harmony, truth, and spiritual depth.
+          </p>
+          <p class="text-xs text-slate-400 italic bg-white/5 p-3 rounded-xl border border-white/5 max-w-sm">
+            “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
+            <li><a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme & Story</a></li>
+            <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Animated Photo Gallery</a></li>
+            <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+            <li><button onclick="openFlyerModal()" class="hover:text-white transition-colors">View Official Flyer</button></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Leadership & Inquiries -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Event Leadership & Inquiries</h4>
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Kingsley Bassey</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Convener</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348138293959" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 813 829 3959</span>
+                </a>
+                <a href="mailto:iamksbassey@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>iamksbassey@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Ajetunmobi Oluwayinka</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Strategist</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348162749475" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 816 274 9475</span>
+                </a>
+                <a href="mailto:yinkajetunmobi@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>yinkajetunmobi@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ROW: UNOBTRUSIVE HOUSE603 LOGO & COPYRIGHT (Explicit Requirement) -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+        <div>
+          <span>© 2026 Sacrifice of Praise (SoP) 2.0. All Rights Reserved.</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 hover:border-[#e5a93c]/30 transition-colors">
+          <span class="text-slate-400 text-xs">Proudly supported by</span>
+          <div class="flex items-center gap-1.5 font-medium text-slate-200">
+            <img src="./house603-logo.png" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" />
+            <span class="text-white text-xs font-semibold tracking-wide">house603 digital solutions</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== 7. MODALS ==================== -->
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden items-center justify-center p-4 sm:p-6" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close lightbox">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <button onclick="event.stopPropagation(); navigateLightbox('prev')" class="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Previous image">
+      <i data-lucide="chevron-left" class="w-6 h-6"></i>
+    </button>
+    <button onclick="event.stopPropagation(); navigateLightbox('next')" class="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white transition-colors" aria-label="Next image">
+      <i data-lucide="chevron-right" class="w-6 h-6"></i>
+    </button>
+    <div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/15 bg-black">
+        <img id="lightbox-image" src="" alt="Sacrifice of Praise moment" class="max-h-[75vh] w-auto max-w-full object-contain rounded-2xl select-none" />
+      </div>
+      <div class="mt-4 text-center">
+        <p id="lightbox-caption" class="text-white font-display text-lg font-bold"></p>
+        <div class="flex items-center justify-center gap-3 mt-1">
+          <span id="lightbox-tag" class="text-xs uppercase tracking-wider text-[#f8c765] bg-[#e5a93c]/15 px-2.5 py-0.5 rounded-full font-semibold"></span>
+          <span id="lightbox-counter" class="text-xs text-slate-400"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flyer Preview Modal -->
+  <div id="flyer-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6" onclick="closeFlyerModal()">
+    <div class="relative max-w-2xl w-full max-h-[92vh] flex flex-col items-center glass-card rounded-3xl p-4 sm:p-6 border border-white/15 overflow-hidden" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between w-full pb-3 mb-2 border-b border-white/10">
+        <div>
+          <h3 class="font-display font-bold text-white text-base sm:text-lg">Official Event Flyer</h3>
+          <p class="text-xs text-slate-400">Sacrifice of Praise 2.0 • December 12, 2026</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="./flyer.webp" download="Sacrifice-of-Praise-2.0-Flyer.webp" class="p-2 rounded-xl bg-white/10 hover:bg-[#e5a93c] hover:text-black text-white text-xs font-semibold flex items-center gap-1.5 transition-colors">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Download</span>
+          </a>
+          <button onclick="closeFlyerModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+      <div class="relative overflow-auto max-h-[72vh] w-full flex justify-center rounded-2xl bg-black/60 p-2">
+        <picture>
+          <source srcset="./flyer.webp" type="image/webp" />
+          <img src="./flyer.jpg" alt="Event Flyer" class="max-h-[68vh] w-auto object-contain rounded-xl shadow-2xl" />
+        </picture>
+      </div>
+      <div class="mt-4 pt-3 border-t border-white/10 w-full flex items-center justify-between text-xs">
+        <span class="text-slate-400">Dec 12, 2026 • FCE(T) Akoka</span>
+        <a href="#register" onclick="closeFlyerModal()" class="px-4 py-2 rounded-xl bg-[#e5a93c] text-black font-bold hover:bg-[#f8c765] transition-colors">
+          Register Free
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add to Calendar Modal -->
+  <div id="calendar-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6" onclick="closeCalendarModal()">
+    <div class="relative max-w-md w-full glass-card rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closeCalendarModal()" class="absolute top-5 right-5 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close calendar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-[#e5a93c]/20 border border-[#e5a93c]/30 flex items-center justify-center text-[#f8c765]">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-white text-lg">Add to Calendar</h3>
+          <p class="text-xs text-slate-400">Saturday, Dec 12, 2026 • 10:00 AM</p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+        Save the date so you receive timely notifications and reminders before event day.
+      </p>
+
+      <div class="space-y-3">
+        <a
+          id="link-google-calendar"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all group"
+        >
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-400 group-hover:scale-125 transition-transform"></span>
+            <span>Google Calendar</span>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-white"></i>
+        </a>
+
+        <button
+          onclick="downloadIcsFile()"
+          class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all group"
+        >
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#f8c765] group-hover:scale-125 transition-transform"></span>
+            <span>Apple Calendar / Outlook / iCal</span>
+          </div>
+          <i data-lucide="download" class="w-4 h-4 text-slate-400 group-hover:text-white"></i>
+        </button>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-white/10 text-center">
+        <button onclick="closeCalendarModal()" class="text-xs text-slate-400 hover:text-white">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 8. VANILLA JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Countdown Timer Logic
+    const targetEventDate = new Date('2026-12-12T10:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetEventDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('countdown-days').innerText = '00';
+        document.getElementById('countdown-hours').innerText = '00';
+        document.getElementById('countdown-minutes').innerText = '00';
+        document.getElementById('countdown-seconds').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+      document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 2. Gallery Images Data
+    const galleryData = [
+      { id: 1, src: './gallery/1.webp', fallback: './gallery/1.jpg', full: './gallery/1-full.webp', caption: 'Deep In Adoration', tag: 'Worship' },
+      { id: 2, src: './gallery/2.webp', fallback: './gallery/2.jpg', full: './gallery/2-full.webp', caption: 'Pure Vocal Harmony', tag: 'Ministration' },
+      { id: 3, src: './gallery/3.webp', fallback: './gallery/3.jpg', full: './gallery/3-full.webp', caption: 'Hearts Lifted to God', tag: 'Atmosphere' },
+      { id: 4, src: './gallery/4.webp', fallback: './gallery/4.jpg', full: './gallery/4-full.webp', caption: 'United in Song', tag: 'Congregation' },
+      { id: 5, src: './gallery/5.webp', fallback: './gallery/5.jpg', full: './gallery/5-full.webp', caption: 'The Power of Praise', tag: 'Encounter' },
+      { id: 6, src: './gallery/6.webp', fallback: './gallery/6.jpg', full: './gallery/6-full.webp', caption: 'Sacred Harmonies', tag: 'Choir' },
+      { id: 7, src: './gallery/7.webp', fallback: './gallery/7.jpg', full: './gallery/7-full.webp', caption: 'Joy & Fellowship', tag: 'Community' },
+      { id: 8, src: './gallery/8.webp', fallback: './gallery/8.jpg', full: './gallery/8-full.webp', caption: 'Moments of Consecration', tag: 'Fellowship' }
+    ];
+
+    let currentLightboxIndex = 0;
+    let isMarqueePaused = false;
+
+    // Build Marquee Rows
+    function renderGallery() {
+      const row1 = document.getElementById('marquee-row-1');
+      const row2 = document.getElementById('marquee-row-2');
+      const grid = document.getElementById('grid-items-container');
+
+      // Duplicate arrays for infinite loop
+      const itemsRow1 = [...galleryData.slice(0, 4), ...galleryData.slice(0, 4), ...galleryData.slice(0, 4)];
+      const itemsRow2 = [...galleryData.slice(4, 8), ...galleryData.slice(4, 8), ...galleryData.slice(4, 8)];
+
+      row1.innerHTML = itemsRow1.map((item, idx) => createGalleryCardHtml(item, 'r1', idx)).join('');
+      row2.innerHTML = itemsRow2.map((item, idx) => createGalleryCardHtml(item, 'r2', idx)).join('');
+      grid.innerHTML = galleryData.map((item, idx) => createGridCardHtml(item, idx)).join('');
+      
+      lucide.createIcons();
+    }
+
+    function createGalleryCardHtml(item, prefix, idx) {
+      return `
+        <div
+          onclick="openLightboxById(${item.id})"
+          class="group relative w-72 sm:w-84 md:w-96 h-56 sm:h-64 rounded-2xl overflow-hidden cursor-pointer border border-white/10 shadow-xl shrink-0 transition-transform duration-300 hover:scale-[1.02] hover:border-[#e5a93c]/60"
+        >
+          <img
+            src="${item.src}"
+            onerror="this.src='${item.fallback}'"
+            alt="${item.caption}"
+            loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/60 px-2 py-0.5 rounded-full">${item.tag}</span>
+              <p class="text-white font-medium text-sm sm:text-base mt-1 drop-shadow">${item.caption}</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-[#e5a93c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function createGridCardHtml(item, idx) {
+      return `
+        <div
+          onclick="openLightboxById(${item.id})"
+          class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer border border-white/10 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#e5a93c]/60"
+        >
+          <img
+            src="${item.src}"
+            onerror="this.src='${item.fallback}'"
+            alt="${item.caption}"
+            loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/60 px-2 py-0.5 rounded-full">${item.tag}</span>
+              <p class="text-white font-medium text-sm mt-1">${item.caption}</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-[#e5a93c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    renderGallery();
+
+    // Toggle Gallery View (Scroll vs Grid)
+    function setGalleryView(mode) {
+      const scrollContainer = document.getElementById('gallery-scroll-container');
+      const gridContainer = document.getElementById('gallery-grid-container');
+      const btnScroll = document.getElementById('btn-view-scroll');
+      const btnGrid = document.getElementById('btn-view-grid');
+
+      if (mode === 'grid') {
+        scrollContainer.classList.add('hidden');
+        gridContainer.classList.remove('hidden');
+        btnGrid.classList.add('bg-[#e5a93c]', 'text-slate-950');
+        btnGrid.classList.remove('text-slate-400');
+        btnScroll.classList.remove('bg-[#e5a93c]', 'text-slate-950');
+        btnScroll.classList.add('text-slate-400');
+      } else {
+        gridContainer.classList.add('hidden');
+        scrollContainer.classList.remove('hidden');
+        btnScroll.classList.add('bg-[#e5a93c]', 'text-slate-950');
+        btnScroll.classList.remove('text-slate-400');
+        btnGrid.classList.remove('bg-[#e5a93c]', 'text-slate-950');
+        btnGrid.classList.add('text-slate-400');
+      }
+    }
+
+    function toggleMarqueePlay() {
+      const r1 = document.getElementById('marquee-row-1');
+      const r2 = document.getElementById('marquee-row-2');
+      const icon = document.getElementById('play-pause-icon');
+
+      isMarqueePaused = !isMarqueePaused;
+      if (isMarqueePaused) {
+        r1.classList.add('paused');
+        r2.classList.add('paused');
+        icon.setAttribute('data-lucide', 'play');
+      } else {
+        r1.classList.remove('paused');
+        r2.classList.remove('paused');
+        icon.setAttribute('data-lucide', 'pause');
+      }
+      lucide.createIcons();
+    }
+
+    // 3. Lightbox Functions
+    function openLightboxById(id) {
+      const index = galleryData.findIndex(item => item.id === id);
+      if (index !== -1) {
+        currentLightboxIndex = index;
+        showLightboxIndex(currentLightboxIndex);
+      }
+    }
+
+    function showLightboxIndex(idx) {
+      const item = galleryData[idx];
+      document.getElementById('lightbox-image').src = item.full || item.src;
+      document.getElementById('lightbox-caption').innerText = item.caption;
+      document.getElementById('lightbox-tag').innerText = item.tag;
+      document.getElementById('lightbox-counter').innerText = `${idx + 1} of ${galleryData.length}`;
+
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function navigateLightbox(dir) {
+      if (dir === 'prev') {
+        currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
+      } else {
+        currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
+      }
+      showLightboxIndex(currentLightboxIndex);
+    }
+
+    // 4. Modal Functions (Flyer & Calendar)
+    function openFlyerModal() {
+      const m = document.getElementById('flyer-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeFlyerModal() {
+      const m = document.getElementById('flyer-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function openCalendarModal() {
+      const m = document.getElementById('calendar-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeCalendarModal() {
+      const m = document.getElementById('calendar-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // Google Calendar URL Generator
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice')}&dates=20261212T090000Z/20261212T130000Z&details=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 live acapella worship concert. Pure undiluted worship void of instruments, rich in harmony and truth. Register: https://sacrifice-of-praise.web.app')}&location=${encodeURIComponent('Lawn Tennis Courts, Federal College of Education (Technical) [FCE(T)], Akoka, Lagos, Nigeria')}`;
+    document.getElementById('link-google-calendar').href = gCalUrl;
+
+    function downloadIcsFile() {
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sacrifice of Praise//SoP 2.0 Registration//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice
+UID:${Date.now()}@sacrificeofpraise.org
+DTSTART:20261212T090000Z
+DTEND:20261212T130000Z
+LOCATION:Lawn Tennis Courts, FCE(T), Akoka, Lagos, Nigeria
+DESCRIPTION:Sacrifice of Praise 2.0 live acapella worship concert. Pure undiluted worship void of instruments. Register at: https://sacrifice-of-praise.web.app
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Sacrifice-of-Praise-2.0.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Keyboard Shortcuts for Modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeFlyerModal();
+        closeCalendarModal();
+      }
+      if (e.key === 'ArrowLeft') navigateLightbox('prev');
+      if (e.key === 'ArrowRight') navigateLightbox('next');
+    });
+
+    // 5. Registration Submission Logic
+    function handleFormSubmit(e) {
+      // Collect input values for digital event pass
+      const name = document.getElementById('field-name').value.trim() || 'Worshipper';
+      const church = document.getElementById('field-church').value.trim() || 'Guest';
+
+      document.getElementById('pass-display-name').innerText = name;
+      document.getElementById('pass-name').innerText = name;
+      document.getElementById('pass-church').innerText = church;
+
+      // Trigger Confetti Animation
+      try {
+        confetti({
+          particleCount: 120,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#e5a93c', '#f8c765', '#ffffff', '#38bdf8']
+        });
+      } catch (err) {}
+
+      // Transition to Success State
+      setTimeout(() => {
+        document.getElementById('registration-form-wrapper').classList.add('hidden');
+        document.getElementById('registration-success-wrapper').classList.remove('hidden');
+        document.getElementById('registration-success-wrapper').scrollIntoView({ behavior: 'smooth' });
+        lucide.createIcons();
+      }, 700);
+    }
+
+    function resetRegistrationForm() {
+      document.getElementById('sop-registration-form').reset();
+      document.getElementById('registration-success-wrapper').classList.add('hidden');
+      document.getElementById('registration-form-wrapper').classList.remove('hidden');
+      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      lucide.createIcons();
+    }
+  </script>
+</body>
 </html>
