@@ -167,7 +167,7 @@
           <a
             href="#gallery"
             class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0"
-            title="View animated photo gallery"
+            title="View Gallery"
           >
             <i data-lucide="images" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
             <span class="hidden md:inline">Photo </span>
@@ -256,7 +256,7 @@
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-slate-100 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#e5a93c]/60 shadow-lg hover:shadow-[#e5a93c]/10 transition-all group cursor-pointer"
         >
           <i data-lucide="images" class="w-4 h-4 sm:w-5 sm:h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
-          <span>Explore Photo Gallery</span>
+          <span>Explore Gallery</span>
         </a>
       </div>
 
@@ -412,7 +412,7 @@
     </div>
   </section>
 
-  <!-- ==================== 4. ANIMATED PICTURE GALLERY ==================== -->
+  <!-- ==================== 4. GALLERY ==================== -->
   <section id="gallery" class="py-24 relative bg-[#080a0f] overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10">
       
@@ -420,7 +420,7 @@
         <div>
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
             <i data-lucide="images" class="w-3.5 h-3.5"></i>
-            <span>Animated Photo Gallery</span>
+            <span>Gallery</span>
           </div>
           <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
             Moments Worth Returning To
@@ -430,28 +430,23 @@
           </p>
         </div>
 
-        <!-- Controls: Play/Pause and View Switcher -->
+        <!-- Controls: Play/Pause Marquee Toggle -->
         <div class="flex items-center gap-3">
-          <div class="inline-flex p-1 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold">
-            <button id="btn-view-scroll" onclick="setGalleryView('scroll')" class="px-3 py-1.5 rounded-lg bg-[#e5a93c] text-slate-950 flex items-center gap-1.5 transition-all">
-              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-              <span>Animated Scroll</span>
-            </button>
-            <button id="btn-view-grid" onclick="setGalleryView('grid')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition-all">
-              <i data-lucide="grid" class="w-3.5 h-3.5"></i>
-              <span>Grid View</span>
-            </button>
-          </div>
-
-          <button id="btn-toggle-play" onclick="toggleMarqueePlay()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-xs flex items-center gap-1.5" title="Pause / Play Marquee">
+          <button
+            id="btn-toggle-play"
+            onclick="toggleMarqueePlay()"
+            class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-xs font-medium flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#e5a93c]/40"
+            title="Pause / Play Marquee"
+          >
             <i id="play-pause-icon" data-lucide="pause" class="w-4 h-4 text-[#e5a93c]"></i>
+            <span id="play-pause-label" class="text-xs">Pause Marquee</span>
           </button>
         </div>
       </div>
 
     </div>
 
-    <!-- VIEW 1: DUAL CONTINUOUS HORIZONTAL MARQUEE -->
+    <!-- DUAL CONTINUOUS HORIZONTAL MARQUEE -->
     <div id="gallery-scroll-container" class="marquee-container relative w-full space-y-5">
       <!-- Side gradient fades -->
       <div class="absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-[#080a0f] to-transparent z-20 pointer-events-none"></div>
@@ -474,13 +469,6 @@
       <p class="text-center text-xs text-slate-500 mt-4">
         Hover over any photo to pause • Click to inspect in high definition
       </p>
-    </div>
-
-    <!-- VIEW 2: MASONRY / GRID (Hidden by default) -->
-    <div id="gallery-grid-container" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div id="grid-items-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- Populated dynamically via JS -->
-      </div>
     </div>
   </section>
 
@@ -788,15 +776,47 @@
           </p>
         </div>
 
-        <!-- Col 2: Navigation Links -->
-        <div class="lg:col-span-3 space-y-3">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
-            <li><a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme & Story</a></li>
-            <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Animated Photo Gallery</a></li>
-            <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
-          </ul>
+        <!-- Col 2: Navigation Links & Social Media -->
+        <div class="lg:col-span-3 space-y-6">
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
+              <li><a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme & Story</a></li>
+              <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Gallery</a></li>
+              <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+            </ul>
+          </div>
+
+          <!-- Dedicated Social Media Block (Official SOP Channels) -->
+          <div class="space-y-3 pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white">Connect With Us</h4>
+            <div class="flex flex-wrap items-center gap-2.5">
+              <a
+                href="https://www.instagram.com/sacrificeofpraise2.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/50 transition-all text-xs font-medium group cursor-pointer"
+                title="Follow Sacrifice of Praise on Instagram"
+                aria-label="Instagram: @sacrificeofpraise2.0"
+              >
+                <i data-lucide="instagram" class="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform"></i>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://www.youtube.com/@sacrificeofpraise136"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/50 transition-all text-xs font-medium group cursor-pointer"
+                title="Subscribe to Sacrifice of Praise on YouTube"
+                aria-label="YouTube: @sacrificeofpraise136"
+              >
+                <i data-lucide="youtube" class="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform"></i>
+                <span>YouTube</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Col 3: Leadership & Inquiries -->
@@ -1001,7 +1021,6 @@
     function renderGallery() {
       const row1 = document.getElementById('marquee-row-1');
       const row2 = document.getElementById('marquee-row-2');
-      const grid = document.getElementById('grid-items-container');
 
       // Duplicate arrays for infinite loop
       const itemsRow1 = [...galleryData.slice(0, 4), ...galleryData.slice(0, 4), ...galleryData.slice(0, 4)];
@@ -1009,7 +1028,6 @@
 
       row1.innerHTML = itemsRow1.map((item, idx) => createGalleryCardHtml(item, 'r1', idx)).join('');
       row2.innerHTML = itemsRow2.map((item, idx) => createGalleryCardHtml(item, 'r2', idx)).join('');
-      grid.innerHTML = galleryData.map((item, idx) => createGridCardHtml(item, idx)).join('');
       
       lucide.createIcons();
     }
@@ -1041,73 +1059,25 @@
       `;
     }
 
-    function createGridCardHtml(item, idx) {
-      return `
-        <div
-          onclick="openLightboxById(${item.id})"
-          class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer border border-white/10 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#e5a93c]/60"
-        >
-          <img
-            src="${item.src}"
-            onerror="this.src='${item.fallback}'"
-            alt="${item.caption}"
-            loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
-          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-            <div>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/60 px-2 py-0.5 rounded-full">${item.tag}</span>
-              <p class="text-white font-medium text-sm mt-1">${item.caption}</p>
-            </div>
-            <div class="w-8 h-8 rounded-full bg-[#e5a93c] text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-              <i data-lucide="eye" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
     renderGallery();
-
-    // Toggle Gallery View (Scroll vs Grid)
-    function setGalleryView(mode) {
-      const scrollContainer = document.getElementById('gallery-scroll-container');
-      const gridContainer = document.getElementById('gallery-grid-container');
-      const btnScroll = document.getElementById('btn-view-scroll');
-      const btnGrid = document.getElementById('btn-view-grid');
-
-      if (mode === 'grid') {
-        scrollContainer.classList.add('hidden');
-        gridContainer.classList.remove('hidden');
-        btnGrid.classList.add('bg-[#e5a93c]', 'text-slate-950');
-        btnGrid.classList.remove('text-slate-400');
-        btnScroll.classList.remove('bg-[#e5a93c]', 'text-slate-950');
-        btnScroll.classList.add('text-slate-400');
-      } else {
-        gridContainer.classList.add('hidden');
-        scrollContainer.classList.remove('hidden');
-        btnScroll.classList.add('bg-[#e5a93c]', 'text-slate-950');
-        btnScroll.classList.remove('text-slate-400');
-        btnGrid.classList.remove('bg-[#e5a93c]', 'text-slate-950');
-        btnGrid.classList.add('text-slate-400');
-      }
-    }
 
     function toggleMarqueePlay() {
       const r1 = document.getElementById('marquee-row-1');
       const r2 = document.getElementById('marquee-row-2');
       const icon = document.getElementById('play-pause-icon');
+      const label = document.getElementById('play-pause-label');
 
       isMarqueePaused = !isMarqueePaused;
       if (isMarqueePaused) {
         r1.classList.add('paused');
         r2.classList.add('paused');
         icon.setAttribute('data-lucide', 'play');
+        if (label) label.innerText = 'Resume Marquee';
       } else {
         r1.classList.remove('paused');
         r2.classList.remove('paused');
         icon.setAttribute('data-lucide', 'pause');
+        if (label) label.innerText = 'Pause Marquee';
       }
       lucide.createIcons();
     }
