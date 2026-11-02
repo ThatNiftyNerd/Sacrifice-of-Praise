@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice</title>
+
+  <!-- SEO & Social Sharing -->
+  <meta name="description" content="Sacrifice of Praise (SoP) 2.0 - A live acapella worship concert. Pure, undiluted worship void of instruments, rich in harmony and spiritual depth. Saturday, December 12, 2026 at Lawn Tennis Courts, FCE(T), Akoka, Lagos." />
+  <meta name="keywords" content="Sacrifice of Praise, SoP 2.0, Acapella Worship, Church of Christ, Lagos Christian Concert, FCE(T) Akoka" />
+  <meta name="author" content="House603 & Sacrifice of Praise Team" />
+
+  <meta property="og:title" content="Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice" />
+  <meta property="og:description" content="Join 1,000+ worshippers for an unforgettable live acapella worship experience. Dec 12, 2026 • FCE(T) Lawn Tennis Courts, Akoka, Lagos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./flyer.webp" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sacrifice of Praise (SoP) 2.0" />
+  <meta name="twitter:description" content="Pure Worship. True Sacrifice. Saturday, December 12, 2026 in Akoka, Lagos." />
+  <meta name="twitter:image" content="./flyer.webp" />
+
+  <link rel="icon" type="image/jpeg" href="./sop-logo.jpg" />
+  <link rel="icon" type="image/png" href="./sop-logo.png" />
+  <link rel="apple-touch-icon" href="./sop-logo.png" />
+
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN (Zero Build Tool Required) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '420px',
+          },
+          colors: {
+            sop: {
+              dark: '#080a0f',
+              card: '#0f1420',
+              cardLight: '#161d2e',
+              gold: {
+                DEFAULT: '#E5A93C',
+                light: '#F8C765',
+                dark: '#B88220',
+              }
+            }
+          },
+          fontFamily: {
+            display: ['"Cinzel"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons & Canvas Confetti CDNs -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Utilities & Animations */
+    body {
+      background-color: #080a0f;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080a0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e2638;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e5a93c;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF7D6 0%, #F8C765 40%, #E5A93C 75%, #B88220 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(15, 20, 32, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(229, 169, 60, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(229, 169, 60, 0.15);
+    }
+
+    /* Infinite Marquee Animations */
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 38s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 42s linear infinite;
+    }
+
+    .marquee-container:hover .animate-marquee-left,
+    .marquee-container:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+    .paused {
+      animation-play-state: paused !important;
+    }
+
+    /* Single-Page Printable Event Pass Styles */
+    @media print {
+      @page {
+        size: portrait;
+        margin: 10mm 12mm;
+      }
+
+      *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Hide entire website chrome, hero, navbar, forms, modals, footer, buttons */
+      header,
+      footer,
+      #navbar,
+      #hero,
+      #calendar-modal,
+      #registration-form-wrapper,
+      .no-print,
+      #registration-success-wrapper > div:first-child,
+      #registration-success-wrapper > div:nth-child(2),
+      #registration-success-wrapper .action-buttons-wrap,
+      #registration-success-wrapper > p:last-child {
+        display: none !important;
+      }
+
+      #register {
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        background: #ffffff !important;
+      }
+
+      #registration-success-wrapper {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      /* Single Page Pass Document */
+      #sop-digital-pass {
+        display: block !important;
+        max-width: 520px !important;
+        margin: 10px auto !important;
+        padding: 24px 28px !important;
+        background: #ffffff !important;
+        border: 2px solid #b88220 !important;
+        border-radius: 12px !important;
+        color: #0f172a !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      .screen-pass-header {
+        display: none !important;
+      }
+
+      .print-header-block {
+        display: block !important;
+      }
+
+      .print-footer-block {
+        display: block !important;
+      }
+
+      .print-label {
+        color: #475569 !important;
+      }
+
+      .print-val {
+        color: #0f172a !important;
+      }
+
+      .print-code {
+        color: #b88220 !important;
+        font-weight: 700 !important;
+      }
+
+      .print-border-sub {
+        border-color: #e2e8f0 !important;
+      }
+
+      .print-status {
+        color: #047857 !important;
+      }
+
+      .print-shield {
+        color: #047857 !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-[#e5a93c] selection:text-black">
+
+  <!-- ==================== 1. FIXED NAVBAR ==================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-2.5 sm:py-4 bg-[#080a0f]/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-2 sm:gap-4">
+        
+        <!-- Brand Title & Official SoP Logo -->
+        <a href="#hero" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] shadow-lg shadow-[#e5a93c]/20 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+            <img src="./sop-logo.jpg" alt="Sacrifice of Praise Official Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="font-display font-bold text-sm xs:text-base sm:text-xl text-white tracking-tight sm:tracking-wide group-hover:text-[#f8c765] transition-colors leading-tight whitespace-nowrap">
+              <span class="hidden sm:inline">Sacrifice of Praise</span><span class="sm:hidden">SoP</span> <span class="text-[#f8c765]">2.0</span>
+            </span>
+            <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-slate-400">
+              Pure Worship • Dec 12, 2026
+            </span>
+          </div>
+        </a>
+
+        <!-- TOP RIGHT CORNER BUTTONS -->
+        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
+          <!-- Button 1: About -->
+          <a
+            href="about.html"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0 cursor-pointer"
+            title="About Sacrifice of Praise"
+          >
+            <i data-lucide="info" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span>About</span>
+          </a>
+
+          <!-- Button 2: Gallery with animated scroll indicator -->
+          <a
+            href="gallery.html"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0 cursor-pointer"
+            title="View Gallery"
+          >
+            <i data-lucide="images" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span class="hidden md:inline">Photo </span>
+            <span>Gallery</span>
+            <span class="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5a93c] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#e5a93c]"></span>
+            </span>
+          </a>
+
+          <!-- Button 3: Register Now -->
+          <a
+            href="#register"
+            class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0 cursor-pointer"
+            title="Register for Sacrifice of Praise 2.0"
+          >
+            <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950"></i>
+            <span>Register<span class="hidden xs:inline"> Now</span></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO & COUNTDOWN ==================== -->
+  <section id="hero" class="relative min-h-screen pt-24 xs:pt-28 sm:pt-32 pb-14 sm:pb-20 flex flex-col justify-center overflow-hidden">
+    <!-- Ambient glow backgrounds -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#e5a93c]/15 via-[#f8c765]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      
+      <!-- Scripture Theme Pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-lg max-w-full">
+        <i data-lucide="music-2" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
+        <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-300">
+          Hebrews 13:15 • Live Acapella Worship Concert
+        </span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-display font-extrabold text-3xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white max-w-5xl leading-[1.08] mb-4 sm:mb-6">
+        Sacrifice of <span class="gold-gradient-text">Praise</span>
+        <span class="inline-block text-xl xs:text-2xl sm:text-4xl md:text-5xl font-sans font-bold text-[#f8c765] border-2 border-[#e5a93c] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl align-middle shadow-lg shadow-[#e5a93c]/20 ml-1">
+          2.0
+        </span>
+      </h1>
+
+      <!-- Tagline & Verse -->
+      <p class="text-base sm:text-2xl font-light text-slate-200 tracking-wide max-w-3xl mb-2 sm:mb-3">
+        “<span class="font-medium text-white">Pure Worship.</span> <span class="gold-gradient-text font-medium">True Sacrifice.</span>”
+      </p>
+      <p class="text-xs sm:text-sm text-slate-400 italic max-w-2xl mb-6 sm:mb-8 leading-relaxed px-2">
+        “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
+      </p>
+
+      <!-- Key Details Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 max-w-3xl">
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
+          <span>Saturday, December 12, 2026</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="clock" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
+          <span>10:00 AM – 2:00 PM (GMT/WAT)</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-slate-200 text-xs sm:text-sm font-medium">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] shrink-0"></i>
+          <span>Lawn Tennis Courts, FCE(T), Akoka, Lagos</span>
+        </div>
+      </div>
+
+      <!-- Hero Action CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-10">
+        <a
+          href="#register"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/30 hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer"
+        >
+          <i data-lucide="sparkles" class="w-4 h-4 sm:w-5 sm:h-5 text-slate-950"></i>
+          <span>Register Free for SoP 2.0</span>
+        </a>
+
+        <a
+          href="gallery.html"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-slate-100 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#e5a93c]/60 shadow-lg hover:shadow-[#e5a93c]/10 transition-all group cursor-pointer"
+        >
+          <i data-lucide="images" class="w-4 h-4 sm:w-5 sm:h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+          <span>Explore Gallery</span>
+        </a>
+      </div>
+
+      <!-- KEY EVENT HIGHLIGHT CARDS (Relocated just before the Countdown Card) -->
+      <div class="w-full max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">1,000+</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Expected Attendance</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Believers across Lagos</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">100%</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Pure Acapella</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Rich in harmony & truth</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">4 Hours</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Undiluted Worship</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">10:00 AM – 2:00 PM</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">FREE</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Admission</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Registration required</p>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN TIMER CARD -->
+      <div class="w-full max-w-3xl mx-auto">
+        <div class="relative glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-white/10 shadow-2xl overflow-hidden">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#e5a93c]/15 blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-semibold tracking-widest uppercase mb-4 text-center">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-[#e5a93c] shrink-0"></i>
+              <span class="text-[11px] sm:text-xs">Countdown to SoP 2.0</span>
+            </div>
+
+            <div class="grid grid-cols-4 gap-1.5 xs:gap-2.5 sm:gap-4 md:gap-6 w-full max-w-xl mb-4 sm:mb-6">
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-days" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">DAYS</span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-hours" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">HOURS</span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-minutes" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
+                  <span class="hidden sm:inline">MINUTES</span><span class="sm:hidden">MINS</span>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-white/5">
+                <span id="countdown-seconds" class="font-display text-xl sm:text-4xl md:text-5xl font-extrabold text-[#f8c765] tracking-tight">00</span>
+                <span class="text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">
+                  <span class="hidden sm:inline">SECONDS</span><span class="sm:hidden">SECS</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Add to Calendar trigger -->
+            <button
+              onclick="openCalendarModal()"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-semibold text-[#f8c765] border border-[#e5a93c]/20 hover:border-[#e5a93c]/50 transition-colors cursor-pointer"
+            >
+              <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+              <span>Add Event to Calendar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. SEAMLESS REGISTRATION (GOOGLE FORM) ==================== -->
+  <section id="register" class="py-24 relative bg-[#090d14]/90 border-t border-white/5 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#e5a93c]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Official Event Registration</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+          Reserve Your Free Seat
+        </h2>
+        <p class="mt-3 text-base text-slate-300 max-w-lg mx-auto">
+          Admission is completely free. Registering helps our logistics and protocol teams prepare adequate seating and materials for you.
+        </p>
+      </div>
+
+      <!-- Hidden Iframe for Direct Background Google Form Submission (Zero CORS Issues) -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <!-- Form Card Container -->
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-4 xs:p-6 sm:p-10 border border-white/10 shadow-2xl relative">
+        
+        <!-- STATE 1: INTERACTIVE FORM -->
+        <div id="registration-form-wrapper">
+          <form
+            id="sop-registration-form"
+            action="https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="handleFormSubmit(event)"
+            class="space-y-6"
+          >
+            <!-- Friendly named parameters for Google Apps Script Web App -->
+            <input type="hidden" name="name" id="hidden-name" />
+            <input type="hidden" name="church" id="hidden-church" />
+            <input type="hidden" name="source" id="hidden-source" />
+            <input type="hidden" name="inLagos" id="hidden-inLagos" />
+            <input type="hidden" name="expectations" id="hidden-expectations" />
+            <input type="hidden" name="timestamp" id="hidden-timestamp" />
+
+            <!-- Hidden Google Form submission helpers for compatibility -->
+            <input type="hidden" name="fvv" value="1" />
+            <input type="hidden" name="pageHistory" value="0" />
+            <!-- Field 1: Name -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Name (First and Last Name) <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="text"
+                  required
+                  name="entry.2073731394"
+                  id="field-name"
+                  placeholder="e.g. Brother John Doe"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
+            </div>
+
+            <!-- Field 2: Congregation / Church Affiliation -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Congregation / Church Affiliation <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="church" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="text"
+                  required
+                  name="entry.980755877"
+                  id="field-church"
+                  placeholder="e.g. Church of Christ, Somolu / Other"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
+            </div>
+
+            <!-- Fields 3 & 4: Two-column grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Field 3: Referral Source -->
+              <div>
+                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  How Did You Hear About Us? <span class="text-[#f8c765]">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <i data-lucide="share-2" class="w-4 h-4"></i>
+                  </div>
+                  <select
+                    name="entry.1050780624"
+                    required
+                    class="w-full pl-10 pr-4 py-3 bg-[#0d121c] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base appearance-none cursor-pointer"
+                  >
+                    <option value="Instagram">Instagram</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitter/X">Twitter/X</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Field 4: Live in Lagos? -->
+              <div>
+                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  Do You Live in Lagos? <span class="text-[#f8c765]">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </div>
+                  <select
+                    name="entry.877086558"
+                    required
+                    class="w-full pl-10 pr-4 py-3 bg-[#0d121c] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base appearance-none cursor-pointer"
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 5: Expectations -->
+            <div>
+              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                What Are Your Expectations for Sacrifice of Praise 2.0?
+              </label>
+              <div class="relative">
+                <div class="absolute top-3.5 left-3.5 pointer-events-none text-slate-500">
+                  <i data-lucide="message-square" class="w-4 h-4"></i>
+                </div>
+                <textarea
+                  rows="3"
+                  name="entry.2018909557"
+                  placeholder="Share what you hope to experience or any fellowship expectations..."
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base resize-none"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-2">
+              <button
+                type="submit"
+                id="btn-submit-registration"
+                class="w-full py-4 px-6 rounded-2xl text-slate-950 font-bold text-base bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                <span>Complete Free Registration</span>
+              </button>
+            </div>
+
+            <!-- Direct Google Form Fallback -->
+            <div class="text-center pt-2 border-t border-white/5">
+              <p class="text-xs text-slate-400">
+                Prefer registering directly on Google? 
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[#f8c765] hover:underline inline-flex items-center gap-1 font-medium"
+                >
+                  Open Google Form in a new tab
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- STATE 2: SUCCESS CELEBRATION & DIGITAL EVENT PASS (Hidden Initially) -->
+        <div id="registration-success-wrapper" class="hidden text-center py-8 space-y-6">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-xl">
+            <i data-lucide="check-circle" class="w-8 h-8"></i>
+          </div>
+
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-[#f8c765]">Registration Confirmed!</span>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mt-1">
+              We Can't Wait to Worship With You, <span id="pass-display-name">Beloved</span>!
+            </h3>
+            <p class="text-sm text-slate-300 max-w-md mx-auto mt-2">
+              Your seat reservation has been recorded into the official Sacrifice of Praise 2.0 registry.
+            </p>
+          </div>
+
+          <!-- Digital Admission Pass Card (Formatted for Single-Page Document Printing) -->
+          <div id="sop-digital-pass" class="max-w-md mx-auto bg-black/60 border border-[#e5a93c]/35 rounded-2xl p-4 sm:p-6 text-left relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 w-28 h-28 bg-[#e5a93c]/10 rounded-full blur-xl pointer-events-none no-print"></div>
+
+            <!-- Print-Only Header Block (Appears only on the printed/PDF single-page pass) -->
+            <div class="hidden print-header-block mb-4 pb-3 border-b-2 border-[#b88220]">
+              <div class="flex items-center gap-3">
+                <img src="./sop-logo.jpg" alt="Sacrifice of Praise Logo" class="w-12 h-12 rounded-full object-cover border border-[#b88220]" />
+                <div>
+                  <h2 class="text-xl font-bold tracking-tight text-slate-900 uppercase">Sacrifice of Praise 2.0</h2>
+                  <p class="text-xs font-semibold text-[#b88220] uppercase tracking-wider">Official Admission Pass • Registration Confirmed</p>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-600 italic mt-2">
+                “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
+              </p>
+            </div>
+
+            <!-- On-Screen Pass Header -->
+            <div class="flex items-center justify-between border-b border-white/10 screen-pass-header pb-4 mb-4">
+              <div>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Event Pass</p>
+                <p class="text-base font-display font-bold text-white">Sacrifice of Praise 2.0</p>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-[#e5a93c]/20 text-[#f8c765] border border-[#e5a93c]/30">
+                ADMIT ONE
+              </span>
+            </div>
+
+            <div class="space-y-2 text-xs sm:text-sm">
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Attendee:</span>
+                <span id="pass-name" class="text-white print-val font-semibold">Guest</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Affiliation:</span>
+                <span id="pass-church" class="text-white print-val font-semibold">Worshipper</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Pass Reference:</span>
+                <span id="pass-code" class="text-[#f8c765] print-code font-mono font-bold tracking-wider">SOP-2026-REG</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Date:</span>
+                <span class="text-white print-val font-medium">Saturday, Dec 12, 2026</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Time:</span>
+                <span class="text-white print-val font-medium">10:00 AM – 2:00 PM (GMT/WAT)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Venue:</span>
+                <span class="text-white print-val font-medium text-right">Lawn Tennis Courts, FCE(T) Akoka, Lagos</span>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-white/10 print-border-sub flex items-center justify-between text-[11px] text-emerald-400 print-status">
+              <span class="inline-flex items-center gap-1.5 font-medium">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 print-shield"></i>
+                Official Registration Confirmed
+              </span>
+              <span class="text-slate-400 print-val font-semibold">100% Free Admission</span>
+            </div>
+
+            <!-- Print-Only Footer Block (Appears only on the printed/PDF single-page pass) -->
+            <div class="hidden print-footer-block mt-4 pt-3 border-t border-slate-200 text-[10px] text-slate-600 space-y-1.5">
+              <p><strong>Entrance Instructions:</strong> Please present this digital pass on your mobile device or printed copy at the entrance desk. Doors open at 9:30 AM.</p>
+              <div class="flex justify-between items-center text-[9px] pt-1 text-slate-500">
+                <span>Inquiries: Kingsley Bassey (+234 813 829 3959) • Ajetunmobi Oluwayinka (+234 816 274 9475)</span>
+                <span>Supported by house603 digital solutions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-4 action-buttons-wrap">
+            <button
+              onclick="openCalendarModal()"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-semibold border border-white/15 transition-colors cursor-pointer"
+            >
+              <i data-lucide="calendar-plus" class="w-4 h-4 text-[#f8c765]"></i>
+              <span>Add to Calendar</span>
+            </button>
+            <button
+              onclick="window.print()"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#e5a93c]/15 hover:bg-[#e5a93c]/25 text-[#f8c765] text-xs sm:text-sm font-semibold border border-[#e5a93c]/30 transition-colors cursor-pointer"
+              title="Save or print your single-page event pass"
+            >
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>Save / Print Pass</span>
+            </button>
+            <button
+              onclick="resetRegistrationForm()"
+              class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-semibold border border-white/10 transition-colors cursor-pointer"
+            >
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Register Another Guest</span>
+            </button>
+          </div>
+          <p class="text-xs text-slate-400 max-w-sm mx-auto">
+            Your registration is securely recorded. Registrant lists are kept confidential and protected from public view.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. MINIMALIST FOOTER ==================== -->
+  <footer class="bg-[#05070a] border-t border-white/10 text-slate-400 pt-16 pb-12 relative overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-28 bg-[#e5a93c]/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand & Scripture -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] flex items-center justify-center shrink-0">
+              <img src="./sop-logo.jpg" alt="Sacrifice of Praise Official Logo" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <span class="font-display font-bold text-xl text-white">
+              Sacrifice of Praise <span class="text-[#f8c765]">2.0</span>
+            </span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed max-w-sm">
+            A live acapella worship concert curating pure, undiluted vocal worship void of instruments, rich in harmony, truth, and spiritual depth.
+          </p>
+          <p class="text-xs text-slate-400 italic bg-white/5 p-3 rounded-xl border border-white/5 max-w-sm">
+            “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.” — Hebrews 13:15
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links & Social Media -->
+        <div class="lg:col-span-3 space-y-6">
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
+              <li><a href="about.html" class="hover:text-[#e5a93c] transition-colors">About SoP 2.0</a></li>
+              <li><a href="gallery.html" class="hover:text-[#e5a93c] transition-colors">Photo Gallery</a></li>
+              <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+            </ul>
+          </div>
+
+          <!-- Dedicated Social Media Block (Official SOP Channels) -->
+          <div class="space-y-3 pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-white">Connect With Us</h4>
+            <div class="flex items-center gap-3">
+              <!-- Official Facebook Brand Button -->
+              <a
+                href="https://www.facebook.com/share/19x7DDwaL6/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-[#1877f2] text-[#1877f2] hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-blue-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Follow Sacrifice of Praise on Facebook"
+                aria-label="Facebook: Sacrifice of Praise"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+
+              <!-- Official Instagram Brand Button -->
+              <a
+                href="https://www.instagram.com/sacrificeofpraise2.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-pink-400 hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-pink-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Follow Sacrifice of Praise on Instagram (@sacrificeofpraise2.0)"
+                aria-label="Instagram: @sacrificeofpraise2.0"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+
+              <!-- Official YouTube Brand Button -->
+              <a
+                href="https://www.youtube.com/@sacrificeofpraise136"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-[#ff0000] text-red-500 hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-red-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Subscribe to Sacrifice of Praise on YouTube (@sacrificeofpraise136)"
+                aria-label="YouTube: @sacrificeofpraise136"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3: Leadership & Inquiries -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Event Leadership & Inquiries</h4>
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Kingsley Bassey</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Convener</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348138293959" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 813 829 3959</span>
+                </a>
+                <a href="mailto:iamksbassey@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>iamksbassey@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Ajetunmobi Oluwayinka</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Strategist</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348162749475" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 816 274 9475</span>
+                </a>
+                <a href="mailto:yinkajetunmobi@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>yinkajetunmobi@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ROW: UNOBTRUSIVE HOUSE603 LOGO & COPYRIGHT (Explicit Requirement) -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+        <div>
+          <span>© 2026 Sacrifice of Praise (SoP) 2.0. All Rights Reserved.</span>
+        </div>
+
+        <a
+          href="https://house603.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 hover:border-[#e5a93c]/40 hover:bg-white/[0.06] transition-all cursor-pointer no-underline group"
+          title="Visit House603 Digital Solutions"
+        >
+          <span class="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Proudly supported by</span>
+          <div class="flex items-center gap-1.5 font-medium text-slate-200">
+            <img src="./house603-logo.png" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" />
+            <span class="text-white text-xs font-semibold tracking-wide">house603 digital solutions</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== 7. MODALS ==================== -->
+
+  <!-- Add to Calendar Modal -->
+  <div id="calendar-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closeCalendarModal()">
+    <div class="relative max-w-md w-full glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/15 shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closeCalendarModal()" class="absolute top-5 right-5 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Close calendar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-[#e5a93c]/20 border border-[#e5a93c]/30 flex items-center justify-center text-[#f8c765]">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-white text-lg">Add to Calendar</h3>
+          <p class="text-xs text-slate-400">Saturday, Dec 12, 2026 • 10:00 AM</p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+        Save the date so you receive timely notifications and reminders before event day.
+      </p>
+
+      <div class="space-y-3">
+        <a
+          id="link-google-calendar"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all group"
+        >
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-400 group-hover:scale-125 transition-transform"></span>
+            <span>Google Calendar</span>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-white"></i>
+        </a>
+
+        <button
+          onclick="downloadIcsFile()"
+          class="w-full flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all group"
+        >
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#f8c765] group-hover:scale-125 transition-transform"></span>
+            <span>Apple Calendar / Outlook / iCal</span>
+          </div>
+          <i data-lucide="download" class="w-4 h-4 text-slate-400 group-hover:text-white"></i>
+        </button>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-white/10 text-center">
+        <button onclick="closeCalendarModal()" class="text-xs text-slate-400 hover:text-white">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 8. VANILLA JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Countdown Timer Logic
+    const targetEventDate = new Date('2026-12-12T10:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetEventDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('countdown-days').innerText = '00';
+        document.getElementById('countdown-hours').innerText = '00';
+        document.getElementById('countdown-minutes').innerText = '00';
+        document.getElementById('countdown-seconds').innerText = '00';
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+      document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Automatic hash routing for gallery links
+    if (window.location.hash === '#gallery') {
+      window.location.href = 'gallery.html';
+    }
+
+    // 4. Calendar Modal Functions
+    function openCalendarModal() {
+      const m = document.getElementById('calendar-modal');
+      if (m) {
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+      }
+    }
+    function closeCalendarModal() {
+      const m = document.getElementById('calendar-modal');
+      if (m) {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+      }
+    }
+
+    // Google Calendar URL Generator
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice')}&dates=20261212T090000Z/20261212T130000Z&details=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 live acapella worship concert. Pure undiluted worship void of instruments, rich in harmony and truth. Register: https://sacrifice-of-praise.web.app')}&location=${encodeURIComponent('Lawn Tennis Courts, Federal College of Education (Technical) [FCE(T)], Akoka, Lagos, Nigeria')}`;
+    document.getElementById('link-google-calendar').href = gCalUrl;
+
+    function downloadIcsFile() {
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sacrifice of Praise//SoP 2.0 Registration//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice
+UID:${Date.now()}@sacrificeofpraise.org
+DTSTART:20261212T090000Z
+DTEND:20261212T130000Z
+LOCATION:Lawn Tennis Courts, FCE(T), Akoka, Lagos, Nigeria
+DESCRIPTION:Sacrifice of Praise 2.0 live acapella worship concert. Pure undiluted worship void of instruments. Register at: https://sacrifice-of-praise.web.app
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Sacrifice-of-Praise-2.0.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Keyboard Shortcuts for Modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeCalendarModal();
+      }
+      if (e.key === 'ArrowLeft') navigateLightbox('prev');
+      if (e.key === 'ArrowRight') navigateLightbox('next');
+    });
+
+    // 5. Registration Submission Logic
+    let isSubmittingRegistration = false;
+
+    function handleFormSubmit(e) {
+      // Guard against rapid duplicate submissions
+      if (isSubmittingRegistration) {
+        if (e && e.preventDefault) e.preventDefault();
+        return false;
+      }
+      isSubmittingRegistration = true;
+
+      // Update button state immediately to give instant visual feedback and block repeat clicks
+      const submitBtn = document.getElementById('btn-submit-registration');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Your Pass...</span>';
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Collect input values
+      const name = (document.getElementById('field-name').value || '').trim() || 'Worshipper';
+      const church = (document.getElementById('field-church').value || '').trim() || 'Guest';
+      const source = (document.querySelector('select[name="entry.1050780624"]').value || '').trim() || 'Instagram';
+      const inLagos = (document.querySelector('select[name="entry.877086558"]').value || '').trim() || 'Yes';
+      const expectations = (document.querySelector('textarea[name="entry.2018909557"]').value || '').trim();
+
+      // Synchronize hidden friendly-named inputs for standard iframe POST
+      const hName = document.getElementById('hidden-name');
+      const hChurch = document.getElementById('hidden-church');
+      const hSource = document.getElementById('hidden-source');
+      const hLagos = document.getElementById('hidden-inLagos');
+      const hExpect = document.getElementById('hidden-expectations');
+      const hTimestamp = document.getElementById('hidden-timestamp');
+      if (hName) hName.value = name;
+      if (hChurch) hChurch.value = church;
+      if (hSource) hSource.value = source;
+      if (hLagos) hLagos.value = inLagos;
+      if (hExpect) hExpect.value = expectations;
+      if (hTimestamp) hTimestamp.value = new Date().toISOString();
+
+      // Populate Digital Event Pass
+      const passDisplay = document.getElementById('pass-display-name');
+      const passName = document.getElementById('pass-name');
+      const passChurch = document.getElementById('pass-church');
+      const passCode = document.getElementById('pass-code');
+      if (passDisplay) passDisplay.innerText = name;
+      if (passName) passName.innerText = name;
+      if (passChurch) passChurch.innerText = church;
+      if (passCode) {
+        const randHex = Math.floor(1000 + Math.random() * 9000).toString();
+        passCode.innerText = 'SOP-2026-' + randHex;
+      }
+
+      // Trigger Confetti Animation
+      try {
+        confetti({
+          particleCount: 120,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#e5a93c', '#f8c765', '#ffffff', '#38bdf8']
+        });
+      } catch (err) {}
+
+      // Transition to Success State
+      setTimeout(() => {
+        document.getElementById('registration-form-wrapper').classList.add('hidden');
+        document.getElementById('registration-success-wrapper').classList.remove('hidden');
+        document.getElementById('registration-success-wrapper').scrollIntoView({ behavior: 'smooth' });
+        if (window.lucide) lucide.createIcons();
+      }, 700);
+
+      // Single submission proceeds natively to hidden_iframe
+      return true;
+    }
+
+    function resetRegistrationForm() {
+      isSubmittingRegistration = false;
+      const form = document.getElementById('sop-registration-form');
+      if (form) form.reset();
+      const submitBtn = document.getElementById('btn-submit-registration');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i data-lucide="sparkles" class="w-5 h-5"></i><span>Complete Free Registration</span>';
+      }
+      document.getElementById('registration-success-wrapper').classList.add('hidden');
+      document.getElementById('registration-form-wrapper').classList.remove('hidden');
+      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      if (window.lucide) lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

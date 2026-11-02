@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Gallery | Sacrifice of Praise (SoP) 2.0</title>
+  <meta name="description" content="Explore captured moments of reverence, harmonious choral praise, and fellowship from Sacrifice of Praise." />
+  
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://sacrificeofpraise.com.ng/gallery" />
+  <meta property="og:title" content="Photo Gallery | Sacrifice of Praise 2.0" />
+  <meta property="og:description" content="Explore captured moments of reverence, choral acapella worship, and fellowship." />
+  <meta property="og:image" content="./header-image.png" />
+  <meta property="og:url" content="https://sacrificeofpraise.com.ng/gallery" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="./sop-logo.jpg" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#e5a93c',
+              goldLight: '#f8c765',
+              goldDark: '#b88220',
+              dark: '#080a0f',
+              card: '#0f141e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Cabinet Grotesk', 'Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #080a0f;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #f8c765 0%, #e5a93c 50%, #c8891d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(15, 20, 30, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Infinite Marquee Styles */
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 38s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 42s linear infinite;
+    }
+
+    .marquee-container:hover .animate-marquee-left,
+    .marquee-container:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+    .paused {
+      animation-play-state: paused !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#e5a93c] selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- ==================== FIXED NAVBAR ==================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-2.5 sm:py-4 bg-[#080a0f]/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-2 sm:gap-4">
+        
+        <!-- Brand Title & Official SoP Logo -->
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] shadow-lg shadow-[#e5a93c]/20 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+            <img src="./sop-logo.jpg" alt="Sacrifice of Praise Official Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="font-display font-bold text-sm xs:text-base sm:text-xl text-white tracking-tight sm:tracking-wide group-hover:text-[#f8c765] transition-colors leading-tight whitespace-nowrap">
+              <span class="hidden sm:inline">Sacrifice of Praise</span><span class="sm:hidden">SoP</span> <span class="text-[#f8c765]">2.0</span>
+            </span>
+            <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-slate-400">
+              Pure Worship • Dec 12, 2026
+            </span>
+          </div>
+        </a>
+
+        <!-- TOP RIGHT CORNER BUTTONS -->
+        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
+          <!-- Button 1: About -->
+          <a
+            href="about.html"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0 cursor-pointer"
+            title="About Sacrifice of Praise"
+          >
+            <i data-lucide="info" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span>About</span>
+          </a>
+
+          <!-- Button 2: Gallery (Active) -->
+          <a
+            href="gallery.html"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#f8c765] bg-[#e5a93c]/15 border border-[#e5a93c]/40 transition-all shadow-sm shrink-0 cursor-pointer"
+            title="View Gallery"
+          >
+            <i data-lucide="images" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#f8c765]"></i>
+            <span class="hidden md:inline">Photo </span>
+            <span>Gallery</span>
+            <span class="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e5a93c] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#e5a93c]"></span>
+            </span>
+          </a>
+
+          <!-- Button 3: Register Now -->
+          <a
+            href="index.html#register"
+            class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0 cursor-pointer"
+            title="Register for Sacrifice of Praise 2.0"
+          >
+            <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950"></i>
+            <span>Register<span class="hidden xs:inline"> Now</span></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN GALLERY SECTION ==================== -->
+  <main class="pt-28 pb-20 relative flex-grow">
+    <!-- Ambient glow backgrounds -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#e5a93c]/15 via-[#f8c765]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10 text-center md:text-left">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4 shadow-md">
+            <i data-lucide="images" class="w-3.5 h-3.5"></i>
+            <span>Captured Moments of Reverence</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+            Moments Worth Returning To
+          </h1>
+          <p class="mt-2 text-base text-slate-300 max-w-xl">
+            Relive the sacred atmosphere, harmonious choral praise, and heartfelt fellowship from previous editions of Sacrifice of Praise.
+          </p>
+        </div>
+
+        <!-- Controls: Play/Pause Marquee Toggle -->
+        <div class="flex items-center justify-center md:justify-end gap-3">
+          <button
+            id="btn-toggle-play"
+            onclick="toggleMarqueePlay()"
+            class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-xs font-medium flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-[#e5a93c]/40"
+            title="Pause / Play Marquee"
+          >
+            <i id="play-pause-icon" data-lucide="pause" class="w-4 h-4 text-[#e5a93c]"></i>
+            <span id="play-pause-label" class="text-xs">Pause Marquee</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUAL CONTINUOUS HORIZONTAL MARQUEE -->
+    <div id="gallery-scroll-container" class="marquee-container relative w-full space-y-5">
+      <!-- Side gradient fades -->
+      <div class="absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-[#080a0f] to-transparent z-20 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-l from-[#080a0f] to-transparent z-20 pointer-events-none"></div>
+
+      <!-- Row 1: Left Scroll -->
+      <div class="overflow-hidden select-none">
+        <div id="marquee-row-1" class="animate-marquee-left gap-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Row 2: Right Scroll -->
+      <div class="overflow-hidden select-none">
+        <div id="marquee-row-2" class="animate-marquee-right gap-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-slate-500 mt-6">
+        Hover over any photo to pause • Click to inspect in high definition
+      </p>
+    </div>
+
+    <!-- Quick CTA back to registration -->
+    <div class="text-center mt-14">
+      <a
+        href="index.html#register"
+        class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-full text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+      >
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Ready to Join Us? Register Free Now</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- ==================== LIGHTBOX MODAL ==================== -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="High definition image viewer"
+  >
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+      <!-- Top controls -->
+      <div class="w-full flex items-center justify-between pb-3 text-slate-300">
+        <div class="flex items-center gap-2 text-xs">
+          <span id="lightbox-badge" class="font-bold uppercase tracking-wider text-[#f8c765] bg-[#e5a93c]/15 px-2.5 py-1 rounded-full border border-[#e5a93c]/30"></span>
+          <span id="lightbox-counter" class="text-slate-400"></span>
+        </div>
+        <button
+          onclick="closeLightbox()"
+          class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+          title="Close (Esc)"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Main Image View -->
+      <div class="relative w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl bg-black/50 border border-white/10">
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="max-h-[75vh] max-w-full object-contain transition-opacity duration-300"
+        />
+
+        <!-- Prev button -->
+        <button
+          onclick="prevLightboxImage()"
+          class="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 transition-all cursor-pointer"
+          title="Previous (Left arrow)"
+        >
+          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Next button -->
+        <button
+          onclick="nextLightboxImage()"
+          class="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/10 transition-all cursor-pointer"
+          title="Next (Right arrow)"
+        >
+          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Caption -->
+      <p id="lightbox-caption" class="text-sm text-slate-200 text-center mt-3 drop-shadow font-medium"></p>
+    </div>
+  </div>
+
+  <!-- ==================== MINIMALIST FOOTER (EXACT REPLICA) ==================== -->
+  <footer class="bg-[#05070a] border-t border-white/10 text-slate-400 pt-16 pb-12 relative overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-28 bg-[#e5a93c]/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand & Scripture -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-[#f8c765] via-[#e5a93c] to-[#b88220] flex items-center justify-center shrink-0">
+              <img src="./sop-logo.jpg" alt="Sacrifice of Praise Logo" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <div>
+              <span class="font-display font-bold text-lg text-white">Sacrifice of Praise <span class="text-[#f8c765]">2.0</span></span>
+              <p class="text-xs text-slate-400">Pure Acapella Worship Concert</p>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+            “Through Jesus, therefore, let us continually offer to God a sacrifice of praise—the fruit of lips that openly profess his name.”
+            <span class="block text-[#f8c765] mt-1 font-medium">— Hebrews 13:15</span>
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links & Official Social Media Buttons -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
+            <li><a href="about.html" class="hover:text-[#e5a93c] transition-colors">About SoP 2.0</a></li>
+            <li><a href="gallery.html" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Photo Gallery</a></li>
+            <li><a href="index.html#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+          </ul>
+
+          <!-- Dedicated Social Brand Buttons -->
+          <div class="pt-3 border-t border-white/5 space-y-2">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block">Connect With Us</span>
+            <div class="flex items-center gap-2.5">
+              <!-- Official Facebook Brand Button -->
+              <a
+                href="https://www.facebook.com/share/19x7DDwaL6/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-[#1877F2] text-blue-400 hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-blue-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Follow Sacrifice of Praise on Facebook"
+                aria-label="Facebook: Sacrifice of Praise"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+
+              <!-- Official Instagram Brand Button -->
+              <a
+                href="https://www.instagram.com/sacrificeofpraise2.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-pink-400 hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-pink-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Follow Sacrifice of Praise on Instagram (@sacrificeofpraise2.0)"
+                aria-label="Instagram: @sacrificeofpraise2.0"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+
+              <!-- Official YouTube Brand Button -->
+              <a
+                href="https://www.youtube.com/@sacrificeofpraise136"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-11 h-11 rounded-xl bg-white/5 hover:bg-[#ff0000] text-red-500 hover:text-white border border-white/10 hover:border-transparent flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-red-500/25 hover:scale-105 active:scale-95 group cursor-pointer"
+                title="Subscribe to Sacrifice of Praise on YouTube (@sacrificeofpraise136)"
+                aria-label="YouTube: @sacrificeofpraise136"
+              >
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3: Leadership & Inquiries -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Event Leadership & Inquiries</h4>
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Kingsley Bassey</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Convener</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348138293959" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 813 829 3959</span>
+                </a>
+                <a href="mailto:iamksbassey@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>iamksbassey@gmail.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">Ajetunmobi Oluwayinka</span>
+                <span class="text-[10px] uppercase font-bold text-[#f8c765] bg-[#e5a93c]/10 px-2 py-0.5 rounded">Strategist</span>
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                <a href="tel:+2348162749475" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3 h-3 text-[#e5a93c]"></i>
+                  <span>+234 816 274 9475</span>
+                </a>
+                <a href="mailto:yinkajetunmobi@gmail.com" class="hover:text-white flex items-center gap-1">
+                  <i data-lucide="mail" class="w-3 h-3 text-slate-400"></i>
+                  <span>yinkajetunmobi@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ROW: UNOBTRUSIVE HOUSE603 LOGO & COPYRIGHT -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+        <div>
+          <span>© 2026 Sacrifice of Praise (SoP) 2.0. All Rights Reserved.</span>
+        </div>
+
+        <a
+          href="https://house603digitalsolutions.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 hover:border-[#e5a93c]/40 hover:bg-white/[0.06] transition-all cursor-pointer no-underline group"
+          title="Visit House603 Digital Solutions"
+        >
+          <span class="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Proudly supported by</span>
+          <div class="flex items-center gap-1.5 font-medium text-slate-200">
+            <img src="./house603-logo.png" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" />
+            <span class="text-white text-xs font-semibold tracking-wide">house603 digital solutions</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Gallery Data
+    const galleryData = [
+      { id: 1, src: './gallery/1.webp', fullSrc: './gallery/1-full.webp', fallback: './gallery/1.jpg', fullFallback: './gallery/1-full.jpg', caption: 'Choral Harmony & Devotion', tag: 'Choir Session' },
+      { id: 2, src: './gallery/2.webp', fullSrc: './gallery/2-full.webp', fallback: './gallery/2.jpg', fullFallback: './gallery/2-full.jpg', caption: 'Congregational Praise in Accord', tag: 'Congregation' },
+      { id: 3, src: './gallery/3.webp', fullSrc: './gallery/3-full.webp', fallback: './gallery/3.jpg', fullFallback: './gallery/3-full.jpg', caption: 'Atmosphere of Total Surrender', tag: 'Pure Acapella' },
+      { id: 4, src: './gallery/4.webp', fullSrc: './gallery/4-full.webp', fallback: './gallery/4.jpg', fullFallback: './gallery/4-full.jpg', caption: 'Lead Minister in Deep Reverence', tag: 'Worship Lead' },
+      { id: 5, src: './gallery/5.webp', fullSrc: './gallery/5-full.webp', fallback: './gallery/5.jpg', fullFallback: './gallery/5-full.jpg', caption: 'Voices Lifted High without Instruments', tag: 'Acapella Praise' },
+      { id: 6, src: './gallery/6.webp', fullSrc: './gallery/6-full.webp', fallback: './gallery/6.jpg', fullFallback: './gallery/6-full.jpg', caption: 'Joyous Fellowship Among Believers', tag: 'Fellowship' },
+      { id: 7, src: './gallery/7.webp', fullSrc: './gallery/7-full.webp', fallback: './gallery/7.jpg', fullFallback: './gallery/7-full.jpg', caption: 'Moment of Silent Consecration', tag: 'Reflection' },
+      { id: 8, src: './gallery/8.webp', fullSrc: './gallery/8-full.webp', fallback: './gallery/8.jpg', fullFallback: './gallery/8-full.jpg', caption: 'Unified Anthem of Thanksgiving', tag: 'Final Anthems' },
+    ];
+
+    let currentLightboxIndex = 0;
+    let isMarqueePaused = false;
+
+    // Build Marquee Rows
+    function renderGallery() {
+      const r1 = document.getElementById('marquee-row-1');
+      const r2 = document.getElementById('marquee-row-2');
+      if (!r1 || !r2) return;
+
+      const set1 = [...galleryData, ...galleryData];
+      const set2 = [...galleryData.slice(4), ...galleryData.slice(0, 4), ...galleryData.slice(4), ...galleryData.slice(0, 4)];
+
+      const cardHtml = (item) => `
+        <div
+          onclick="openLightboxById(${item.id})"
+          class="group relative w-64 sm:w-80 h-44 sm:h-52 rounded-2xl overflow-hidden shrink-0 cursor-pointer border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-lg hover:shadow-[#e5a93c]/20"
+        >
+          <img
+            src="${item.src}"
+            alt="${item.caption}"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='${item.fallback}';"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/60 px-2 py-0.5 rounded-full">${item.tag}</span>
+              <p class="text-white font-medium text-sm sm:text-base mt-1 drop-shadow">${item.caption}</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#e5a93c] text-white group-hover:text-black flex items-center justify-center transition-colors">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </div>
+      `;
+
+      r1.innerHTML = set1.map(cardHtml).join('');
+      r2.innerHTML = set2.map(cardHtml).join('');
+      lucide.createIcons();
+    }
+
+    renderGallery();
+
+    function toggleMarqueePlay() {
+      const r1 = document.getElementById('marquee-row-1');
+      const r2 = document.getElementById('marquee-row-2');
+      const icon = document.getElementById('play-pause-icon');
+      const label = document.getElementById('play-pause-label');
+
+      isMarqueePaused = !isMarqueePaused;
+      if (isMarqueePaused) {
+        r1.classList.add('paused');
+        r2.classList.add('paused');
+        icon.setAttribute('data-lucide', 'play');
+        if (label) label.innerText = 'Resume Marquee';
+      } else {
+        r1.classList.remove('paused');
+        r2.classList.remove('paused');
+        icon.setAttribute('data-lucide', 'pause');
+        if (label) label.innerText = 'Pause Marquee';
+      }
+      lucide.createIcons();
+    }
+
+    // Lightbox Functions
+    function openLightboxById(id) {
+      const index = galleryData.findIndex(item => item.id === id);
+      if (index !== -1) {
+        currentLightboxIndex = index;
+        showLightboxIndex(currentLightboxIndex);
+      }
+    }
+
+    function showLightboxIndex(idx) {
+      const item = galleryData[idx];
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-image');
+      const cap = document.getElementById('lightbox-caption');
+      const badge = document.getElementById('lightbox-badge');
+      const counter = document.getElementById('lightbox-counter');
+
+      img.src = item.fullSrc;
+      img.onerror = () => { img.src = item.fullFallback; };
+      img.alt = item.caption;
+      cap.innerText = item.caption;
+      badge.innerText = item.tag;
+      counter.innerText = `${idx + 1} of ${galleryData.length}`;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function prevLightboxImage() {
+      currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
+      showLightboxIndex(currentLightboxIndex);
+    }
+
+    function nextLightboxImage() {
+      currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
+      showLightboxIndex(currentLightboxIndex);
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevLightboxImage();
+        if (e.key === 'ArrowRight') nextLightboxImage();
+      }
+    });
+
+    // Close on backdrop click
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+  </script>
+</body>
+</html>
