@@ -14,7 +14,7 @@
   <meta property="og:description" content="A live acapella worship concert curating pure, undiluted vocal worship void of instruments, rich in harmony and spiritual depth. Discover the vision, mission, and programme of SoP 2.0." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sacrificeofpraise.com.ng/about" />
-  <meta property="og:image" content="./header-image.png" />
+  <meta property="og:image" content="./header-image.webp" />
 
   <link rel="icon" type="image/jpeg" href="./sop-logo.jpg" />
 
@@ -621,6 +621,12 @@
               <li><a href="about.html" class="hover:text-[#e5a93c] transition-colors">About SoP 2.0</a></li>
               <li><a href="gallery.html" class="hover:text-[#e5a93c] transition-colors">Photo Gallery</a></li>
               <li><a href="index.html#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+              <li>
+                <button type="button" onclick="openPrivacyModal()" class="hover:text-[#e5a93c] transition-colors inline-flex items-center gap-1.5 cursor-pointer text-left text-slate-300">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Privacy &amp; Data Protection</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -717,8 +723,12 @@
 
       <!-- BOTTOM ROW: UNOBTRUSIVE HOUSE603 LOGO & COPYRIGHT (Explicit Requirement) -->
       <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
-        <div>
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
           <span>© 2026 Sacrifice of Praise (SoP) 2.0. All Rights Reserved.</span>
+          <span class="hidden sm:inline text-slate-600">•</span>
+          <button type="button" onclick="openPrivacyModal()" class="text-[#f8c765] hover:underline font-medium cursor-pointer">
+            Privacy Notice (NDPA / GDPR)
+          </button>
         </div>
 
         <a
@@ -730,7 +740,7 @@
         >
           <span class="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Proudly supported by</span>
           <div class="flex items-center gap-1.5 font-medium text-slate-200">
-            <img src="./house603-logo.png" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" />
+            <img src="./house603-logo.webp" onerror="this.onerror=null; this.src='./house603-logo.png';" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" loading="lazy" />
             <span class="text-white text-xs font-semibold tracking-wide">house603 digital solutions</span>
           </div>
         </a>
@@ -785,6 +795,115 @@
     </div>
   </div>
 
+  <!-- Privacy & Data Protection Modal (NDPA 2023 & GDPR Compliant) -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closePrivacyModal()" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+    <div class="relative max-w-2xl w-full max-h-[90vh] flex flex-col glass-card rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-white/10 bg-[#0b101b]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="privacy-modal-title" class="font-display font-bold text-white text-base sm:text-lg">Privacy &amp; Data Protection Notice</h3>
+            <p class="text-[11px] text-slate-400">Compliant with Nigeria Data Protection Act (NDPA) 2023 &amp; EU GDPR</p>
+          </div>
+        </div>
+        <button type="button" onclick="closePrivacyModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" aria-label="Close privacy notice modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-8 overflow-y-auto space-y-5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <div class="bg-white/5 p-3.5 rounded-xl border border-white/10 text-slate-200 text-xs">
+          <strong>Summary:</strong> We respect your privacy. We collect only the minimum information required to reserve your free seat and generate your admission pass for <strong>Sacrifice of Praise (SoP) 2.0</strong>. We do not use tracking cookies, and we never sell or share your data with third-party marketers.
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="building-2" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>1. Data Controller</span>
+          </h4>
+          <p>
+            The Data Controller for registration records is the <strong>Sacrifice of Praise (SoP) 2.0 Organizing Committee</strong> (supported by House603 Digital Solutions), located in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="database" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>2. Personal Data We Collect &amp; Purpose</span>
+          </h4>
+          <p>When you voluntarily register for the concert, we collect:</p>
+          <ul class="list-disc list-inside space-y-1 text-slate-300 pl-1">
+            <li><strong>Full Name &amp; Congregation/Affiliation:</strong> To personalize your digital event pass, manage seating capacity, and coordinate congregational protocol.</li>
+            <li><strong>Referral Source &amp; Lagos Residency Status:</strong> For anonymous statistical planning and event logistics.</li>
+            <li><strong>Fellowship Expectations (Optional):</strong> To help our worship and protocol teams serve attendees effectively.</li>
+          </ul>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="scale" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>3. Lawful Basis for Processing (NDPA Sec. 25 &amp; GDPR Art. 6)</span>
+          </h4>
+          <p>
+            Your personal data is processed strictly on the basis of your <strong>explicit, informed consent</strong> (provided via the unticked consent checkbox prior to registration) for the sole purpose of event administration and attendee admission.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>4. Data Storage, Security &amp; 90-Day Retention Policy</span>
+          </h4>
+          <p>
+            Registration entries are transmitted over encrypted HTTPS connections to restricted Google Workspace registry sheets accessible only to authorized event leadership. In accordance with data minimization principles, all personal attendee records are <strong>automatically purged within 90 days after the December 12, 2026 event</strong>.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="cookie" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>5. Zero Tracking Cookies &amp; Local Storage</span>
+          </h4>
+          <p>
+            This website does not deploy advertising pixels, cross-site trackers, or third-party analytics cookies. Temporary browser session storage (`sessionStorage`) is used strictly locally on your device to prevent automated bot spam during form submission and is cleared automatically when you close your browser tab.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="user-check" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>6. Your Data Subject Rights &amp; Contact</span>
+          </h4>
+          <p>
+            Under the Nigeria Data Protection Act (NDPA) 2023 and the EU General Data Protection Regulation (GDPR), you have the right to request access to, rectification of, or immediate erasure ("right to be forgotten") of your registration record, or to withdraw your consent at any time. To exercise these rights, please contact our Event Data Protection &amp; Leadership Desk:
+          </p>
+          <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex flex-wrap gap-x-6 gap-y-2 text-xs mt-2">
+            <div>
+              <span class="text-white font-semibold block">Kingsley Bassey (Convener)</span>
+              <a href="mailto:iamksbassey@gmail.com" class="text-[#f8c765] hover:underline">iamksbassey@gmail.com</a> • <a href="tel:+2348138293959" class="text-slate-300 hover:text-white">+234 813 829 3959</a>
+            </div>
+            <div>
+              <span class="text-white font-semibold block">Ajetunmobi Oluwayinka (Strategist)</span>
+              <a href="mailto:yinkajetunmobi@gmail.com" class="text-[#f8c765] hover:underline">yinkajetunmobi@gmail.com</a> • <a href="tel:+2348162749475" class="text-slate-300 hover:text-white">+234 816 274 9475</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 sm:px-8 py-4 border-t border-white/10 bg-[#0b101b] flex items-center justify-between">
+        <span class="text-[11px] text-slate-400">Effective Date: November 2026</span>
+        <button type="button" onclick="closePrivacyModal()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] text-slate-950 font-bold text-xs hover:brightness-110 transition-all cursor-pointer">
+          Close &amp; Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Script Initialization -->
   <script>
     if (window.lucide) {
@@ -829,8 +948,30 @@
       }
     }
 
+    function openPrivacyModal() {
+      const m = document.getElementById('privacy-modal');
+      if (m) {
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function closePrivacyModal() {
+      const m = document.getElementById('privacy-modal');
+      if (m) {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeFlyerModal();
+      if (e.key === 'Escape') {
+        closeFlyerModal();
+        closePrivacyModal();
+      }
     });
   </script>
 </body>

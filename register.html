@@ -13,12 +13,12 @@
   <meta property="og:title" content="Sacrifice of Praise (SoP) 2.0 | Pure Worship. True Sacrifice" />
   <meta property="og:description" content="Join 1,000+ worshippers for an unforgettable live acapella worship experience. Dec 12, 2026 • FCE(T) Lawn Tennis Courts, Akoka, Lagos." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./flyer.webp" />
+  <meta property="og:image" content="./official-flyer.webp" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sacrifice of Praise (SoP) 2.0" />
   <meta name="twitter:description" content="Pure Worship. True Sacrifice. Saturday, December 12, 2026 in Akoka, Lagos." />
-  <meta name="twitter:image" content="./flyer.webp" />
+  <meta name="twitter:image" content="./official-flyer.webp" />
 
   <link rel="icon" type="image/jpeg" href="./sop-logo.jpg" />
   <link rel="icon" type="image/png" href="./sop-logo.png" />
@@ -109,35 +109,6 @@
       box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(229, 169, 60, 0.15);
     }
 
-    /* Infinite Marquee Animations */
-    @keyframes marqueeLeft {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes marqueeRight {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0%); }
-    }
-
-    .animate-marquee-left {
-      display: flex;
-      width: max-content;
-      animation: marqueeLeft 38s linear infinite;
-    }
-    .animate-marquee-right {
-      display: flex;
-      width: max-content;
-      animation: marqueeRight 42s linear infinite;
-    }
-
-    .marquee-container:hover .animate-marquee-left,
-    .marquee-container:hover .animate-marquee-right {
-      animation-play-state: paused;
-    }
-    .paused {
-      animation-play-state: paused !important;
-    }
-
     /* Single-Page Printable Event Pass Styles */
     @media print {
       @page {
@@ -171,6 +142,7 @@
       #navbar,
       #hero,
       #calendar-modal,
+      #privacy-modal,
       #registration-form-wrapper,
       .no-print,
       #registration-success-wrapper > div:first-child,
@@ -611,9 +583,16 @@
             <!-- Hidden Google Form submission helpers for compatibility -->
             <input type="hidden" name="fvv" value="1" />
             <input type="hidden" name="pageHistory" value="0" />
+
+            <!-- Anti-Bot Honeypot Trap (Invisible to human users & screen readers) -->
+            <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;overflow:hidden;pointer-events:none;">
+              <label for="field-hp-trap">Do not fill this field if you are human</label>
+              <input type="text" id="field-hp-trap" tabindex="-1" autocomplete="off" />
+            </div>
+
             <!-- Field 1: Name -->
             <div>
-              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label for="field-name" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                 Name (First and Last Name) <span class="text-[#f8c765]">*</span>
               </label>
               <div class="relative">
@@ -623,6 +602,9 @@
                 <input
                   type="text"
                   required
+                  minlength="2"
+                  maxlength="100"
+                  autocomplete="name"
                   name="entry.2073731394"
                   id="field-name"
                   placeholder="e.g. Brother John Doe"
@@ -633,7 +615,7 @@
 
             <!-- Field 2: Congregation / Church Affiliation -->
             <div>
-              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label for="field-church" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                 Congregation / Church Affiliation <span class="text-[#f8c765]">*</span>
               </label>
               <div class="relative">
@@ -643,6 +625,9 @@
                 <input
                   type="text"
                   required
+                  minlength="2"
+                  maxlength="120"
+                  autocomplete="organization"
                   name="entry.980755877"
                   id="field-church"
                   placeholder="e.g. Church of Christ, Somolu / Other"
@@ -655,7 +640,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <!-- Field 3: Referral Source -->
               <div>
-                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                <label for="field-source-select" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                   How Did You Hear About Us? <span class="text-[#f8c765]">*</span>
                 </label>
                 <div class="relative">
@@ -687,6 +672,7 @@
                     <input
                       type="text"
                       id="field-source-other"
+                      maxlength="80"
                       name="entry.1050780624.other_option_response"
                       placeholder="Please specify (e.g. Friend, Flyer, etc.)"
                       class="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-[#e5a93c]/40 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm"
@@ -697,7 +683,7 @@
 
               <!-- Field 4: Live in Lagos? -->
               <div>
-                <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                <label for="field-lagos-select" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                   Do You Live in Lagos? <span class="text-[#f8c765]">*</span>
                 </label>
                 <div class="relative">
@@ -705,6 +691,7 @@
                     <i data-lucide="map-pin" class="w-4 h-4"></i>
                   </div>
                   <select
+                    id="field-lagos-select"
                     name="entry.877086558"
                     required
                     class="w-full pl-10 pr-4 py-3 bg-[#0d121c] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base appearance-none cursor-pointer"
@@ -718,7 +705,7 @@
 
             <!-- Field 5: Expectations -->
             <div>
-              <label class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label for="field-expectations" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                 What Are Your Expectations for Sacrifice of Praise 2.0?
               </label>
               <div class="relative">
@@ -726,12 +713,42 @@
                   <i data-lucide="message-square" class="w-4 h-4"></i>
                 </div>
                 <textarea
+                  id="field-expectations"
                   rows="3"
+                  maxlength="500"
                   name="entry.2018909557"
                   placeholder="Share what you hope to experience or any fellowship expectations..."
                   class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base resize-none"
                 ></textarea>
               </div>
+            </div>
+
+            <!-- NDPA & GDPR Data Protection Consent Checkbox -->
+            <div class="pt-1">
+              <label for="field-consent" class="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-[#e5a93c]/40 transition-colors cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  id="field-consent"
+                  required
+                  class="mt-0.5 w-4 h-4 rounded border-white/20 bg-black/60 text-[#e5a93c] focus:ring-[#e5a93c] focus:ring-offset-0 accent-[#e5a93c] cursor-pointer shrink-0"
+                />
+                <span class="text-xs text-slate-300 leading-relaxed">
+                  I consent to the collection and processing of my registration details for <strong class="text-white">Sacrifice of Praise 2.0</strong> seat reservation and event pass verification in accordance with the
+                  <button
+                    type="button"
+                    onclick="event.preventDefault(); event.stopPropagation(); openPrivacyModal();"
+                    class="text-[#f8c765] hover:underline font-semibold inline-flex items-center gap-0.5 cursor-pointer"
+                  >
+                    Privacy &amp; Data Protection Notice (NDPA / GDPR)
+                  </button>. <span class="text-[#f8c765]">*</span>
+                </span>
+              </label>
+            </div>
+
+            <!-- Validation / Anti-Spam Alert Banner (Hidden by default) -->
+            <div id="form-validation-error" class="hidden p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs sm:text-sm flex items-start gap-2.5" role="alert">
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+              <span id="form-validation-error-text">Please verify your inputs and try again.</span>
             </div>
 
             <!-- Submit Button -->
@@ -907,6 +924,12 @@
               <li><a href="about.html" class="hover:text-[#e5a93c] transition-colors">About SoP 2.0</a></li>
               <li><a href="gallery.html" class="hover:text-[#e5a93c] transition-colors">Photo Gallery</a></li>
               <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
+              <li>
+                <button type="button" onclick="openPrivacyModal()" class="hover:text-[#e5a93c] transition-colors inline-flex items-center gap-1.5 cursor-pointer text-left text-slate-300">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Privacy &amp; Data Protection</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -1003,8 +1026,12 @@
 
       <!-- BOTTOM ROW: UNOBTRUSIVE HOUSE603 LOGO & COPYRIGHT (Explicit Requirement) -->
       <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
-        <div>
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
           <span>© 2026 Sacrifice of Praise (SoP) 2.0. All Rights Reserved.</span>
+          <span class="hidden sm:inline text-slate-600">•</span>
+          <button type="button" onclick="openPrivacyModal()" class="text-[#f8c765] hover:underline font-medium cursor-pointer">
+            Privacy Notice (NDPA / GDPR)
+          </button>
         </div>
 
         <a
@@ -1016,7 +1043,7 @@
         >
           <span class="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Proudly supported by</span>
           <div class="flex items-center gap-1.5 font-medium text-slate-200">
-            <img src="./house603-logo.png" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" />
+            <img src="./house603-logo.webp" onerror="this.onerror=null; this.src='./house603-logo.png';" alt="House603 Digital Solutions Official Logo" class="h-4 sm:h-5 w-auto object-contain brightness-110" loading="lazy" />
             <span class="text-white text-xs font-semibold tracking-wide">house603 digital solutions</span>
           </div>
         </a>
@@ -1083,6 +1110,115 @@
     </div>
   </div>
 
+  <!-- Privacy & Data Protection Modal (NDPA 2023 & GDPR Compliant) -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6" onclick="closePrivacyModal()" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+    <div class="relative max-w-2xl w-full max-h-[90vh] flex flex-col glass-card rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-white/10 bg-[#0b101b]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="privacy-modal-title" class="font-display font-bold text-white text-base sm:text-lg">Privacy &amp; Data Protection Notice</h3>
+            <p class="text-[11px] text-slate-400">Compliant with Nigeria Data Protection Act (NDPA) 2023 &amp; EU GDPR</p>
+          </div>
+        </div>
+        <button type="button" onclick="closePrivacyModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" aria-label="Close privacy notice modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-8 overflow-y-auto space-y-5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <div class="bg-white/5 p-3.5 rounded-xl border border-white/10 text-slate-200 text-xs">
+          <strong>Summary:</strong> We respect your privacy. We collect only the minimum information required to reserve your free seat and generate your admission pass for <strong>Sacrifice of Praise (SoP) 2.0</strong>. We do not use tracking cookies, and we never sell or share your data with third-party marketers.
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="building-2" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>1. Data Controller</span>
+          </h4>
+          <p>
+            The Data Controller for registration records is the <strong>Sacrifice of Praise (SoP) 2.0 Organizing Committee</strong> (supported by House603 Digital Solutions), located in Lagos, Nigeria.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="database" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>2. Personal Data We Collect &amp; Purpose</span>
+          </h4>
+          <p>When you voluntarily register for the concert, we collect:</p>
+          <ul class="list-disc list-inside space-y-1 text-slate-300 pl-1">
+            <li><strong>Full Name &amp; Congregation/Affiliation:</strong> To personalize your digital event pass, manage seating capacity, and coordinate congregational protocol.</li>
+            <li><strong>Referral Source &amp; Lagos Residency Status:</strong> For anonymous statistical planning and event logistics.</li>
+            <li><strong>Fellowship Expectations (Optional):</strong> To help our worship and protocol teams serve attendees effectively.</li>
+          </ul>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="scale" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>3. Lawful Basis for Processing (NDPA Sec. 25 &amp; GDPR Art. 6)</span>
+          </h4>
+          <p>
+            Your personal data is processed strictly on the basis of your <strong>explicit, informed consent</strong> (provided via the unticked consent checkbox prior to registration) for the sole purpose of event administration and attendee admission.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>4. Data Storage, Security &amp; 90-Day Retention Policy</span>
+          </h4>
+          <p>
+            Registration entries are transmitted over encrypted HTTPS connections to restricted Google Workspace registry sheets accessible only to authorized event leadership. In accordance with data minimization principles, all personal attendee records are <strong>automatically purged within 90 days after the December 12, 2026 event</strong>.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="cookie" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>5. Zero Tracking Cookies &amp; Local Storage</span>
+          </h4>
+          <p>
+            This website does not deploy advertising pixels, cross-site trackers, or third-party analytics cookies. Temporary browser session storage (`sessionStorage`) is used strictly locally on your device to prevent automated bot spam during form submission and is cleared automatically when you close your browser tab.
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="user-check" class="w-4 h-4 text-[#f8c765]"></i>
+            <span>6. Your Data Subject Rights &amp; Contact</span>
+          </h4>
+          <p>
+            Under the Nigeria Data Protection Act (NDPA) 2023 and the EU General Data Protection Regulation (GDPR), you have the right to request access to, rectification of, or immediate erasure ("right to be forgotten") of your registration record, or to withdraw your consent at any time. To exercise these rights, please contact our Event Data Protection &amp; Leadership Desk:
+          </p>
+          <div class="bg-white/5 p-3 rounded-xl border border-white/10 flex flex-wrap gap-x-6 gap-y-2 text-xs mt-2">
+            <div>
+              <span class="text-white font-semibold block">Kingsley Bassey (Convener)</span>
+              <a href="mailto:iamksbassey@gmail.com" class="text-[#f8c765] hover:underline">iamksbassey@gmail.com</a> • <a href="tel:+2348138293959" class="text-slate-300 hover:text-white">+234 813 829 3959</a>
+            </div>
+            <div>
+              <span class="text-white font-semibold block">Ajetunmobi Oluwayinka (Strategist)</span>
+              <a href="mailto:yinkajetunmobi@gmail.com" class="text-[#f8c765] hover:underline">yinkajetunmobi@gmail.com</a> • <a href="tel:+2348162749475" class="text-slate-300 hover:text-white">+234 816 274 9475</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 sm:px-8 py-4 border-t border-white/10 bg-[#0b101b] flex items-center justify-between">
+        <span class="text-[11px] text-slate-400">Effective Date: November 2026</span>
+        <button type="button" onclick="closePrivacyModal()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] text-slate-950 font-bold text-xs hover:brightness-110 transition-all cursor-pointer">
+          Close &amp; Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== 8. VANILLA JAVASCRIPT LOGIC ==================== -->
   <script>
     // Initialize Lucide Icons
@@ -1141,7 +1277,7 @@
       window.location.href = 'gallery.html';
     }
 
-    // 4. Calendar Modal Functions
+    // 4. Calendar & Privacy Modal Functions
     function openCalendarModal() {
       const m = document.getElementById('calendar-modal');
       if (m) {
@@ -1157,8 +1293,26 @@
       }
     }
 
+    function openPrivacyModal() {
+      const m = document.getElementById('privacy-modal');
+      if (m) {
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+    function closePrivacyModal() {
+      const m = document.getElementById('privacy-modal');
+      if (m) {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
     // Google Calendar URL Generator
-    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice')}&dates=20261212T090000Z/20261212T150000Z&details=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 live acapella worship concert. Pure undiluted worship void of instruments, rich in harmony and truth. Register: https://sacrifice-of-praise.web.app')}&location=${encodeURIComponent('Lawn Tennis Courts, Federal College of Education (Technical) [FCE(T)], Akoka, Lagos, Nigeria')}`;
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice')}&dates=20261212T090000Z/20261212T150000Z&details=${encodeURIComponent('Sacrifice of Praise (SoP) 2.0 live acapella worship concert. Pure undiluted worship void of instruments, rich in harmony and truth. Register: https://sacrificeofpraise.com.ng')}&location=${encodeURIComponent('Lawn Tennis Courts, Federal College of Education (Technical) [FCE(T)], Akoka, Lagos, Nigeria')}`;
     document.getElementById('link-google-calendar').href = gCalUrl;
 
     function downloadIcsFile() {
@@ -1168,12 +1322,12 @@ PRODID:-//Sacrifice of Praise//SoP 2.0 Registration//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-SUMMARY:Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice
-UID:${Date.now()}@sacrificeofpraise.org
+UID:${Date.now()}@sacrificeofpraise.com.ng
 DTSTART:20261212T090000Z
 DTEND:20261212T150000Z
+SUMMARY:Sacrifice of Praise (SoP) 2.0 - Pure Worship. True Sacrifice
 LOCATION:Lawn Tennis Courts, FCE(T), Akoka, Lagos, Nigeria
-DESCRIPTION:Sacrifice of Praise 2.0 live acapella worship concert. Pure undiluted worship void of instruments. Register at: https://sacrifice-of-praise.web.app
+DESCRIPTION:Sacrifice of Praise 2.0 live acapella worship concert. Pure undiluted worship void of instruments. Register at: https://sacrificeofpraise.com.ng
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -1191,15 +1345,48 @@ END:VCALENDAR`;
     // Keyboard Shortcuts for Modals
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        closeLightbox();
         closeCalendarModal();
+        closePrivacyModal();
       }
-      if (e.key === 'ArrowLeft') navigateLightbox('prev');
-      if (e.key === 'ArrowRight') navigateLightbox('next');
     });
 
-    // 5. Registration Submission Logic
+    // 5. Registration Submission Logic (Multi-Layer Anti-Spam, Rate-Limiting & Input Sanitization)
     let isSubmittingRegistration = false;
+    let formLoadTimestamp = Date.now();
+
+    function showFormError(msg) {
+      const banner = document.getElementById('form-validation-error');
+      const textEl = document.getElementById('form-validation-error-text');
+      if (banner && textEl) {
+        textEl.innerText = msg;
+        banner.classList.remove('hidden');
+        banner.classList.add('flex');
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function clearFormError() {
+      const banner = document.getElementById('form-validation-error');
+      if (banner) {
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
+      }
+    }
+
+    function sanitizeInput(str, maxLen) {
+      if (!str) return '';
+      return String(str)
+        .replace(/<[^>]*>?/gm, '')
+        .replace(/[\u0000-\u001F\u007F]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, maxLen || 250);
+    }
+
+    function hasSpamContent(str) {
+      if (!str) return false;
+      return /(https?:\/\/|www\.|\[url=|<script|javascript:|onerror=|onload=)/i.test(str);
+    }
 
     function handleSourceChange(selectElem) {
       const otherContainer = document.getElementById('source-other-container');
@@ -1215,12 +1402,91 @@ END:VCALENDAR`;
     }
 
     function handleFormSubmit(e) {
+      clearFormError();
+
       // Guard against rapid duplicate submissions
       if (isSubmittingRegistration) {
         if (e && e.preventDefault) e.preventDefault();
         return false;
       }
+
+      // Layer 1: Invisible Honeypot Trap Check
+      const hpField = document.getElementById('field-hp-trap');
+      if (hpField && hpField.value && hpField.value.trim() !== '') {
+        if (e && e.preventDefault) e.preventDefault();
+        return false;
+      }
+
+      // Layer 2: Submission Time-Trap (< 2.5 seconds indicates automated bot script)
+      if (Date.now() - formLoadTimestamp < 2500) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please take a moment to review your registration details before submitting.');
+        return false;
+      }
+
+      // Layer 3: Session Cooldown & Rate-Limiting
+      try {
+        const lastSubmitTs = parseInt(sessionStorage.getItem('sop_last_submit_ts') || '0', 10);
+        const submitCount = parseInt(sessionStorage.getItem('sop_submit_count') || '0', 10);
+        if (Date.now() - lastSubmitTs < 10000) {
+          if (e && e.preventDefault) e.preventDefault();
+          showFormError('Please wait a few seconds before submitting another registration.');
+          return false;
+        }
+        if (submitCount >= 8) {
+          if (e && e.preventDefault) e.preventDefault();
+          showFormError('Maximum registration limit reached for this browser session.');
+          return false;
+        }
+      } catch (storageErr) {}
+
+      // Layer 4: NDPA / GDPR Explicit Consent Check
+      const consentCheckbox = document.getElementById('field-consent');
+      if (consentCheckbox && !consentCheckbox.checked) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please tick the consent box to confirm you agree to the Privacy & Data Protection Notice.');
+        return false;
+      }
+
+      // Collect & validate inputs
+      const nameInput = document.getElementById('field-name');
+      const churchInput = document.getElementById('field-church');
+      const selectSource = document.getElementById('field-source-select');
+      const otherInput = document.getElementById('field-source-other');
+      const lagosSelect = document.getElementById('field-lagos-select') || document.querySelector('select[name="entry.877086558"]');
+      const expectInput = document.getElementById('field-expectations') || document.querySelector('textarea[name="entry.2018909557"]');
+
+      const rawName = nameInput ? nameInput.value : '';
+      const rawChurch = churchInput ? churchInput.value : '';
+      const rawOther = otherInput ? otherInput.value : '';
+      const rawExpect = expectInput ? expectInput.value : '';
+
+      // Layer 5: Spam / URL / Script Injection Filter
+      if (hasSpamContent(rawName) || hasSpamContent(rawChurch) || hasSpamContent(rawOther) || hasSpamContent(rawExpect)) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Web links (URLs) and HTML tags are not permitted in registration fields.');
+        return false;
+      }
+
+      const name = sanitizeInput(rawName, 100);
+      const church = sanitizeInput(rawChurch, 120);
+      if (name.length < 2 || church.length < 2) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please enter your full name and congregation/affiliation (at least 2 characters).');
+        return false;
+      }
+
+      const rawSource = sanitizeInput(selectSource ? selectSource.value : 'Instagram', 80) || 'Instagram';
+      const otherText = sanitizeInput(rawOther, 80);
+
       isSubmittingRegistration = true;
+
+      // Record rate-limit timestamp in sessionStorage
+      try {
+        const prevCount = parseInt(sessionStorage.getItem('sop_submit_count') || '0', 10);
+        sessionStorage.setItem('sop_last_submit_ts', String(Date.now()));
+        sessionStorage.setItem('sop_submit_count', String(prevCount + 1));
+      } catch (storageErr) {}
 
       // Update button state immediately to give instant visual feedback and block repeat clicks
       const submitBtn = document.getElementById('btn-submit-registration');
@@ -1229,14 +1495,6 @@ END:VCALENDAR`;
         submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Your Pass...</span>';
         if (window.lucide) lucide.createIcons();
       }
-
-      // Collect input values
-      const name = (document.getElementById('field-name').value || '').trim() || 'Worshipper';
-      const church = (document.getElementById('field-church').value || '').trim() || 'Guest';
-      const selectSource = document.getElementById('field-source-select');
-      const rawSource = (selectSource ? selectSource.value : '').trim() || 'Instagram';
-      const otherInput = document.getElementById('field-source-other');
-      const otherText = (otherInput ? otherInput.value : '').trim();
 
       let source = rawSource;
       if (rawSource === 'Other') {
@@ -1247,14 +1505,21 @@ END:VCALENDAR`;
             opt = document.createElement('option');
             opt.value = source;
             opt.text = source;
+            opt.setAttribute('data-custom-other', 'true');
             selectSource.appendChild(opt);
           }
           selectSource.value = source;
         }
       }
 
-      const inLagos = (document.querySelector('select[name="entry.877086558"]').value || '').trim() || 'Yes';
-      const expectations = (document.querySelector('textarea[name="entry.2018909557"]').value || '').trim();
+      const inLagos = sanitizeInput(lagosSelect ? lagosSelect.value : 'Yes', 10) || 'Yes';
+      const expectations = sanitizeInput(rawExpect, 500);
+
+      // Write sanitized values back to form fields before native POST
+      if (nameInput) nameInput.value = name;
+      if (churchInput) churchInput.value = church;
+      if (otherInput) otherInput.value = otherText;
+      if (expectInput) expectInput.value = expectations;
 
       // Synchronize hidden friendly-named inputs for standard iframe POST
       const hName = document.getElementById('hidden-name');
@@ -1270,7 +1535,7 @@ END:VCALENDAR`;
       if (hExpect) hExpect.value = expectations;
       if (hTimestamp) hTimestamp.value = new Date().toISOString();
 
-      // Populate Digital Event Pass
+      // Populate Digital Event Pass using CSPRNG
       const passDisplay = document.getElementById('pass-display-name');
       const passName = document.getElementById('pass-name');
       const passChurch = document.getElementById('pass-church');
@@ -1279,8 +1544,13 @@ END:VCALENDAR`;
       if (passName) passName.innerText = name;
       if (passChurch) passChurch.innerText = church;
       if (passCode) {
-        const randHex = Math.floor(1000 + Math.random() * 9000).toString();
-        passCode.innerText = 'SOP-2026-' + randHex;
+        let randNum = Math.floor(1000 + Math.random() * 9000);
+        if (window.crypto && window.crypto.getRandomValues) {
+          const arr = new Uint32Array(1);
+          window.crypto.getRandomValues(arr);
+          randNum = 1000 + (arr[0] % 9000);
+        }
+        passCode.innerText = 'SOP-2026-' + String(randNum);
       }
 
       // Trigger Confetti Animation
@@ -1307,6 +1577,12 @@ END:VCALENDAR`;
 
     function resetRegistrationForm() {
       isSubmittingRegistration = false;
+      formLoadTimestamp = Date.now();
+      clearFormError();
+      const selectSource = document.getElementById('field-source-select');
+      if (selectSource) {
+        selectSource.querySelectorAll('option[data-custom-other="true"]').forEach(opt => opt.remove());
+      }
       const form = document.getElementById('sop-registration-form');
       if (form) form.reset();
       const otherContainer = document.getElementById('source-other-container');
