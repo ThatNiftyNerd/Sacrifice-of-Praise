@@ -566,13 +566,14 @@
         <div id="registration-form-wrapper">
           <form
             id="sop-registration-form"
-            action="https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdnpO_p3bi6eGIfTuX28QD5zASM-FyOOt-w_aAfMvQZAu39ZA/formResponse"
             method="POST"
             target="hidden_iframe"
             onsubmit="handleFormSubmit(event)"
             class="space-y-6"
           >
-            <!-- Friendly named parameters for Google Apps Script Web App -->
+            <!-- Friendly named parameters for Google Apps Script / Sheet compatibility -->
+            <input type="hidden" name="email" id="hidden-email" />
             <input type="hidden" name="name" id="hidden-name" />
             <input type="hidden" name="church" id="hidden-church" />
             <input type="hidden" name="source" id="hidden-source" />
@@ -588,6 +589,28 @@
             <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;overflow:hidden;pointer-events:none;">
               <label for="field-hp-trap">Do not fill this field if you are human</label>
               <input type="text" id="field-hp-trap" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Field 0: Email Address (Compulsory) -->
+            <div>
+              <label for="field-email" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Email Address <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="email"
+                  required
+                  maxlength="120"
+                  autocomplete="email"
+                  name="emailAddress"
+                  id="field-email"
+                  placeholder="e.g. johndoe@example.com"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
             </div>
 
             <!-- Field 1: Name -->
@@ -733,7 +756,7 @@
                   class="mt-0.5 w-4 h-4 rounded border-white/20 bg-black/60 text-[#e5a93c] focus:ring-[#e5a93c] focus:ring-offset-0 accent-[#e5a93c] cursor-pointer shrink-0"
                 />
                 <span class="text-xs text-slate-300 leading-relaxed">
-                  I consent to the collection and processing of my registration details for <strong class="text-white">Sacrifice of Praise 2.0</strong> seat reservation and event pass verification in accordance with the
+                  I consent to the collection and processing of my registration details (including my email address for event reminders, programme updates, pass verification, and official <strong class="text-white">Sacrifice of Praise</strong> communications) in accordance with the
                   <button
                     type="button"
                     onclick="event.preventDefault(); event.stopPropagation(); openPrivacyModal();"
@@ -814,6 +837,10 @@
               <div class="flex justify-between">
                 <span class="text-slate-400 print-label">Attendee:</span>
                 <span id="pass-name" class="text-white print-val font-semibold">Guest</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 print-label">Email:</span>
+                <span id="pass-email" class="text-white print-val font-medium break-all text-right">worshipper@example.com</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-slate-400 print-label">Affiliation:</span>
@@ -1152,6 +1179,7 @@
           </h4>
           <p>When you voluntarily register for the concert, we collect:</p>
           <ul class="list-disc list-inside space-y-1 text-slate-300 pl-1">
+            <li><strong>Email Address (Compulsory):</strong> For digital event pass verification, event reminders, programme updates, and official Sacrifice of Praise communications.</li>
             <li><strong>Full Name &amp; Congregation/Affiliation:</strong> To personalize your digital event pass, manage seating capacity, and coordinate congregational protocol.</li>
             <li><strong>Referral Source &amp; Lagos Residency Status:</strong> For anonymous statistical planning and event logistics.</li>
             <li><strong>Fellowship Expectations (Optional):</strong> To help our worship and protocol teams serve attendees effectively.</li>
@@ -1449,6 +1477,7 @@ END:VCALENDAR`;
       }
 
       // Collect & validate inputs
+      const emailInput = document.getElementById('field-email');
       const nameInput = document.getElementById('field-name');
       const churchInput = document.getElementById('field-church');
       const selectSource = document.getElementById('field-source-select');
@@ -1456,15 +1485,24 @@ END:VCALENDAR`;
       const lagosSelect = document.getElementById('field-lagos-select') || document.querySelector('select[name="entry.877086558"]');
       const expectInput = document.getElementById('field-expectations') || document.querySelector('textarea[name="entry.2018909557"]');
 
+      const rawEmail = emailInput ? emailInput.value : '';
       const rawName = nameInput ? nameInput.value : '';
       const rawChurch = churchInput ? churchInput.value : '';
       const rawOther = otherInput ? otherInput.value : '';
       const rawExpect = expectInput ? expectInput.value : '';
 
       // Layer 5: Spam / URL / Script Injection Filter
-      if (hasSpamContent(rawName) || hasSpamContent(rawChurch) || hasSpamContent(rawOther) || hasSpamContent(rawExpect)) {
+      if (hasSpamContent(rawEmail) || hasSpamContent(rawName) || hasSpamContent(rawChurch) || hasSpamContent(rawOther) || hasSpamContent(rawExpect)) {
         if (e && e.preventDefault) e.preventDefault();
         showFormError('Web links (URLs) and HTML tags are not permitted in registration fields.');
+        return false;
+      }
+
+      const email = sanitizeInput(rawEmail, 120).toLowerCase();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!email || !emailRegex.test(email)) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please enter a valid email address (e.g. name@example.com).');
         return false;
       }
 
@@ -1516,18 +1554,21 @@ END:VCALENDAR`;
       const expectations = sanitizeInput(rawExpect, 500);
 
       // Write sanitized values back to form fields before native POST
+      if (emailInput) emailInput.value = email;
       if (nameInput) nameInput.value = name;
       if (churchInput) churchInput.value = church;
       if (otherInput) otherInput.value = otherText;
       if (expectInput) expectInput.value = expectations;
 
       // Synchronize hidden friendly-named inputs for standard iframe POST
+      const hEmail = document.getElementById('hidden-email');
       const hName = document.getElementById('hidden-name');
       const hChurch = document.getElementById('hidden-church');
       const hSource = document.getElementById('hidden-source');
       const hLagos = document.getElementById('hidden-inLagos');
       const hExpect = document.getElementById('hidden-expectations');
       const hTimestamp = document.getElementById('hidden-timestamp');
+      if (hEmail) hEmail.value = email;
       if (hName) hName.value = name;
       if (hChurch) hChurch.value = church;
       if (hSource) hSource.value = source;
@@ -1535,13 +1576,40 @@ END:VCALENDAR`;
       if (hExpect) hExpect.value = expectations;
       if (hTimestamp) hTimestamp.value = new Date().toISOString();
 
+      // Secondary non-blocking dispatch to Google Apps Script Web App backup
+      try {
+        const backupPayload = new URLSearchParams({
+          email: email,
+          emailAddress: email,
+          name: name,
+          church: church,
+          source: source,
+          inLagos: inLagos,
+          expectations: expectations,
+          'entry.2073731394': name,
+          'entry.980755877': church,
+          'entry.1050780624': source,
+          'entry.877086558': inLagos,
+          'entry.2018909557': expectations,
+          timestamp: new Date().toISOString()
+        });
+        fetch('https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: backupPayload.toString()
+        }).catch(() => {});
+      } catch (backupErr) {}
+
       // Populate Digital Event Pass using CSPRNG
       const passDisplay = document.getElementById('pass-display-name');
       const passName = document.getElementById('pass-name');
+      const passEmail = document.getElementById('pass-email');
       const passChurch = document.getElementById('pass-church');
       const passCode = document.getElementById('pass-code');
       if (passDisplay) passDisplay.innerText = name;
       if (passName) passName.innerText = name;
+      if (passEmail) passEmail.innerText = email;
       if (passChurch) passChurch.innerText = church;
       if (passCode) {
         let randNum = Math.floor(1000 + Math.random() * 9000);
