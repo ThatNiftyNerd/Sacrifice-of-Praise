@@ -161,12 +161,22 @@
           </div>
         </a>
 
-        <!-- TOP RIGHT CORNER BUTTONS (Core User Requirement) -->
-        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3.5 shrink-0">
-          <!-- Button 1: Gallery with animated scroll indicator -->
+        <!-- TOP RIGHT CORNER BUTTONS -->
+        <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
+          <!-- Button 1: About -->
+          <a
+            href="about.html"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0 cursor-pointer"
+            title="About Sacrifice of Praise"
+          >
+            <i data-lucide="info" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
+            <span>About</span>
+          </a>
+
+          <!-- Button 2: Gallery with animated scroll indicator -->
           <a
             href="#gallery"
-            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0"
+            class="group inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-sm hover:shadow-[#e5a93c]/10 shrink-0 cursor-pointer"
             title="View Gallery"
           >
             <i data-lucide="images" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
@@ -178,10 +188,10 @@
             </span>
           </a>
 
-          <!-- Button 2: Register Now (fills Google Form) -->
+          <!-- Button 3: Register Now -->
           <a
             href="#register"
-            class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
+            class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-lg shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0 cursor-pointer"
             title="Register for Sacrifice of Praise 2.0"
           >
             <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950"></i>
@@ -242,7 +252,7 @@
       </div>
 
       <!-- Hero Action CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-14">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-10">
         <a
           href="#register"
           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/30 hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer"
@@ -258,6 +268,30 @@
           <i data-lucide="images" class="w-4 h-4 sm:w-5 sm:h-5 text-[#e5a93c] group-hover:scale-110 transition-transform"></i>
           <span>Explore Gallery</span>
         </a>
+      </div>
+
+      <!-- KEY EVENT HIGHLIGHT CARDS (Relocated just before the Countdown Card) -->
+      <div class="w-full max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">1,000+</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Expected Attendance</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Believers across Lagos</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">100%</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Pure Acapella</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Rich in harmony & truth</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">4 Hours</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Undiluted Worship</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">10:00 AM – 2:00 PM</p>
+        </div>
+        <div class="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/10 text-center flex flex-col items-center justify-center">
+          <span class="font-display text-2xl sm:text-3xl font-black gold-gradient-text">FREE</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-200 mt-1">Admission</h4>
+          <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Registration required</p>
+        </div>
       </div>
 
       <!-- COUNTDOWN TIMER CARD -->
@@ -309,103 +343,63 @@
     </div>
   </section>
 
-  <!-- ==================== 3. PROGRAMME & EVENT DESCRIPTION ==================== -->
-  <section id="programme" class="py-24 relative bg-[#090d14]/80 border-t border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <!-- ==================== 3. ABOUT TEASER ==================== -->
+  <section id="about" class="py-20 relative bg-[#090d14]/80 border-t border-b border-white/5">
+    <div id="programme" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4">
-          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-          <span>Programme</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-          Pure Worship. <span class="gold-gradient-text">True Sacrifice.</span>
-        </h2>
-      </div>
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-60 h-60 bg-[#e5a93c]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- Main Description Card -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
-        <div class="lg:col-span-7 glass-card rounded-3xl p-8 sm:p-10 border border-white/10 shadow-xl relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-[#e5a93c]/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white mb-6">
-            What is <span class="text-[#f8c765]">Sacrifice of Praise</span>?
-          </h3>
-
-          <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-            <p>
-              <strong class="text-white">Sacrifice of Praise (SoP)</strong> is a live acapella worship concert designed to deliver a spiritually transformative experience rooted in <span class="text-[#f8c765] font-semibold">Hebrews 13:15</span>.
-            </p>
-            <p>
-              This event brings together believers and non-believers alike in a unique atmosphere of <span class="text-white font-medium">pure, undiluted worship – void of instruments, but rich in harmony, truth, and spiritual depth</span>.
-            </p>
-            <p class="text-sm sm:text-base text-slate-400 bg-white/5 p-4 rounded-2xl border border-white/5">
-              <span class="text-white font-semibold">SoP 2.0 Movement:</span> Building on the foundation set in the maiden edition, SoP 2.0 is expanding as a widely recognized worship movement across Nigeria and beyond, thereby promoting the fellowship of the Church of Christ.
-            </p>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-3">
+              <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+              <span>About SoP 2.0</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+              Pure Worship. <span class="gold-gradient-text">True Sacrifice.</span>
+            </h2>
           </div>
 
-          <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-[#e5a93c]/15 border border-[#e5a93c]/30 flex items-center justify-center shrink-0">
-              <i data-lucide="music" class="w-6 h-6 text-[#f8c765]"></i>
+          <a
+            href="about.html"
+            class="inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-slate-900 bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-md hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer"
+          >
+            <span>Read Full Story & Mission</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-900"></i>
+          </a>
+        </div>
+
+        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            <strong class="text-white">Sacrifice of Praise (SoP)</strong> is a live acapella worship concert designed to deliver a spiritually transformative experience rooted in <span class="text-[#f8c765] font-semibold">Hebrews 13:15</span>.
+          </p>
+          <p>
+            This event brings together believers and non-believers alike in a unique atmosphere of <span class="text-white font-medium">pure, undiluted worship — void of instruments, but rich in harmony, truth, and spiritual depth</span>.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-400 bg-white/5 p-4 rounded-xl border border-white/5">
+            <span class="text-white font-semibold">The Movement:</span> Expanding as a widely recognized worship movement across Nigeria and beyond, promoting the fellowship of the Church of Christ.
+          </p>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#e5a93c]/15 border border-[#e5a93c]/30 flex items-center justify-center shrink-0">
+              <i data-lucide="music" class="w-5 h-5 text-[#f8c765]"></i>
             </div>
             <div>
-              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Scriptural Heritage</p>
-              <p class="text-sm font-medium text-slate-200">“The fruit of lips that openly profess His name.” — Heb. 13:15</p>
+              <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Scriptural Heritage</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-200">“The fruit of lips that openly profess His name.” — Heb. 13:15</p>
             </div>
           </div>
-        </div>
 
-        <!-- Event Key Statistics -->
-        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
-            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">1,000+</span>
-            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Expected Attendance</h4>
-            <p class="text-xs text-slate-400 mt-1">Believers, youth & seekers across Lagos</p>
-          </div>
-          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
-            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">100%</span>
-            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Pure Acapella</h4>
-            <p class="text-xs text-slate-400 mt-1">Void of instruments, rich in harmony</p>
-          </div>
-          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
-            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">4 Hours</span>
-            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Undiluted Worship</h4>
-            <p class="text-xs text-slate-400 mt-1">10:00 AM – 2:00 PM (GMT/WAT)</p>
-          </div>
-          <div class="glass-card glass-card-hover rounded-2xl p-6 border border-white/10">
-            <span class="font-display text-3xl sm:text-4xl font-black gold-gradient-text">FREE</span>
-            <h4 class="font-bold text-sm sm:text-base text-slate-200 mt-2">Admission</h4>
-            <p class="text-xs text-slate-400 mt-1">Open to all • Registration required</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vision & Mission -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        <div class="glass-card glass-card-hover rounded-3xl p-8 border border-white/10">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-6 text-[#f8c765]">
-            <i data-lucide="target" class="w-6 h-6"></i>
-          </div>
-          <span class="text-xs font-bold tracking-widest uppercase text-[#f8c765] block mb-2">Our Vision</span>
-          <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-3">
-            To win souls, deepen authentic worship, and redefine acapella expression for a new generation.
-          </h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Leading a generation into Christ through transformative worship, elevating standards of authentic 21st-century Christian worship, and preserving sacred vocal music.
-          </p>
-        </div>
-
-        <div class="glass-card glass-card-hover rounded-3xl p-8 border border-white/10">
-          <div class="w-12 h-12 rounded-2xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center mb-6 text-sky-400">
-            <i data-lucide="compass" class="w-6 h-6"></i>
-          </div>
-          <span class="text-xs font-bold tracking-widest uppercase text-sky-400 block mb-2">Our Mission</span>
-          <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-3">
-            To deliver culturally relevant, biblically grounded acapella worship experiences that unite and inspire.
-          </h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Curating Christ-centered worship experiences that inspire genuine devotion, foster unity across the body of Christ, and engage diverse audiences without compromising scriptural truth.
-          </p>
+          <a
+            href="about.html"
+            class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#f8c765] hover:text-[#f3b742] transition-colors"
+          >
+            <span>Explore Vision, Mission & Programme</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
         </div>
       </div>
 
@@ -783,8 +777,8 @@
             <h4 class="text-xs font-bold uppercase tracking-wider text-white">Quick Navigation</h4>
             <ul class="space-y-2 text-sm">
               <li><a href="#hero" class="hover:text-[#e5a93c] transition-colors">Home & Countdown</a></li>
-              <li><a href="#programme" class="hover:text-[#e5a93c] transition-colors">Programme & Story</a></li>
-              <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Gallery</a></li>
+              <li><a href="about.html" class="hover:text-[#e5a93c] transition-colors">About SoP 2.0</a></li>
+              <li><a href="#gallery" class="hover:text-[#e5a93c] transition-colors">Photo Gallery</a></li>
               <li><a href="#register" class="hover:text-[#e5a93c] transition-colors text-[#f8c765] font-semibold">Register Free</a></li>
             </ul>
           </div>
