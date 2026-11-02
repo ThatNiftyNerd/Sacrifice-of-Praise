@@ -572,15 +572,6 @@
             onsubmit="handleFormSubmit(event)"
             class="space-y-6"
           >
-            <!-- Friendly named parameters for Google Apps Script / Sheet compatibility -->
-            <input type="hidden" name="email" id="hidden-email" />
-            <input type="hidden" name="name" id="hidden-name" />
-            <input type="hidden" name="church" id="hidden-church" />
-            <input type="hidden" name="source" id="hidden-source" />
-            <input type="hidden" name="inLagos" id="hidden-inLagos" />
-            <input type="hidden" name="expectations" id="hidden-expectations" />
-            <input type="hidden" name="timestamp" id="hidden-timestamp" />
-
             <!-- Hidden Google Form submission helpers for compatibility -->
             <input type="hidden" name="fvv" value="1" />
             <input type="hidden" name="pageHistory" value="0" />
@@ -682,7 +673,7 @@
                     <option value="Facebook">Facebook</option>
                     <option value="Twitter/X">Twitter/X</option>
                     <option value="LinkedIn">LinkedIn</option>
-                    <option value="Other">Other</option>
+                    <option value="__other_option__">Other</option>
                   </select>
                 </div>
 
@@ -696,6 +687,7 @@
                       type="text"
                       id="field-source-other"
                       maxlength="80"
+                      disabled
                       name="entry.1050780624.other_option_response"
                       placeholder="Please specify (e.g. Friend, Flyer, etc.)"
                       class="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-[#e5a93c]/40 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm"
@@ -1420,12 +1412,20 @@ END:VCALENDAR`;
       const otherContainer = document.getElementById('source-other-container');
       const otherInput = document.getElementById('field-source-other');
       if (!otherContainer) return;
-      if (selectElem.value === 'Other') {
+      if (selectElem.value === '__other_option__' || selectElem.value === 'Other') {
         otherContainer.classList.remove('hidden');
-        if (otherInput) otherInput.focus();
+        if (otherInput) {
+          otherInput.disabled = false;
+          otherInput.required = true;
+          otherInput.focus();
+        }
       } else {
         otherContainer.classList.add('hidden');
-        if (otherInput) otherInput.value = '';
+        if (otherInput) {
+          otherInput.disabled = true;
+          otherInput.required = false;
+          otherInput.value = '';
+        }
       }
     }
 
@@ -1515,7 +1515,15 @@ END:VCALENDAR`;
       }
 
       const rawSource = sanitizeInput(selectSource ? selectSource.value : 'Instagram', 80) || 'Instagram';
+      const isOtherSelected = (rawSource === '__other_option__' || rawSource === 'Other');
       const otherText = sanitizeInput(rawOther, 80);
+
+      if (isOtherSelected && !otherText) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please specify how you heard about us in the "Other" field.');
+        if (otherInput) otherInput.focus();
+        return false;
+      }
 
       isSubmittingRegistration = true;
 
@@ -1534,72 +1542,22 @@ END:VCALENDAR`;
         if (window.lucide) lucide.createIcons();
       }
 
-      let source = rawSource;
-      if (rawSource === 'Other') {
-        source = otherText ? `Other (${otherText})` : 'Other';
-        if (selectSource) {
-          let opt = selectSource.querySelector('option[value="' + CSS.escape(source) + '"]');
-          if (!opt) {
-            opt = document.createElement('option');
-            opt.value = source;
-            opt.text = source;
-            opt.setAttribute('data-custom-other', 'true');
-            selectSource.appendChild(opt);
-          }
-          selectSource.value = source;
-        }
-      }
-
       const inLagos = sanitizeInput(lagosSelect ? lagosSelect.value : 'Yes', 10) || 'Yes';
       const expectations = sanitizeInput(rawExpect, 500);
 
-      // Write sanitized values back to form fields before native POST
+      // Write sanitized values back to form fields before native POST to Google Forms formResponse
       if (emailInput) emailInput.value = email;
       if (nameInput) nameInput.value = name;
       if (churchInput) churchInput.value = church;
-      if (otherInput) otherInput.value = otherText;
+      if (selectSource) {
+        selectSource.value = isOtherSelected ? '__other_option__' : rawSource;
+      }
+      if (otherInput) {
+        otherInput.disabled = !isOtherSelected;
+        otherInput.value = isOtherSelected ? otherText : '';
+      }
+      if (lagosSelect) lagosSelect.value = inLagos;
       if (expectInput) expectInput.value = expectations;
-
-      // Synchronize hidden friendly-named inputs for standard iframe POST
-      const hEmail = document.getElementById('hidden-email');
-      const hName = document.getElementById('hidden-name');
-      const hChurch = document.getElementById('hidden-church');
-      const hSource = document.getElementById('hidden-source');
-      const hLagos = document.getElementById('hidden-inLagos');
-      const hExpect = document.getElementById('hidden-expectations');
-      const hTimestamp = document.getElementById('hidden-timestamp');
-      if (hEmail) hEmail.value = email;
-      if (hName) hName.value = name;
-      if (hChurch) hChurch.value = church;
-      if (hSource) hSource.value = source;
-      if (hLagos) hLagos.value = inLagos;
-      if (hExpect) hExpect.value = expectations;
-      if (hTimestamp) hTimestamp.value = new Date().toISOString();
-
-      // Secondary non-blocking dispatch to Google Apps Script Web App backup
-      try {
-        const backupPayload = new URLSearchParams({
-          email: email,
-          emailAddress: email,
-          name: name,
-          church: church,
-          source: source,
-          inLagos: inLagos,
-          expectations: expectations,
-          'entry.2073731394': name,
-          'entry.980755877': church,
-          'entry.1050780624': source,
-          'entry.877086558': inLagos,
-          'entry.2018909557': expectations,
-          timestamp: new Date().toISOString()
-        });
-        fetch('https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: backupPayload.toString()
-        }).catch(() => {});
-      } catch (backupErr) {}
 
       // Populate Digital Event Pass using CSPRNG
       const passDisplay = document.getElementById('pass-display-name');
@@ -1647,14 +1605,16 @@ END:VCALENDAR`;
       isSubmittingRegistration = false;
       formLoadTimestamp = Date.now();
       clearFormError();
-      const selectSource = document.getElementById('field-source-select');
-      if (selectSource) {
-        selectSource.querySelectorAll('option[data-custom-other="true"]').forEach(opt => opt.remove());
-      }
       const form = document.getElementById('sop-registration-form');
       if (form) form.reset();
       const otherContainer = document.getElementById('source-other-container');
       if (otherContainer) otherContainer.classList.add('hidden');
+      const otherInput = document.getElementById('field-source-other');
+      if (otherInput) {
+        otherInput.disabled = true;
+        otherInput.required = false;
+        otherInput.value = '';
+      }
       const submitBtn = document.getElementById('btn-submit-registration');
       if (submitBtn) {
         submitBtn.disabled = false;
