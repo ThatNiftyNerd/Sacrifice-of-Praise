@@ -504,7 +504,7 @@
             action="https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec"
             method="POST"
             target="hidden_iframe"
-            onsubmit="handleFormSubmit(event)"
+            onsubmit="return handleFormSubmit(event)"
             class="space-y-6"
           >
             <!-- Friendly named parameters for Google Apps Script Web App -->
@@ -626,11 +626,14 @@
               <button
                 type="submit"
                 id="btn-submit-registration"
-                class="w-full py-4 px-6 rounded-2xl text-slate-950 font-bold text-base bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                class="w-full py-4 px-6 rounded-2xl text-slate-950 font-bold text-base bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] hover:brightness-110 shadow-xl shadow-[#e5a93c]/25 hover:shadow-[#e5a93c]/40 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <i data-lucide="sparkles" class="w-5 h-5"></i>
                 <span>Complete Free Registration</span>
               </button>
+              <p id="registration-error" class="hidden mt-3 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3 text-center">
+                Something went wrong sending your registration. Please try again, or use the direct Google Form link below.
+              </p>
             </div>
 
             <!-- Direct Google Form Fallback -->
@@ -1180,7 +1183,32 @@ END:VCALENDAR`;
     });
 
     // 5. Registration Submission Logic
-    function handleFormSubmit(e) {
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec';
+
+    function setSubmitState(state) {
+      const submitBtn = document.getElementById('btn-submit-registration');
+      const errorMsg = document.getElementById('registration-error');
+      if (!submitBtn) return;
+
+      if (state === 'loading') {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Your Pass...</span>';
+        if (errorMsg) errorMsg.classList.add('hidden');
+      } else if (state === 'error') {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i data-lucide="sparkles" class="w-5 h-5"></i><span>Complete Free Registration</span>';
+        if (errorMsg) errorMsg.classList.remove('hidden');
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i data-lucide="sparkles" class="w-5 h-5"></i><span>Complete Free Registration</span>';
+        if (errorMsg) errorMsg.classList.add('hidden');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
       // Collect input values
       const name = (document.getElementById('field-name').value || '').trim() || 'Worshipper';
       const church = (document.getElementById('field-church').value || '').trim() || 'Guest';
@@ -1188,91 +1216,73 @@ END:VCALENDAR`;
       const inLagos = (document.querySelector('select[name="entry.877086558"]').value || '').trim() || 'Yes';
       const expectations = (document.querySelector('textarea[name="entry.2018909557"]').value || '').trim();
 
-      // Synchronize hidden friendly-named inputs for standard iframe POST
-      const hName = document.getElementById('hidden-name');
-      const hChurch = document.getElementById('hidden-church');
-      const hSource = document.getElementById('hidden-source');
-      const hLagos = document.getElementById('hidden-inLagos');
-      const hExpect = document.getElementById('hidden-expectations');
-      if (hName) hName.value = name;
-      if (hChurch) hChurch.value = church;
-      if (hSource) hSource.value = source;
-      if (hLagos) hLagos.value = inLagos;
-      if (hExpect) hExpect.value = expectations;
+      setSubmitState('loading');
 
-      // Populate Digital Event Pass
-      const passDisplay = document.getElementById('pass-display-name');
-      const passName = document.getElementById('pass-name');
-      const passChurch = document.getElementById('pass-church');
-      const passCode = document.getElementById('pass-code');
-      if (passDisplay) passDisplay.innerText = name;
-      if (passName) passName.innerText = name;
-      if (passChurch) passChurch.innerText = church;
-      if (passCode) {
-        const randHex = Math.floor(1000 + Math.random() * 9000).toString();
-        passCode.innerText = 'SOP-2026-' + randHex;
-      }
+      const payload = new URLSearchParams({
+        name: name,
+        church: church,
+        source: source,
+        inLagos: inLagos,
+        expectations: expectations,
+        'entry.2073731394': name,
+        'entry.980755877': church,
+        'entry.1050780624': source,
+        'entry.877086558': inLagos,
+        'entry.2018909557': expectations,
+        timestamp: new Date().toISOString()
+      });
 
-      // Dual Submission: Google Apps Script Web App Endpoint
-      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxT0_NvgKK0q6nD_UJ8cXmslGDZDtBe8rMIIB0hAcTMdP0fY6HgFYY3fTPoUNOo6p3I/exec';
       try {
-        const payload = new URLSearchParams({
-          name: name,
-          church: church,
-          source: source,
-          inLagos: inLagos,
-          expectations: expectations,
-          'entry.2073731394': name,
-          'entry.980755877': church,
-          'entry.1050780624': source,
-          'entry.877086558': inLagos,
-          'entry.2018909557': expectations,
-          timestamp: new Date().toISOString()
-        });
-
-        fetch(APPS_SCRIPT_URL, {
+        const response = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: payload.toString()
-        }).catch(() => {});
-      } catch (err) {}
-
-      // Update button state during processing
-      const submitBtn = document.getElementById('btn-submit-registration');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Your Pass...</span>';
-        if (window.lucide) lucide.createIcons();
-      }
-
-      // Trigger Confetti Animation
-      try {
-        confetti({
-          particleCount: 120,
-          spread: 75,
-          origin: { y: 0.6 },
-          colors: ['#e5a93c', '#f8c765', '#ffffff', '#38bdf8']
         });
-      } catch (err) {}
 
-      // Transition to Success State
-      setTimeout(() => {
+        if (!response.ok) {
+          throw new Error('Registration endpoint responded with status ' + response.status);
+        }
+
+        // Populate Digital Event Pass
+        const passDisplay = document.getElementById('pass-display-name');
+        const passName = document.getElementById('pass-name');
+        const passChurch = document.getElementById('pass-church');
+        const passCode = document.getElementById('pass-code');
+        if (passDisplay) passDisplay.innerText = name;
+        if (passName) passName.innerText = name;
+        if (passChurch) passChurch.innerText = church;
+        if (passCode) {
+          const randHex = Math.floor(1000 + Math.random() * 9000).toString();
+          passCode.innerText = 'SOP-2026-' + randHex;
+        }
+
+        // Trigger Confetti Animation
+        try {
+          confetti({
+            particleCount: 120,
+            spread: 75,
+            origin: { y: 0.6 },
+            colors: ['#e5a93c', '#f8c765', '#ffffff', '#38bdf8']
+          });
+        } catch (err) {}
+
+        setSubmitState('success');
         document.getElementById('registration-form-wrapper').classList.add('hidden');
         document.getElementById('registration-success-wrapper').classList.remove('hidden');
         document.getElementById('registration-success-wrapper').scrollIntoView({ behavior: 'smooth' });
         if (window.lucide) lucide.createIcons();
-      }, 700);
+      } catch (err) {
+        console.error('SoP registration submission failed:', err);
+        setSubmitState('error');
+      }
+
+      return false;
     }
 
     function resetRegistrationForm() {
       const form = document.getElementById('sop-registration-form');
       if (form) form.reset();
-      const submitBtn = document.getElementById('btn-submit-registration');
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i data-lucide="sparkles" class="w-5 h-5"></i><span>Complete Free Registration</span>';
-      }
+      setSubmitState('idle');
       document.getElementById('registration-success-wrapper').classList.add('hidden');
       document.getElementById('registration-form-wrapper').classList.remove('hidden');
       document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
