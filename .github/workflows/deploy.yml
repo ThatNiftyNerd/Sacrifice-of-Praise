@@ -1,0 +1,86 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Quality & Script Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify HTML & Inline Scripts Syntax
+        run: |
+          node -e "
+          const fs = require('fs');
+          const pages = ['index.html', 'about.html', 'gallery.html', 'register.html'];
+          pages.forEach(p => {
+            if (!fs.existsSync(p)) throw new Error('Missing page: ' + p);
+            const html = fs.readFileSync(p, 'utf8');
+            const scripts = [...html.matchAll(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/g)];
+            scripts.forEach((match, idx) => {
+              try {
+                new Function(match[1]);
+              } catch (err) {
+                console.error('Syntax error in ' + p + ' script #' + idx + ':', err);
+                process.exit(1);
+              }
+            });
+            console.log('✓ ' + p + ' validated successfully (' + scripts.length + ' inline script blocks)');
+          });
+          "
+
+      - name: Verify Essential Media Assets
+        run: |
+          node -e "
+          const fs = require('fs');
+          const required = [
+            'sop-logo.jpg',
+            'official-flyer.webp',
+            'house603-logo.webp',
+            'firebase.json',
+            'gallery/yt-mwUB-btm4yo.webp',
+            'gallery/yt-dk1tD742a4E.webp',
+            'gallery/yt-5gc_mAL1Glk.webp'
+          ];
+          required.forEach(file => {
+            if (!fs.existsSync(file)) {
+              console.error('Missing required asset: ' + file);
+              process.exit(1);
+            }
+            console.log('✓ Asset present: ' + file);
+          });
+          "
+
+  deploy:
+    name: Deploy to Firebase Hosting
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SACRIFICE_OF_PRAISE }}
+          channelId: live
+          projectId: sacrifice-of-praise
