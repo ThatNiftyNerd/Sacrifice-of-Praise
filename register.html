@@ -627,7 +627,29 @@
               </div>
             </div>
 
-            <!-- Field 2: Congregation / Church Affiliation -->
+            <!-- Field 2: Phone Number (WhatsApp) -->
+            <div>
+              <label for="field-phone" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
+                Phone Number (WhatsApp) <span class="text-[#f8c765]">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+                <input
+                  type="tel"
+                  required
+                  maxlength="25"
+                  autocomplete="tel"
+                  name="entry.2018909557"
+                  id="field-phone"
+                  placeholder="e.g. 0813 829 3959 or +234 813 829 3959"
+                  class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base"
+                />
+              </div>
+            </div>
+
+            <!-- Field 3: Congregation / Church Affiliation -->
             <div>
               <label for="field-church" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                 Congregation / Church Affiliation <span class="text-[#f8c765]">*</span>
@@ -650,9 +672,9 @@
               </div>
             </div>
 
-            <!-- Fields 3 & 4: Two-column grid -->
+            <!-- Fields 4 & 5: Two-column grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <!-- Field 3: Referral Source -->
+              <!-- Field 4: Referral Source -->
               <div>
                 <label for="field-source-select" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                   How Did You Hear About Us? <span class="text-[#f8c765]">*</span>
@@ -696,7 +718,7 @@
                 </div>
               </div>
 
-              <!-- Field 4: Live in Lagos? -->
+              <!-- Field 5: Live in Lagos? -->
               <div>
                 <label for="field-lagos-select" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
                   Do You Live in Lagos? <span class="text-[#f8c765]">*</span>
@@ -718,10 +740,10 @@
               </div>
             </div>
 
-            <!-- Field 5: Expectations -->
+            <!-- Field 6: Expectations -->
             <div>
               <label for="field-expectations" class="block text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 mb-2">
-                What Are Your Expectations for Sacrifice of Praise 2.0?
+                What Are Your Expectations for Sacrifice of Praise 2.0? <span class="text-[#f8c765]">*</span>
               </label>
               <div class="relative">
                 <div class="absolute top-3.5 left-3.5 pointer-events-none text-slate-500">
@@ -729,9 +751,10 @@
                 </div>
                 <textarea
                   id="field-expectations"
+                  required
                   rows="3"
                   maxlength="500"
-                  name="entry.2018909557"
+                  name="entry.787900012"
                   placeholder="Share what you hope to experience or any fellowship expectations..."
                   class="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#e5a93c] focus:ring-1 focus:ring-[#e5a93c] transition-colors text-sm sm:text-base resize-none"
                 ></textarea>
@@ -1173,8 +1196,9 @@
           <ul class="list-disc list-inside space-y-1 text-slate-300 pl-1">
             <li><strong>Email Address (Compulsory):</strong> For digital event pass verification, event reminders, programme updates, and official Sacrifice of Praise communications.</li>
             <li><strong>Full Name &amp; Congregation/Affiliation:</strong> To personalize your digital event pass, manage seating capacity, and coordinate congregational protocol.</li>
+            <li><strong>Phone Number (Preferably WhatsApp - Compulsory):</strong> To deliver urgent event logistical updates, venue protocol instructions, and direct WhatsApp reminders prior to the concert.</li>
             <li><strong>Referral Source &amp; Lagos Residency Status:</strong> For anonymous statistical planning and event logistics.</li>
-            <li><strong>Fellowship Expectations (Optional):</strong> To help our worship and protocol teams serve attendees effectively.</li>
+            <li><strong>Fellowship Expectations (Compulsory):</strong> To help our worship and protocol teams prepare effectively for all attendees.</li>
           </ul>
         </div>
 
@@ -1479,20 +1503,22 @@ END:VCALENDAR`;
       // Collect & validate inputs
       const emailInput = document.getElementById('field-email');
       const nameInput = document.getElementById('field-name');
+      const phoneInput = document.getElementById('field-phone');
       const churchInput = document.getElementById('field-church');
       const selectSource = document.getElementById('field-source-select');
       const otherInput = document.getElementById('field-source-other');
       const lagosSelect = document.getElementById('field-lagos-select') || document.querySelector('select[name="entry.877086558"]');
-      const expectInput = document.getElementById('field-expectations') || document.querySelector('textarea[name="entry.2018909557"]');
+      const expectInput = document.getElementById('field-expectations') || document.querySelector('textarea[name="entry.787900012"]');
 
       const rawEmail = emailInput ? emailInput.value : '';
       const rawName = nameInput ? nameInput.value : '';
+      const rawPhone = phoneInput ? phoneInput.value : '';
       const rawChurch = churchInput ? churchInput.value : '';
       const rawOther = otherInput ? otherInput.value : '';
       const rawExpect = expectInput ? expectInput.value : '';
 
       // Layer 5: Spam / URL / Script Injection Filter
-      if (hasSpamContent(rawEmail) || hasSpamContent(rawName) || hasSpamContent(rawChurch) || hasSpamContent(rawOther) || hasSpamContent(rawExpect)) {
+      if (hasSpamContent(rawEmail) || hasSpamContent(rawName) || hasSpamContent(rawPhone) || hasSpamContent(rawChurch) || hasSpamContent(rawOther) || hasSpamContent(rawExpect)) {
         if (e && e.preventDefault) e.preventDefault();
         showFormError('Web links (URLs) and HTML tags are not permitted in registration fields.');
         return false;
@@ -1511,6 +1537,17 @@ END:VCALENDAR`;
       if (name.length < 2 || church.length < 2) {
         if (e && e.preventDefault) e.preventDefault();
         showFormError('Please enter your full name and congregation/affiliation (at least 2 characters).');
+        return false;
+      }
+
+      // Phone Number (WhatsApp) validation
+      const cleanPhone = sanitizeInput(rawPhone, 25).trim();
+      const digitsOnly = cleanPhone.replace(/\D/g, '');
+      const phoneValidFormat = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\./0-9]{6,16}$/.test(cleanPhone);
+      if (!cleanPhone || !phoneValidFormat || digitsOnly.length < 8 || digitsOnly.length > 15) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please enter a valid WhatsApp phone number (e.g. 0813 829 3959 or +234 813 829 3959).');
+        if (phoneInput) phoneInput.focus();
         return false;
       }
 
@@ -1545,9 +1582,17 @@ END:VCALENDAR`;
       const inLagos = sanitizeInput(lagosSelect ? lagosSelect.value : 'Yes', 10) || 'Yes';
       const expectations = sanitizeInput(rawExpect, 500);
 
+      if (!expectations || expectations.length < 2) {
+        if (e && e.preventDefault) e.preventDefault();
+        showFormError('Please share what you hope to experience in the expectations field.');
+        if (expectInput) expectInput.focus();
+        return false;
+      }
+
       // Write sanitized values back to form fields before native POST to Google Forms formResponse
       if (emailInput) emailInput.value = email;
       if (nameInput) nameInput.value = name;
+      if (phoneInput) phoneInput.value = cleanPhone;
       if (churchInput) churchInput.value = church;
       if (selectSource) {
         selectSource.value = isOtherSelected ? '__other_option__' : rawSource;
