@@ -1682,22 +1682,22 @@
 
     // 2. Moments & Ministrations Single-Row Marquee
     const homeGalleryItems = [
-      {"id": 1, "src": "./gallery/1.webp", "fallback": "./gallery/1.jpg", "caption": "SoP 1.0 Moment 01", "tag": "Choir Session"},
-      {"id": 2, "src": "./gallery/2.webp", "fallback": "./gallery/2.jpg", "caption": "SoP 1.0 Moment 02", "tag": "Congregation"},
-      {"id": 3, "src": "./gallery/3.webp", "fallback": "./gallery/3.jpg", "caption": "SoP 1.0 Moment 03", "tag": "Pure Acapella"},
-      {"id": 4, "src": "./gallery/4.webp", "fallback": "./gallery/4.jpg", "caption": "SoP 1.0 Moment 04", "tag": "Worship Lead"},
-      {"id": 5, "src": "./gallery/5.webp", "fallback": "./gallery/5.jpg", "caption": "SoP 1.0 Moment 05", "tag": "Acapella Praise"},
-      {"id": 6, "src": "./gallery/6.webp", "fallback": "./gallery/6.jpg", "caption": "SoP 1.0 Moment 06", "tag": "Fellowship"},
-      {"id": 7, "src": "./gallery/7.webp", "fallback": "./gallery/7.jpg", "caption": "SoP 1.0 Moment 07", "tag": "Reflection"},
-      {"id": 8, "src": "./gallery/8.webp", "fallback": "./gallery/8.jpg", "caption": "SoP 1.0 Moment 08", "tag": "Final Anthems"},
-      {"id": 14, "src": "./gallery/14.webp", "fallback": "./gallery/14.jpg", "caption": "SoP 1.0 Moment 14", "tag": "Assembly in Praise"},
-      {"id": 18, "src": "./gallery/18.webp", "fallback": "./gallery/18.jpg", "caption": "SoP 1.0 Moment 18", "tag": "Full Congregation"},
-      {"id": 22, "src": "./gallery/22.webp", "fallback": "./gallery/22.jpg", "caption": "SoP 1.0 Moment 22", "tag": "Melodic Reverence"},
-      {"id": 23, "src": "./gallery/23.webp", "fallback": "./gallery/23.jpg", "caption": "SoP 1.0 Moment 23", "tag": "Spiritual Encounter"},
-      {"id": 29, "src": "./gallery/29.webp", "fallback": "./gallery/29.jpg", "caption": "SoP 1.0 Moment 29", "tag": "Adoration"},
-      {"id": 31, "src": "./gallery/31.webp", "fallback": "./gallery/31.jpg", "caption": "SoP 1.0 Moment 31", "tag": "Auditorium Atmosphere"},
-      {"id": 37, "src": "./gallery/37.webp", "fallback": "./gallery/37.jpg", "caption": "SoP 1.0 Moment 37", "tag": "Warm Fellowship"},
-      {"id": 41, "src": "./gallery/41.webp", "fallback": "./gallery/41.jpg", "caption": "SoP 1.0 Moment 41", "tag": "Choral Harmony"}
+      {"id": 1, "src": "./gallery/1.webp", "fallback": "./gallery/1.jpg", "caption": "SoP 1.0 Moment 01"},
+      {"id": 2, "src": "./gallery/2.webp", "fallback": "./gallery/2.jpg", "caption": "SoP 1.0 Moment 02"},
+      {"id": 3, "src": "./gallery/3.webp", "fallback": "./gallery/3.jpg", "caption": "SoP 1.0 Moment 03"},
+      {"id": 4, "src": "./gallery/4.webp", "fallback": "./gallery/4.jpg", "caption": "SoP 1.0 Moment 04"},
+      {"id": 5, "src": "./gallery/5.webp", "fallback": "./gallery/5.jpg", "caption": "SoP 1.0 Moment 05"},
+      {"id": 6, "src": "./gallery/6.webp", "fallback": "./gallery/6.jpg", "caption": "SoP 1.0 Moment 06"},
+      {"id": 7, "src": "./gallery/7.webp", "fallback": "./gallery/7.jpg", "caption": "SoP 1.0 Moment 07"},
+      {"id": 8, "src": "./gallery/8.webp", "fallback": "./gallery/8.jpg", "caption": "SoP 1.0 Moment 08"},
+      {"id": 14, "src": "./gallery/14.webp", "fallback": "./gallery/14.jpg", "caption": "SoP 1.0 Moment 14"},
+      {"id": 18, "src": "./gallery/18.webp", "fallback": "./gallery/18.jpg", "caption": "SoP 1.0 Moment 18"},
+      {"id": 22, "src": "./gallery/22.webp", "fallback": "./gallery/22.jpg", "caption": "SoP 1.0 Moment 22"},
+      {"id": 23, "src": "./gallery/23.webp", "fallback": "./gallery/23.jpg", "caption": "SoP 1.0 Moment 23"},
+      {"id": 29, "src": "./gallery/29.webp", "fallback": "./gallery/29.jpg", "caption": "SoP 1.0 Moment 29"},
+      {"id": 31, "src": "./gallery/31.webp", "fallback": "./gallery/31.jpg", "caption": "SoP 1.0 Moment 31"},
+      {"id": 37, "src": "./gallery/37.webp", "fallback": "./gallery/37.jpg", "caption": "SoP 1.0 Moment 37"},
+      {"id": 41, "src": "./gallery/41.webp", "fallback": "./gallery/41.jpg", "caption": "SoP 1.0 Moment 41"}
     ];
 
     let isHomeMarqueePaused = false;
@@ -1707,7 +1707,9 @@
       if (!track) return;
 
       const duplicatedItems = [...homeGalleryItems, ...homeGalleryItems];
-      track.innerHTML = duplicatedItems.map(item => `
+      track.innerHTML = duplicatedItems.map(item => {
+        const itemNumber = String(item.id).padStart(2, '0');
+        return `
         <a
           href="gallery.html"
           class="group relative w-64 sm:w-80 h-44 sm:h-52 rounded-2xl overflow-hidden shrink-0 cursor-pointer border border-white/10 hover:border-[#e5a93c]/50 transition-all shadow-lg hover:shadow-[#e5a93c]/20 block"
@@ -1721,17 +1723,25 @@
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+          
+          <!-- Top Left Number Badge -->
+          <div class="absolute top-3 left-3 z-10">
+            <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider font-display bg-black/60 backdrop-blur-md text-[#f8c765] border border-[#e5a93c]/30 shadow-md">
+              ${itemNumber}
+            </span>
+          </div>
+
           <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
             <div>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/60 px-2 py-0.5 rounded-full border border-white/10">${item.tag}</span>
-              <p class="text-white font-medium text-sm sm:text-base mt-1 drop-shadow line-clamp-1">${item.caption}</p>
+              <p class="text-white font-medium text-sm sm:text-base drop-shadow line-clamp-1">${item.caption}</p>
             </div>
             <div class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#e5a93c] text-white group-hover:text-black flex items-center justify-center transition-colors shrink-0 ml-2">
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </div>
         </a>
-      `).join('');
+      `;
+      }).join('');
 
       if (window.lucide) {
         lucide.createIcons();

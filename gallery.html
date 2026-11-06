@@ -274,55 +274,17 @@
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#e5a93c]/15 via-[#f8c765]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-6 text-center md:text-left">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4 shadow-md">
-            <i data-lucide="images" class="w-3.5 h-3.5"></i>
-            <span>Captured Moments of Reverence</span>
-          </div>
-          <h1 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
-            SoP1.0:Memorable Moments
-          </h1>
-          <p class="mt-2 text-base text-slate-300 max-w-xl">
-            Relive the sacred atmosphere, harmonious choral praise, and heartfelt fellowship from previous editions of Sacrifice of Praise.
-          </p>
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/20 text-[#f8c765] text-xs font-bold tracking-widest uppercase mb-4 shadow-md">
+          <i data-lucide="images" class="w-3.5 h-3.5"></i>
+          <span>Captured Moments of Reverence</span>
         </div>
-
-        <!-- Interactive Category Filter Pills -->
-        <div class="flex flex-wrap items-center justify-center lg:justify-end gap-2 sm:gap-2.5">
-          <button
-            type="button"
-            data-filter="all"
-            onclick="setFilter('all')"
-            class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] text-slate-950 shadow-lg shadow-[#e5a93c]/20 border border-[#e5a93c]"
-          >
-            All Moments
-          </button>
-          <button
-            type="button"
-            data-filter="choir"
-            onclick="setFilter('choir')"
-            class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/40"
-          >
-            Choir &amp; Ministration
-          </button>
-          <button
-            type="button"
-            data-filter="worship"
-            onclick="setFilter('worship')"
-            class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/40"
-          >
-            Congregation &amp; Worship
-          </button>
-          <button
-            type="button"
-            data-filter="fellowship"
-            onclick="setFilter('fellowship')"
-            class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/40"
-          >
-            Fellowship &amp; Reflection
-          </button>
-        </div>
+        <h1 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+          SoP1.0:Memorable Moments
+        </h1>
+        <p class="mt-2 text-base text-slate-300 max-w-xl">
+          Relive the sacred atmosphere, harmonious choral praise, and heartfelt fellowship from previous editions of Sacrifice of Praise.
+        </p>
       </div>
     </div>
 
@@ -356,7 +318,7 @@
       <!-- Top controls -->
       <div class="w-full flex items-center justify-between pb-3 text-slate-300">
         <div class="flex items-center gap-2 text-xs">
-          <span id="lightbox-badge" class="font-bold uppercase tracking-wider text-[#f8c765] bg-[#e5a93c]/15 px-2.5 py-1 rounded-full border border-[#e5a93c]/30"></span>
+          <span id="lightbox-badge" class="font-bold tracking-wider font-display text-[#f8c765] bg-black/60 px-2.5 py-1 rounded-full border border-[#e5a93c]/30"></span>
           <span id="lightbox-counter" class="text-slate-400"></span>
         </div>
         <button
@@ -676,67 +638,59 @@
 
     // Gallery Data with Categories
     const galleryData = [
-      {"id": 1, "src": "./gallery/1.webp", "fullSrc": "./gallery/1-full.webp", "fallback": "./gallery/1.jpg", "fullFallback": "./gallery/1-full.jpg", "caption": "SoP 1.0 Moment 01", "tag": "Choir Session", "category": "choir", "span": "lg:col-span-6"},
-      {"id": 2, "src": "./gallery/2.webp", "fullSrc": "./gallery/2-full.webp", "fallback": "./gallery/2.jpg", "fullFallback": "./gallery/2-full.jpg", "caption": "SoP 1.0 Moment 02", "tag": "Congregation", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 3, "src": "./gallery/3.webp", "fullSrc": "./gallery/3-full.webp", "fallback": "./gallery/3.jpg", "fullFallback": "./gallery/3-full.jpg", "caption": "SoP 1.0 Moment 03", "tag": "Pure Acapella", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 4, "src": "./gallery/4.webp", "fullSrc": "./gallery/4-full.webp", "fallback": "./gallery/4.jpg", "fullFallback": "./gallery/4-full.jpg", "caption": "SoP 1.0 Moment 04", "tag": "Worship Lead", "category": "worship", "span": "lg:col-span-4"},
-      {"id": 5, "src": "./gallery/5.webp", "fullSrc": "./gallery/5-full.webp", "fallback": "./gallery/5.jpg", "fullFallback": "./gallery/5-full.jpg", "caption": "SoP 1.0 Moment 05", "tag": "Acapella Praise", "category": "choir", "span": "lg:col-span-4"},
-      {"id": 6, "src": "./gallery/6.webp", "fullSrc": "./gallery/6-full.webp", "fallback": "./gallery/6.jpg", "fullFallback": "./gallery/6-full.jpg", "caption": "SoP 1.0 Moment 06", "tag": "Fellowship", "category": "fellowship", "span": "lg:col-span-4"},
-      {"id": 7, "src": "./gallery/7.webp", "fullSrc": "./gallery/7-full.webp", "fallback": "./gallery/7.jpg", "fullFallback": "./gallery/7-full.jpg", "caption": "SoP 1.0 Moment 07", "tag": "Reflection", "category": "fellowship", "span": "lg:col-span-6"},
-      {"id": 8, "src": "./gallery/8.webp", "fullSrc": "./gallery/8-full.webp", "fallback": "./gallery/8.jpg", "fullFallback": "./gallery/8-full.jpg", "caption": "SoP 1.0 Moment 08", "tag": "Final Anthems", "category": "worship", "span": "lg:col-span-6"},
-      {"id": 9, "src": "./gallery/9.webp", "fullSrc": "./gallery/9-full.webp", "fallback": "./gallery/9.jpg", "fullFallback": "./gallery/9-full.jpg", "caption": "SoP 1.0 Moment 09", "tag": "Sacred Chorus", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 10, "src": "./gallery/10.webp", "fullSrc": "./gallery/10-full.webp", "fallback": "./gallery/10.jpg", "fullFallback": "./gallery/10-full.jpg", "caption": "SoP 1.0 Moment 10", "tag": "Shared Fellowship", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 11, "src": "./gallery/11.webp", "fullSrc": "./gallery/11-full.webp", "fallback": "./gallery/11.jpg", "fullFallback": "./gallery/11-full.jpg", "caption": "SoP 1.0 Moment 11", "tag": "Deep Devotion", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 12, "src": "./gallery/12.webp", "fullSrc": "./gallery/12-full.webp", "fallback": "./gallery/12.jpg", "fullFallback": "./gallery/12-full.jpg", "caption": "SoP 1.0 Moment 12", "tag": "Choir Ministration", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 13, "src": "./gallery/13.webp", "fullSrc": "./gallery/13-full.webp", "fallback": "./gallery/13.jpg", "fullFallback": "./gallery/13-full.jpg", "caption": "SoP 1.0 Moment 13", "tag": "Youth Fellowship", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 14, "src": "./gallery/14.webp", "fullSrc": "./gallery/14-full.webp", "fallback": "./gallery/14.jpg", "fullFallback": "./gallery/14-full.jpg", "caption": "SoP 1.0 Moment 14", "tag": "Assembly in Praise", "category": "worship", "span": "lg:col-span-6"},
-      {"id": 15, "src": "./gallery/15.webp", "fullSrc": "./gallery/15-full.webp", "fallback": "./gallery/15.jpg", "fullFallback": "./gallery/15-full.jpg", "caption": "SoP 1.0 Moment 15", "tag": "Harmonic Chorus", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 16, "src": "./gallery/16.webp", "fullSrc": "./gallery/16-full.webp", "fallback": "./gallery/16.jpg", "fullFallback": "./gallery/16-full.jpg", "caption": "SoP 1.0 Moment 16", "tag": "Quiet Adoration", "category": "worship", "span": "lg:col-span-4"},
-      {"id": 17, "src": "./gallery/17.webp", "fullSrc": "./gallery/17-full.webp", "fallback": "./gallery/17.jpg", "fullFallback": "./gallery/17-full.jpg", "caption": "SoP 1.0 Moment 17", "tag": "Community Fellowship", "category": "fellowship", "span": "lg:col-span-4"},
-      {"id": 18, "src": "./gallery/18.webp", "fullSrc": "./gallery/18-full.webp", "fallback": "./gallery/18.jpg", "fullFallback": "./gallery/18-full.jpg", "caption": "SoP 1.0 Moment 18", "tag": "Full Congregation", "category": "worship", "span": "lg:col-span-4"},
-      {"id": 19, "src": "./gallery/19.webp", "fullSrc": "./gallery/19-full.webp", "fallback": "./gallery/19.jpg", "fullFallback": "./gallery/19-full.jpg", "caption": "SoP 1.0 Moment 19", "tag": "Vocal Artistry", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 20, "src": "./gallery/20.webp", "fullSrc": "./gallery/20-full.webp", "fallback": "./gallery/20.jpg", "fullFallback": "./gallery/20-full.jpg", "caption": "SoP 1.0 Moment 20", "tag": "Thankful Hearts", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 21, "src": "./gallery/21.webp", "fullSrc": "./gallery/21-full.webp", "fallback": "./gallery/21.jpg", "fullFallback": "./gallery/21-full.jpg", "caption": "SoP 1.0 Moment 21", "tag": "Welcoming Grace", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 22, "src": "./gallery/22.webp", "fullSrc": "./gallery/22-full.webp", "fallback": "./gallery/22.jpg", "fullFallback": "./gallery/22-full.jpg", "caption": "SoP 1.0 Moment 22", "tag": "Melodic Reverence", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 23, "src": "./gallery/23.webp", "fullSrc": "./gallery/23-full.webp", "fallback": "./gallery/23.jpg", "fullFallback": "./gallery/23-full.jpg", "caption": "SoP 1.0 Moment 23", "tag": "Spiritual Encounter", "category": "worship", "span": "lg:col-span-4"},
-      {"id": 24, "src": "./gallery/24.webp", "fullSrc": "./gallery/24-full.webp", "fallback": "./gallery/24.jpg", "fullFallback": "./gallery/24-full.jpg", "caption": "SoP 1.0 Moment 24", "tag": "Brotherhood", "category": "fellowship", "span": "lg:col-span-4"},
-      {"id": 25, "src": "./gallery/25.webp", "fullSrc": "./gallery/25-full.webp", "fallback": "./gallery/25.jpg", "fullFallback": "./gallery/25-full.jpg", "caption": "SoP 1.0 Moment 25", "tag": "Choral Dedication", "category": "choir", "span": "lg:col-span-4"},
-      {"id": 26, "src": "./gallery/26.webp", "fullSrc": "./gallery/26-full.webp", "fallback": "./gallery/26.jpg", "fullFallback": "./gallery/26-full.jpg", "caption": "SoP 1.0 Moment 26", "tag": "Solemn Adoration", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 27, "src": "./gallery/27.webp", "fullSrc": "./gallery/27-full.webp", "fallback": "./gallery/27.jpg", "fullFallback": "./gallery/27-full.jpg", "caption": "SoP 1.0 Moment 27", "tag": "Kingdom Bond", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 28, "src": "./gallery/28.webp", "fullSrc": "./gallery/28-full.webp", "fallback": "./gallery/28.jpg", "fullFallback": "./gallery/28-full.jpg", "caption": "SoP 1.0 Moment 28", "tag": "Pure Worship", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 29, "src": "./gallery/29.webp", "fullSrc": "./gallery/29-full.webp", "fallback": "./gallery/29.jpg", "fullFallback": "./gallery/29-full.jpg", "caption": "SoP 1.0 Moment 29", "tag": "Adoration", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 30, "src": "./gallery/30.webp", "fullSrc": "./gallery/30-full.webp", "fallback": "./gallery/30.jpg", "fullFallback": "./gallery/30-full.jpg", "caption": "SoP 1.0 Moment 30", "tag": "Mutual Encouragement", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 31, "src": "./gallery/31.webp", "fullSrc": "./gallery/31-full.webp", "fallback": "./gallery/31.jpg", "fullFallback": "./gallery/31-full.jpg", "caption": "SoP 1.0 Moment 31", "tag": "Auditorium Atmosphere", "category": "worship", "span": "lg:col-span-6"},
-      {"id": 32, "src": "./gallery/32.webp", "fullSrc": "./gallery/32-full.webp", "fallback": "./gallery/32.jpg", "fullFallback": "./gallery/32-full.jpg", "caption": "SoP 1.0 Moment 32", "tag": "Hymnic Harmony", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 33, "src": "./gallery/33.webp", "fullSrc": "./gallery/33-full.webp", "fallback": "./gallery/33.jpg", "fullFallback": "./gallery/33-full.jpg", "caption": "SoP 1.0 Moment 33", "tag": "Living Sacrifice", "category": "worship", "span": "lg:col-span-4"},
-      {"id": 34, "src": "./gallery/34.webp", "fullSrc": "./gallery/34-full.webp", "fallback": "./gallery/34.jpg", "fullFallback": "./gallery/34-full.jpg", "caption": "SoP 1.0 Moment 34", "tag": "Christian Unity", "category": "fellowship", "span": "lg:col-span-4"},
-      {"id": 35, "src": "./gallery/35.webp", "fullSrc": "./gallery/35-full.webp", "fallback": "./gallery/35.jpg", "fullFallback": "./gallery/35-full.jpg", "caption": "SoP 1.0 Moment 35", "tag": "Anthem Ministration", "category": "choir", "span": "lg:col-span-4"},
-      {"id": 36, "src": "./gallery/36.webp", "fullSrc": "./gallery/36-full.webp", "fallback": "./gallery/36.jpg", "fullFallback": "./gallery/36-full.jpg", "caption": "SoP 1.0 Moment 36", "tag": "Quiet Reverence", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 37, "src": "./gallery/37.webp", "fullSrc": "./gallery/37-full.webp", "fallback": "./gallery/37.jpg", "fullFallback": "./gallery/37-full.jpg", "caption": "SoP 1.0 Moment 37", "tag": "Warm Fellowship", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 38, "src": "./gallery/38.webp", "fullSrc": "./gallery/38-full.webp", "fallback": "./gallery/38.jpg", "fullFallback": "./gallery/38-full.jpg", "caption": "SoP 1.0 Moment 38", "tag": "Vocal Ministration", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 39, "src": "./gallery/39.webp", "fullSrc": "./gallery/39-full.webp", "fallback": "./gallery/39.jpg", "fullFallback": "./gallery/39-full.jpg", "caption": "SoP 1.0 Moment 39", "tag": "Sacred Worship", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 40, "src": "./gallery/40.webp", "fullSrc": "./gallery/40-full.webp", "fallback": "./gallery/40.jpg", "fullFallback": "./gallery/40-full.jpg", "caption": "SoP 1.0 Moment 40", "tag": "Faithful Fellowship", "category": "fellowship", "span": "lg:col-span-3"},
-      {"id": 41, "src": "./gallery/41.webp", "fullSrc": "./gallery/41-full.webp", "fallback": "./gallery/41.jpg", "fullFallback": "./gallery/41-full.jpg", "caption": "SoP 1.0 Moment 41", "tag": "Choral Harmony", "category": "choir", "span": "lg:col-span-3"},
-      {"id": 42, "src": "./gallery/42.webp", "fullSrc": "./gallery/42-full.webp", "fallback": "./gallery/42.jpg", "fullFallback": "./gallery/42-full.jpg", "caption": "SoP 1.0 Moment 42", "tag": "Humble Adoration", "category": "worship", "span": "lg:col-span-3"},
-      {"id": 43, "src": "./gallery/43.webp", "fullSrc": "./gallery/43-full.webp", "fallback": "./gallery/43.jpg", "fullFallback": "./gallery/43-full.jpg", "caption": "SoP 1.0 Moment 43", "tag": "Grace & Benediction", "category": "fellowship", "span": "lg:col-span-3"}
+      {"id": 1, "src": "./gallery/1.webp", "fullSrc": "./gallery/1-full.webp", "fallback": "./gallery/1.jpg", "fullFallback": "./gallery/1-full.jpg", "caption": "SoP 1.0 Moment 01", "span": "lg:col-span-6"},
+      {"id": 2, "src": "./gallery/2.webp", "fullSrc": "./gallery/2-full.webp", "fallback": "./gallery/2.jpg", "fullFallback": "./gallery/2-full.jpg", "caption": "SoP 1.0 Moment 02", "span": "lg:col-span-3"},
+      {"id": 3, "src": "./gallery/3.webp", "fullSrc": "./gallery/3-full.webp", "fallback": "./gallery/3.jpg", "fullFallback": "./gallery/3-full.jpg", "caption": "SoP 1.0 Moment 03", "span": "lg:col-span-3"},
+      {"id": 4, "src": "./gallery/4.webp", "fullSrc": "./gallery/4-full.webp", "fallback": "./gallery/4.jpg", "fullFallback": "./gallery/4-full.jpg", "caption": "SoP 1.0 Moment 04", "span": "lg:col-span-4"},
+      {"id": 5, "src": "./gallery/5.webp", "fullSrc": "./gallery/5-full.webp", "fallback": "./gallery/5.jpg", "fullFallback": "./gallery/5-full.jpg", "caption": "SoP 1.0 Moment 05", "span": "lg:col-span-4"},
+      {"id": 6, "src": "./gallery/6.webp", "fullSrc": "./gallery/6-full.webp", "fallback": "./gallery/6.jpg", "fullFallback": "./gallery/6-full.jpg", "caption": "SoP 1.0 Moment 06", "span": "lg:col-span-4"},
+      {"id": 7, "src": "./gallery/7.webp", "fullSrc": "./gallery/7-full.webp", "fallback": "./gallery/7.jpg", "fullFallback": "./gallery/7-full.jpg", "caption": "SoP 1.0 Moment 07", "span": "lg:col-span-6"},
+      {"id": 8, "src": "./gallery/8.webp", "fullSrc": "./gallery/8-full.webp", "fallback": "./gallery/8.jpg", "fullFallback": "./gallery/8-full.jpg", "caption": "SoP 1.0 Moment 08", "span": "lg:col-span-6"},
+      {"id": 9, "src": "./gallery/9.webp", "fullSrc": "./gallery/9-full.webp", "fallback": "./gallery/9.jpg", "fullFallback": "./gallery/9-full.jpg", "caption": "SoP 1.0 Moment 09", "span": "lg:col-span-3"},
+      {"id": 10, "src": "./gallery/10.webp", "fullSrc": "./gallery/10-full.webp", "fallback": "./gallery/10.jpg", "fullFallback": "./gallery/10-full.jpg", "caption": "SoP 1.0 Moment 10", "span": "lg:col-span-3"},
+      {"id": 11, "src": "./gallery/11.webp", "fullSrc": "./gallery/11-full.webp", "fallback": "./gallery/11.jpg", "fullFallback": "./gallery/11-full.jpg", "caption": "SoP 1.0 Moment 11", "span": "lg:col-span-3"},
+      {"id": 12, "src": "./gallery/12.webp", "fullSrc": "./gallery/12-full.webp", "fallback": "./gallery/12.jpg", "fullFallback": "./gallery/12-full.jpg", "caption": "SoP 1.0 Moment 12", "span": "lg:col-span-3"},
+      {"id": 13, "src": "./gallery/13.webp", "fullSrc": "./gallery/13-full.webp", "fallback": "./gallery/13.jpg", "fullFallback": "./gallery/13-full.jpg", "caption": "SoP 1.0 Moment 13", "span": "lg:col-span-3"},
+      {"id": 14, "src": "./gallery/14.webp", "fullSrc": "./gallery/14-full.webp", "fallback": "./gallery/14.jpg", "fullFallback": "./gallery/14-full.jpg", "caption": "SoP 1.0 Moment 14", "span": "lg:col-span-6"},
+      {"id": 15, "src": "./gallery/15.webp", "fullSrc": "./gallery/15-full.webp", "fallback": "./gallery/15.jpg", "fullFallback": "./gallery/15-full.jpg", "caption": "SoP 1.0 Moment 15", "span": "lg:col-span-3"},
+      {"id": 16, "src": "./gallery/16.webp", "fullSrc": "./gallery/16-full.webp", "fallback": "./gallery/16.jpg", "fullFallback": "./gallery/16-full.jpg", "caption": "SoP 1.0 Moment 16", "span": "lg:col-span-4"},
+      {"id": 17, "src": "./gallery/17.webp", "fullSrc": "./gallery/17-full.webp", "fallback": "./gallery/17.jpg", "fullFallback": "./gallery/17-full.jpg", "caption": "SoP 1.0 Moment 17", "span": "lg:col-span-4"},
+      {"id": 18, "src": "./gallery/18.webp", "fullSrc": "./gallery/18-full.webp", "fallback": "./gallery/18.jpg", "fullFallback": "./gallery/18-full.jpg", "caption": "SoP 1.0 Moment 18", "span": "lg:col-span-4"},
+      {"id": 19, "src": "./gallery/19.webp", "fullSrc": "./gallery/19-full.webp", "fallback": "./gallery/19.jpg", "fullFallback": "./gallery/19-full.jpg", "caption": "SoP 1.0 Moment 19", "span": "lg:col-span-3"},
+      {"id": 20, "src": "./gallery/20.webp", "fullSrc": "./gallery/20-full.webp", "fallback": "./gallery/20.jpg", "fullFallback": "./gallery/20-full.jpg", "caption": "SoP 1.0 Moment 20", "span": "lg:col-span-3"},
+      {"id": 21, "src": "./gallery/21.webp", "fullSrc": "./gallery/21-full.webp", "fallback": "./gallery/21.jpg", "fullFallback": "./gallery/21-full.jpg", "caption": "SoP 1.0 Moment 21", "span": "lg:col-span-3"},
+      {"id": 22, "src": "./gallery/22.webp", "fullSrc": "./gallery/22-full.webp", "fallback": "./gallery/22.jpg", "fullFallback": "./gallery/22-full.jpg", "caption": "SoP 1.0 Moment 22", "span": "lg:col-span-3"},
+      {"id": 23, "src": "./gallery/23.webp", "fullSrc": "./gallery/23-full.webp", "fallback": "./gallery/23.jpg", "fullFallback": "./gallery/23-full.jpg", "caption": "SoP 1.0 Moment 23", "span": "lg:col-span-4"},
+      {"id": 24, "src": "./gallery/24.webp", "fullSrc": "./gallery/24-full.webp", "fallback": "./gallery/24.jpg", "fullFallback": "./gallery/24-full.jpg", "caption": "SoP 1.0 Moment 24", "span": "lg:col-span-4"},
+      {"id": 25, "src": "./gallery/25.webp", "fullSrc": "./gallery/25-full.webp", "fallback": "./gallery/25.jpg", "fullFallback": "./gallery/25-full.jpg", "caption": "SoP 1.0 Moment 25", "span": "lg:col-span-4"},
+      {"id": 26, "src": "./gallery/26.webp", "fullSrc": "./gallery/26-full.webp", "fallback": "./gallery/26.jpg", "fullFallback": "./gallery/26-full.jpg", "caption": "SoP 1.0 Moment 26", "span": "lg:col-span-3"},
+      {"id": 27, "src": "./gallery/27.webp", "fullSrc": "./gallery/27-full.webp", "fallback": "./gallery/27.jpg", "fullFallback": "./gallery/27-full.jpg", "caption": "SoP 1.0 Moment 27", "span": "lg:col-span-3"},
+      {"id": 28, "src": "./gallery/28.webp", "fullSrc": "./gallery/28-full.webp", "fallback": "./gallery/28.jpg", "fullFallback": "./gallery/28-full.jpg", "caption": "SoP 1.0 Moment 28", "span": "lg:col-span-3"},
+      {"id": 29, "src": "./gallery/29.webp", "fullSrc": "./gallery/29-full.webp", "fallback": "./gallery/29.jpg", "fullFallback": "./gallery/29-full.jpg", "caption": "SoP 1.0 Moment 29", "span": "lg:col-span-3"},
+      {"id": 30, "src": "./gallery/30.webp", "fullSrc": "./gallery/30-full.webp", "fallback": "./gallery/30.jpg", "fullFallback": "./gallery/30-full.jpg", "caption": "SoP 1.0 Moment 30", "span": "lg:col-span-3"},
+      {"id": 31, "src": "./gallery/31.webp", "fullSrc": "./gallery/31-full.webp", "fallback": "./gallery/31.jpg", "fullFallback": "./gallery/31-full.jpg", "caption": "SoP 1.0 Moment 31", "span": "lg:col-span-6"},
+      {"id": 32, "src": "./gallery/32.webp", "fullSrc": "./gallery/32-full.webp", "fallback": "./gallery/32.jpg", "fullFallback": "./gallery/32-full.jpg", "caption": "SoP 1.0 Moment 32", "span": "lg:col-span-3"},
+      {"id": 33, "src": "./gallery/33.webp", "fullSrc": "./gallery/33-full.webp", "fallback": "./gallery/33.jpg", "fullFallback": "./gallery/33-full.jpg", "caption": "SoP 1.0 Moment 33", "span": "lg:col-span-4"},
+      {"id": 34, "src": "./gallery/34.webp", "fullSrc": "./gallery/34-full.webp", "fallback": "./gallery/34.jpg", "fullFallback": "./gallery/34-full.jpg", "caption": "SoP 1.0 Moment 34", "span": "lg:col-span-4"},
+      {"id": 35, "src": "./gallery/35.webp", "fullSrc": "./gallery/35-full.webp", "fallback": "./gallery/35.jpg", "fullFallback": "./gallery/35-full.jpg", "caption": "SoP 1.0 Moment 35", "span": "lg:col-span-4"},
+      {"id": 36, "src": "./gallery/36.webp", "fullSrc": "./gallery/36-full.webp", "fallback": "./gallery/36.jpg", "fullFallback": "./gallery/36-full.jpg", "caption": "SoP 1.0 Moment 36", "span": "lg:col-span-3"},
+      {"id": 37, "src": "./gallery/37.webp", "fullSrc": "./gallery/37-full.webp", "fallback": "./gallery/37.jpg", "fullFallback": "./gallery/37-full.jpg", "caption": "SoP 1.0 Moment 37", "span": "lg:col-span-3"},
+      {"id": 38, "src": "./gallery/38.webp", "fullSrc": "./gallery/38-full.webp", "fallback": "./gallery/38.jpg", "fullFallback": "./gallery/38-full.jpg", "caption": "SoP 1.0 Moment 38", "span": "lg:col-span-3"},
+      {"id": 39, "src": "./gallery/39.webp", "fullSrc": "./gallery/39-full.webp", "fallback": "./gallery/39.jpg", "fullFallback": "./gallery/39-full.jpg", "caption": "SoP 1.0 Moment 39", "span": "lg:col-span-3"},
+      {"id": 40, "src": "./gallery/40.webp", "fullSrc": "./gallery/40-full.webp", "fallback": "./gallery/40.jpg", "fullFallback": "./gallery/40-full.jpg", "caption": "SoP 1.0 Moment 40", "span": "lg:col-span-3"},
+      {"id": 41, "src": "./gallery/41.webp", "fullSrc": "./gallery/41-full.webp", "fallback": "./gallery/41.jpg", "fullFallback": "./gallery/41-full.jpg", "caption": "SoP 1.0 Moment 41", "span": "lg:col-span-3"},
+      {"id": 42, "src": "./gallery/42.webp", "fullSrc": "./gallery/42-full.webp", "fallback": "./gallery/42.jpg", "fullFallback": "./gallery/42-full.jpg", "caption": "SoP 1.0 Moment 42", "span": "lg:col-span-3"},
+      {"id": 43, "src": "./gallery/43.webp", "fullSrc": "./gallery/43-full.webp", "fallback": "./gallery/43.jpg", "fullFallback": "./gallery/43-full.jpg", "caption": "SoP 1.0 Moment 43", "span": "lg:col-span-3"}
     ];
 
-    // Bento Spans for all mode (43 items aligned across 12-column desktop rows):
+    // Bento Spans (43 items aligned across 12-column desktop rows):
     const bentoAllSpans = galleryData.map(item => item.span);
 
-    let activeFilter = 'all';
     let currentLightboxIndex = 0;
 
-    function getActiveList() {
-      if (activeFilter === 'all') return galleryData;
-      return galleryData.filter(item => item.category === activeFilter);
-    }
-
     // Render Grid Card HTML
-    function buildCardHtml(item, index, total) {
-      const spanClass = activeFilter === 'all'
-        ? (bentoAllSpans[index] || 'lg:col-span-4')
-        : (total === 2 ? 'lg:col-span-6' : 'lg:col-span-4');
+    function buildCardHtml(item, index) {
+      const spanClass = bentoAllSpans[index] || 'lg:col-span-4';
       const itemNumber = String(item.id).padStart(2, '0');
 
       return `
@@ -764,7 +718,6 @@
           <!-- Bottom Card Content & Gold Zoom-in Button -->
           <div class="absolute bottom-3.5 sm:bottom-4 left-3.5 sm:left-4 right-3.5 sm:right-4 flex items-end justify-between gap-3 z-10">
             <div class="min-w-0">
-              <span class="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#f8c765] bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-[#e5a93c]/30 mb-1.5">${item.tag}</span>
               <p class="text-white font-medium text-xs sm:text-sm lg:text-base leading-snug drop-shadow line-clamp-2">${item.caption}</p>
             </div>
             <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 group-hover:bg-[#e5a93c] text-white group-hover:text-black border border-white/20 group-hover:border-[#e5a93c] flex items-center justify-center shrink-0 transition-all duration-300 shadow-lg group-hover:scale-105">
@@ -780,28 +733,10 @@
       const grid = document.getElementById('gallery-animated-grid');
       if (!grid) return;
 
-      const items = getActiveList();
-      grid.innerHTML = items.map((item, idx) => buildCardHtml(item, idx, items.length)).join('');
+      grid.innerHTML = galleryData.map((item, idx) => buildCardHtml(item, idx)).join('');
       if (window.lucide) {
         lucide.createIcons();
       }
-    }
-
-    // Category Filter Selection
-    function setFilter(filter) {
-      activeFilter = filter;
-
-      const buttons = document.querySelectorAll('.filter-pill');
-      buttons.forEach(btn => {
-        const btnFilter = btn.getAttribute('data-filter');
-        if (btnFilter === activeFilter) {
-          btn.className = 'filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-[#f8c765] via-[#e5a93c] to-[#f8c765] text-slate-950 shadow-lg shadow-[#e5a93c]/20 border border-[#e5a93c]';
-        } else {
-          btn.className = 'filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-[#e5a93c]/40';
-        }
-      });
-
-      renderGrid();
     }
 
     // Initial Render
@@ -828,11 +763,7 @@
 
     // Lightbox Functions
     function openLightboxById(id) {
-      const list = getActiveList();
-      let index = list.findIndex(item => item.id === id);
-      if (index === -1) {
-        index = galleryData.findIndex(item => item.id === id);
-      }
+      const index = galleryData.findIndex(item => item.id === id);
       if (index !== -1) {
         currentLightboxIndex = index;
         showLightboxIndex(currentLightboxIndex);
@@ -840,8 +771,7 @@
     }
 
     function showLightboxIndex(idx) {
-      const list = getActiveList();
-      const item = list[idx] || galleryData[idx];
+      const item = galleryData[idx];
       if (!item) return;
 
       const modal = document.getElementById('lightbox-modal');
@@ -854,8 +784,9 @@
       img.onerror = () => { img.src = item.fullFallback; };
       img.alt = item.caption;
       cap.innerText = item.caption;
-      badge.innerText = item.tag;
-      counter.innerText = `${idx + 1} of ${list.length}`;
+      const itemNumber = String(item.id).padStart(2, '0');
+      badge.innerText = itemNumber;
+      counter.innerText = `${idx + 1} of ${galleryData.length}`;
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -869,14 +800,12 @@
     }
 
     function prevLightboxImage() {
-      const list = getActiveList();
-      currentLightboxIndex = (currentLightboxIndex - 1 + list.length) % list.length;
+      currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
       showLightboxIndex(currentLightboxIndex);
     }
 
     function nextLightboxImage() {
-      const list = getActiveList();
-      currentLightboxIndex = (currentLightboxIndex + 1) % list.length;
+      currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
       showLightboxIndex(currentLightboxIndex);
     }
 
